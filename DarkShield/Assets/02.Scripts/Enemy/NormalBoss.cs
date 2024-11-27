@@ -7,20 +7,24 @@ using Random = UnityEngine.Random;
 public abstract class NormalBoss : MonoBehaviour
 {
     public Transform target;
-    NavMeshAgent nmAgent;
+    protected NavMeshAgent nmAgent;
     public float detectionRange = 15f;
 
     public float attackRange = 1;
 
     public float health = 800;
+    public float attackpower = 40;
+    protected Animator _animaton;
 
 
     public float rangedAttackRange = 10f;
     public float attackCooldown = 2f;   
     protected float lastAttackTime = 0f;
-    void Start()
+    protected void Start()
     {
         nmAgent = GetComponent<NavMeshAgent>();
+        target = GameObject.Find("Player").transform;
+        _animaton = GetComponent<Animator>();
     }
     void Update()
     {
@@ -36,10 +40,12 @@ public abstract class NormalBoss : MonoBehaviour
         {
             nmAgent.isStopped = false;// 플레이어를 추적
             nmAgent.SetDestination(target.position);
+            _animaton.SetBool("IsMoving",true);
         }
         else
         {
             nmAgent.isStopped = true; // 탐지 범위를 벗어나면 정지
+            _animaton.SetBool("IsMoving",false);
         }
     }
 
@@ -47,6 +53,7 @@ public abstract class NormalBoss : MonoBehaviour
 
     private void TakeDamage(float damage)
     {
+        _animaton.SetTrigger("Hit");
         health -= damage;
         if (health <= 0)
         {
@@ -56,6 +63,7 @@ public abstract class NormalBoss : MonoBehaviour
 
     private void Die()
     {
+        _animaton.SetTrigger("Die");
         Destroy(gameObject);
     }
 }

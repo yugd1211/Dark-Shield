@@ -12,7 +12,12 @@ public class MelleEnemy : NormalEnemy
 
     public override void Attack()
     {
-        if(isCheckPlayer())
+        /*if(isCheckPlayer())
+        {
+            MeleeAttack();
+            lastAttackTime = Time.time;
+        }*/
+        if (isCheckPlayer() && Time.time >= lastAttackTime + attackCooldown)
         {
             MeleeAttack();
             lastAttackTime = Time.time;

@@ -18,10 +18,17 @@ public class RangedEnemy : NormalEnemy
 
     public override void Attack()
     {
-        if(isCheckPlayer())
+        /*if(isCheckPlayer())
         {
             RangedAttack();
             _animator.SetBool("IsRangeAttack", true);
+            lastAttackTime = Time.time;
+            StartCoroutine(ResetAttackAnimation());
+        }*/
+        if (isCheckPlayer() && Time.time >= lastAttackTime + attackCooldown)
+        {
+            _animator.SetBool("IsRangeAttack", true);
+            RangedAttack();
             lastAttackTime = Time.time;
             StartCoroutine(ResetAttackAnimation());
         }
@@ -31,6 +38,11 @@ public class RangedEnemy : NormalEnemy
     {
         if (Time.time >= lastAttackTime + attackCooldown)
         {
+
+            Vector3 directionToPlayer = (player.position - transform.position).normalized;
+            Quaternion lookRotation = Quaternion.LookRotation(new Vector3(directionToPlayer.x, 0, directionToPlayer.z)); // y축은 고정
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 10f); // 부드럽게 회전
+
             GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
             Rigidbody rb = projectile.GetComponent<Rigidbody>();
             rb.velocity = (player.position - firePoint.position).normalized * 10f; // 투사체 속도
