@@ -48,6 +48,7 @@ public class RangedEnemy : NormalEnemy
             rb.velocity = (player.position - firePoint.position).normalized * 10f; // 투사체 속도
             Fire fire = projectile.GetComponent<Fire>();
             fire.damage = this.AttackPower;
+
             lastAttackTime = Time.time;
         }
     }

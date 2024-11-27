@@ -73,7 +73,7 @@ public abstract class NormalEnemy : MonoBehaviour
     public void Die()
     {
         _animotor.SetTrigger("Death");
-        Destroy(gameObject);
+        Destroy(gameObject, 5f);
     }
 
 }

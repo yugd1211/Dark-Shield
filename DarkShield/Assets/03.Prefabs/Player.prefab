@@ -26105,7 +26105,7 @@ GameObject:
   - component: {fileID: 930009176190210612}
   - component: {fileID: 5305652195719045097}
   - component: {fileID: 3556320202382459536}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26196,7 +26196,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
@@ -26464,6 +26464,13 @@ MonoBehaviour:
   skillAttackPt: {fileID: 8779933720404353394}
   skill1Clip: {fileID: 7400000, guid: 562f30cfe087f854f9ecb446d80b0c52, type: 2}
   skill2Clip: {fileID: 7400000, guid: d0e4b62a075e05a4588fe18699fb53b9, type: 2}
+  damage: 150
+  attackRange: {x: 10, y: 10, z: 10}
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  colls: []
+  boxCenter: {x: 0, y: 0}
 --- !u!1 &5625537504552777652
 GameObject:
   m_ObjectHideFlags: 0
