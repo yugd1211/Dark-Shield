@@ -19,12 +19,16 @@ public class DashState : IState
 
     public void OnUpdate()
     {
-
+        //Die
+        if (_player.playerHealth.Death)
+        {
+            _player.playerStateMachine.TransitionTo(_player.playerStateMachine.dieState);
+        }
     }
 
     public void OnExit()
     {
-
+        _player.playerInputManager.IsDash = false;
     }
 
     public void EndDash()
