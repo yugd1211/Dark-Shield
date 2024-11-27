@@ -9,8 +9,11 @@ public class StateMachine
 
     public IdleState idleState;
     public WalkState walkState;
-    public AttackState attackState;
+    public Skill1State skill1State;
+    public Skill2State skill2State;
     public DashState dashState;
+    public DieState dieState;
+    public HitState hitState;
 
     public event Action<IState> StateChanged;
 
@@ -18,8 +21,11 @@ public class StateMachine
     {
         idleState = new IdleState(player);
         walkState = new WalkState(player);
-        attackState = new AttackState(player);
+        skill1State = new Skill1State(player);
+        skill2State = new Skill2State(player);
         dashState = new DashState(player);
+        dieState = new DieState(player);
+        hitState = new HitState(player);
     }
 
     //On Start, IdleState
@@ -46,5 +52,11 @@ public class StateMachine
         {
             CurState.OnUpdate();
         }
+    }
+
+    public bool CanEnterHitState()
+    {
+        if (CurState == idleState || CurState == walkState) return true;
+        return false;
     }
 }

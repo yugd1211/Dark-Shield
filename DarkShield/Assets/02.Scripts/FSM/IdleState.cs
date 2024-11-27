@@ -18,20 +18,31 @@ public class IdleState : IState
 
     public void OnUpdate()
     {
-        //NormalAttack
-        if (_player.isLeftMouseClick == true)
+        //Die
+        if (_player.playerHealth.Death)
         {
-            _player.playerStateMachine.TransitionTo(_player.playerStateMachine.attackState);
+            _player.playerStateMachine.TransitionTo(_player.playerStateMachine.dieState);
         }
-        //SkillAttack
-        else if (_player.isRightMouseClick == true)
+
+        //Skill1
+        if (_player.playerInputManager.IsSkill1)
         {
-            _player.playerStateMachine.TransitionTo(_player.playerStateMachine.attackState);
+            _player.playerStateMachine.TransitionTo(_player.playerStateMachine.skill1State);
+        }
+        //Skill2
+        else if (_player.playerInputManager.IsSkill2)
+        {
+            _player.playerStateMachine.TransitionTo(_player.playerStateMachine.skill2State);
         }
         //Dash
-        else if (_player.playerInputManager.DashPressed == true)
+        else if (_player.playerInputManager.IsDash)
         {
             _player.playerStateMachine.TransitionTo(_player.playerStateMachine.dashState);
+        }
+        //Hit
+        else if (_player.playerHealth.IsHit)
+        {
+            _player.playerStateMachine.TransitionTo(_player.playerStateMachine.hitState);
         }
         //Move
         else if (_player.playerInputManager.InputMoveDir.magnitude >= 0.1f)

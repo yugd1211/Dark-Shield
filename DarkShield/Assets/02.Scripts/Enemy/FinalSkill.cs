@@ -6,13 +6,20 @@ public class FinalSkill : MonoBehaviour
 {
     public float damage = 40f; // 기본 데미지
 
-    void OnTriggerEnter(Collider other)
+    private void Start()
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        Destroy(gameObject, 5f); //Test
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             Debug.Log("플레이어가 원거리 공격에 맞음!");
 
-            Destroy(gameObject); // 투사체 제거
+            collision.collider.GetComponent<PlayerHealth>().TakeDamage(damage);// 투사체 제거
+
+            Destroy(this.gameObject);
         }
     }
 }

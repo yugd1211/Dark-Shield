@@ -5,61 +5,70 @@ using UnityEngine;
 
 public class Sword : Weapon
 {
-    public ParticleSystem normalAttackPt;
+    public ParticleSystem slashAttackPt;
     public ParticleSystem skillAttackPt;
-    public AnimationClip attackClip;
+    public AnimationClip skill1Clip;
+    public AnimationClip skill2Clip;
+    private Player _player;
 
-    private float lastNormalAttackTime;
-    private float lastSkillAttackTime;
+    //(Temp)Sword 공격 관련 변수들
+    public int damage; //공격력
+    public Vector3Int attackRange; //공격 사정 거리
+    public LayerMask targetLayer; //타겟 레이어
+    public Collider[] colls; //감지된 적
+    public Vector2 boxCenter;
 
+    private void Awake()
+    {
+        Init();
+    }
     private void Start()
     {
-        lastNormalAttackTime = Time.time;
-        lastSkillAttackTime = Time.time;
-        normalAttackInterval = attackClip.length;
-        print(normalAttackInterval);
+
+        skill1Interval = skill1Clip.length;
+        skill2Interval = skill2Clip.length;
+        print(skill1Interval);
+        print($"skill2Interval {skill2Interval}");
+    }
+    private void FixedUpdate()
+    {
+        //Temp
+        TargetScan(transform.forward);
     }
 
-    //������ ��������
-    public override bool CanNormalAttack()
+    public override void UseSkill1()
     {
-        if (Time.time >= lastNormalAttackTime && isAttack == false)
+        slashAttackPt.Play();
+        _player.playerAnimator.SetTrigger("Skill1");
+        //Temp
+        if(colls != null)
         {
-            lastNormalAttackTime = normalAttackInterval + Time.time;
-            StartCoroutine(NormalAttack());
-            return true;
+            foreach(Collider coll in colls) 
+            {
+                coll.GetComponent<MelleEnemy>().TakeDamage(damage);
+                // _player.playerAnimator.SetTrigger("Skill1");
+                print($"데미지 받은 적 : {coll.name} 남은 체력 : {coll.GetComponent<NormalEnemy>().health}");
+                // slashAttackPt.Play();
+            }
         }
-
-        return false;
     }
 
-    public override bool CanSkillAttack()
+    public override void UseSkill2()
     {
-        if (Time.time >= lastSkillAttackTime && isAttack == false)
-        {
-            lastSkillAttackTime = skillAttackInterval + Time.time;
-            StartCoroutine(SkillAttack());
-            return true;
-        }
-
-        return false;
-    }
-
-    //�⺻ ����
-    public IEnumerator NormalAttack()
-    {
-        isAttack = true;
-        normalAttackPt.Play();
-        yield return new WaitForSeconds(normalAttackInterval);
-        isAttack = false;
-    }
-
-    //��ų ����
-    private IEnumerator SkillAttack()
-    {
-        isAttack = true;
         skillAttackPt.Play();
-        yield return new WaitForSeconds(skillAttackInterval);
-        isAttack = false;
+        _player.playerAnimator.SetTrigger("Skill2");
+    }
+
+    private void Init()
+    {
+        _player = GetComponent<Player>();
+    }
+
+    //Temp
+    //적 감지 메서드
+    public void TargetScan(Vector2 dir)
+    {
+        boxCenter = (Vector2)transform.position + dir * 4; // 박스 Pivot dir으로 4만큼 이동
+        colls = Physics.OverlapBox(boxCenter,attackRange,Quaternion.identity,targetLayer);
     }
 }
