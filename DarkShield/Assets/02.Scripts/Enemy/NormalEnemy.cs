@@ -62,6 +62,7 @@ public abstract class NormalEnemy : MonoBehaviour
     public abstract void Attack();
     public void TakeDamage(float damage)
     {
+        _animotor.SetTrigger("Hit");
         health -= damage;
         if (health <= 0)
         {
@@ -71,6 +72,7 @@ public abstract class NormalEnemy : MonoBehaviour
 
     public void Die()
     {
+        _animotor.SetTrigger("Death");
         Destroy(gameObject);
     }
 
