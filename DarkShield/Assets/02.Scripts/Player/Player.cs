@@ -45,15 +45,6 @@ public class Player : MonoBehaviour
         playerAnimator = GetComponent<Animator>();
     }
 
-    // 임시로 설정 포탈 이동
-    private void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.CompareTag("Portal"))
-        {
-            StageManager.Instance.ChangeStage(StageManager.Instance.currStage.nextStage);
-        }
-    }
-
     #region 애니메이션 이벤트 함수 ENDXX
     public void EndDash()
     {

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public partial class StageManager : MonoBehaviour
 {
-    public GameObject player;
+    public Player player;
     
     public Stage[] stages;
     public Stage currStage;
@@ -17,7 +17,7 @@ public partial class StageManager : MonoBehaviour
 
     private void Init()
     {
-        player = GameObject.Find("Player");
+        player = FindObjectOfType<Player>();
         currStage = stages[0];
         currStage.nextStage = currStage;
         LinkStage();

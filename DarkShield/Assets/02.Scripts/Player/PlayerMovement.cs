@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using Context = UnityEngine.InputSystem.InputAction.CallbackContext;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
@@ -52,5 +51,9 @@ public class PlayerMovement : MonoBehaviour
     private void Init()
     {
         _agent = GetComponent<NavMeshAgent>();
+    }
+    public void Spawn(Vector3 position)
+    {
+        _agent.Warp(position);
     }
 }

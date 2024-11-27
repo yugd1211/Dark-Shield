@@ -3,7 +3,7 @@ using UnityEngine;
 public class Stage : MonoBehaviour
 {
 	// 해당 객체들 구현 될 시 GameObject -> 해당 객체로 변경
-	public GameObject player;
+	public Player player;
 	public StageManager stageManager;
 	//
 	public Stage nextStage;
@@ -16,7 +16,7 @@ public class Stage : MonoBehaviour
 		player = stageManager.player;
 		playerStartPos = transform.Find("PlayerStartPosition").transform;
 		if (player == true && playerStartPos == true)
-			player.transform.position = playerStartPos.position;
+			player.playerMovement.Spawn(playerStartPos.position);
 	}
 	
 	public void MoveNextStage()
