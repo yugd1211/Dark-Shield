@@ -7,44 +7,55 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class WalkState : IState
 {
-	public Player _player;
-	public WalkState(Player player)
-	{
-		this._player = player;
-	}
+    public Player _player;
+    public WalkState(Player player)
+    {
+        this._player = player;
+    }
 
-	public void OnEnter()
-	{
-		_player.playerAnimator.SetBool("Walk", true);
-	}
+    public void OnEnter()
+    {
+        _player.playerAnimator.SetBool("Walk", true);
+    }
 
-	public void OnUpdate()
-	{
-		//Slash
-		if (_player.playerInputManager.isSlash)
-		{
-			_player.playerStateMachine.TransitionTo(_player.playerStateMachine.attackState);
-		}
-		//Skill
-		else if (_player.playerInputManager.isSkill)
-		{
-			_player.playerStateMachine.TransitionTo(_player.playerStateMachine.attackState);
-		}
-		//Dash
-		else if (_player.playerInputManager.isDash)
-		{
-			_player.playerStateMachine.TransitionTo(_player.playerStateMachine.dashState);
-		}
-		//Idle
-		else if (_player.playerInputManager.InputMoveDir.magnitude < 0.1f)
-		{
-			_player.playerStateMachine.TransitionTo(_player.playerStateMachine.idleState);
-		}
-	}
+    public void OnUpdate()
+    {
+        //Die
+        if (_player.playerHealth.Death)
+        {
+            _player.playerStateMachine.TransitionTo(_player.playerStateMachine.dieState);
+        }
 
-	public void OnExit()
-	{
-		_player.playerAnimator.SetBool("Walk", false);
-	}
+        //Skill1
+        if (_player.playerInputManager.IsSkill1)
+        {
+            _player.playerStateMachine.TransitionTo(_player.playerStateMachine.skill1State);
+        }
+        //Skill2
+        else if (_player.playerInputManager.IsSkill2)
+        {
+            _player.playerStateMachine.TransitionTo(_player.playerStateMachine.skill2State);
+        }
+        //Dash
+        else if (_player.playerInputManager.IsDash)
+        {
+            _player.playerStateMachine.TransitionTo(_player.playerStateMachine.dashState);
+        }
+        //Hit
+        else if (_player.playerHealth.IsHit)
+        {
+            _player.playerStateMachine.TransitionTo(_player.playerStateMachine.hitState);
+        }
+        //Idle
+        else if (_player.playerInputManager.InputMoveDir.magnitude < 0.1f)
+        {
+            _player.playerStateMachine.TransitionTo(_player.playerStateMachine.idleState);
+        }
+    }
+
+    public void OnExit()
+    {
+        _player.playerAnimator.SetBool("Walk", false);
+    }
 
 }

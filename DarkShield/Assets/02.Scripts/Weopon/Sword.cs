@@ -5,55 +5,39 @@ using UnityEngine;
 
 public class Sword : Weapon
 {
-	public ParticleSystem slashAttackPt;
-	public ParticleSystem skillAttackPt;
-	public AnimationClip slashAttackClip;
+    public ParticleSystem slashAttackPt;
+    public ParticleSystem skillAttackPt;
+    public AnimationClip skill1Clip;
+    public AnimationClip skill2Clip;
+    private Player _player;
 
-	//private float lastNormalAttackTime;
-	//private float lastSkillAttackTime;
+    private void Awake()
+    {
+        Init();
+    }
+    private void Start()
+    {
 
-	private void Start()
-	{
-		//lastNormalAttackTime = Time.time;
-		//lastSkillAttackTime = Time.time;
-		slashAttackInterval = slashAttackClip.length;
-		print(slashAttackInterval);
-	}
+        skill1Interval = skill1Clip.length;
+        skill2Interval = skill2Clip.length;
+        print(skill1Interval);
+        print($"skill2Interval {skill2Interval}");
+    }
 
-	//공격이 가능한지
-	//public override bool SlashAttack()
-	//{
-	//	if (Time.time >= lastNormalAttackTime && isAttack == false)
-	//	{
-	//		lastNormalAttackTime = normalAttackInterval + Time.time;
-	//		StartCoroutine(NormalAttack());
-	//		return true;
-	//	}
+    public override void UseSkill1()
+    {
+        slashAttackPt.Play();
+        _player.playerAnimator.SetTrigger("Skill1");
+    }
 
-	//	return false;
-	//}
+    public override void UseSkill2()
+    {
+        skillAttackPt.Play();
+        _player.playerAnimator.SetTrigger("Skill2");
+    }
 
-	//public override bool CanSkillAttack()
-	//{
-	//	if (Time.time >= lastSkillAttackTime && isAttack == false)
-	//	{
-	//		lastSkillAttackTime = skillAttackInterval + Time.time;
-	//		StartCoroutine(SkillAttack());
-	//		return true;
-	//	}
-
-	//	return false;
-	//}
-
-	//기본 공격
-	public override void SlashAttack()
-	{
-		slashAttackPt.Play();
-	}
-
-	//스킬 공격
-	public override void SkillAttack()
-	{
-		skillAttackPt.Play();
-	}
+    private void Init()
+    {
+        _player = GetComponent<Player>();
+    }
 }
