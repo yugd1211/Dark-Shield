@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RangeFinalBoss : FinalBoss
+public class RangeFinalBoss : Boss
 {
     public float dashSpeed = 20f; // 돌진 속도
     public float dashDuration = 0.5f; // 돌진 지속 시간

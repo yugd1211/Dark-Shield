@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MelleFinalBoss : FinalBoss
+public class MelleFinalBoss : Boss
 {
     public override void Attack()
     {

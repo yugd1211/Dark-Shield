@@ -4,9 +4,9 @@ using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 using Random = UnityEngine.Random;
 
-public class RangeBoss : NormalBoss
+public class EleteRangeBoss : EleteEnemy
 {
-    public float dashSpeed = 20f; // 돌진 속도
+    public float dashSpeed = 20f; // 돌진 속도 
     public float dashDuration = 0.5f; // 돌진 지속 시간
     private bool isDashing = false; // 돌진 상태 플래그
     private Vector3 dashDirection; // 돌진 방향
