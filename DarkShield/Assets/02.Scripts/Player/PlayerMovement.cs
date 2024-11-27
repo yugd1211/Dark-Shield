@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using Context = UnityEngine.InputSystem.InputAction.CallbackContext;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
@@ -11,9 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public float dashSpeed;
     public float dashInterval;
 
-    private Player _player;
     private NavMeshAgent _agent;
-
 
     private void Awake()
     {
@@ -36,9 +33,9 @@ public class PlayerMovement : MonoBehaviour
     }
     private IEnumerator DashCoroutine()
     {
-        _agent.isStopped = true; // NavMeshAgent ���� ����
+        _agent.isStopped = true;
 
-        Vector3 dashDirection = transform.forward; // ���� ���� �������� ���
+        Vector3 dashDirection = transform.forward;
         float elapsedTime = 0f;
 
         while (elapsedTime < dashInterval)
@@ -48,15 +45,13 @@ public class PlayerMovement : MonoBehaviour
             yield return null;
         }
 
-        _agent.isStopped = false; // NavMeshAgent �ٽ� Ȱ��ȭ
+        _agent.isStopped = false;
     }
 
     private void Init()
     {
-        _player = GetComponent<Player>();
         _agent = GetComponent<NavMeshAgent>();
     }
-
     public void Spawn(Vector3 position)
     {
         _agent.Warp(position);

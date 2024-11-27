@@ -9,8 +9,9 @@ using Context = UnityEngine.InputSystem.InputAction.CallbackContext;
 public class PlayerInputManager : MonoBehaviour
 {
     public Vector2 InputMoveDir { get; private set; }
-    public bool DashPressed { get; private set; }
-    public bool NormalAttackPressed { get; private set; }
+    public bool IsDash { get; set; }
+    public bool IsSkill1 { get; set; }
+    public bool IsSkill2 { get; set; }
 
     public void OnMove(Context context)
     {
@@ -19,37 +20,25 @@ public class PlayerInputManager : MonoBehaviour
 
     public void OnDash(Context context)
     {
-        if (context.performed && !DashPressed)
+        if (context.performed && !IsDash)
         {
-            DashPressed = true;
-            print($"Dash pressed {DashPressed}");
-
-            // 일정 시간 후 다시 활성화
-            Invoke(nameof(ResetDash), 0.5f);
+            IsDash = true;
         }
     }
 
-    public void OnNormalAttack(Context context)
+    public void OnSkill1(Context context)
     {
-        if (context.performed && !NormalAttackPressed)
+        if (context.performed && !IsSkill1)
         {
-            NormalAttackPressed = true;
-            print($"Dash pressed {DashPressed}");
-
-            // 일정 시간 후 다시 활성화
-            Invoke(nameof(ResetNormalAttack), 0.5f);
+            IsSkill1 = true;
         }
     }
 
-    private void ResetDash()
+    public void OnSkill2(Context context)
     {
-        DashPressed = false;
-        print($"Dash pressed {DashPressed}");
-    }
-
-    private void ResetNormalAttack()
-    {
-        NormalAttackPressed = false;
-        print($"Normal Attack pressed {NormalAttackPressed}");
+        if (context.performed && !IsSkill2)
+        {
+            IsSkill2 = true;
+        }
     }
 }
