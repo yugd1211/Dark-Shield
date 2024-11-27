@@ -50,15 +50,6 @@ public class Player : MonoBehaviour
         playerInputManager = GetComponent<PlayerInputManager>();
         playerAnimator = GetComponent<Animator>();
     }
-    
-    // 임시로 설정 포탈 이동
-    private void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.CompareTag("Portal"))
-        {
-            StageManager.Instance.ChangeStage(StageManager.Instance.currStage.nextStage);
-        }
-    }
 
     //����Ƽ �̺�Ʈ �Լ�
     public void EndDash()
