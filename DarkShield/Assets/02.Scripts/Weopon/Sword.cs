@@ -38,19 +38,19 @@ public class Sword : Weapon
 
     public override void UseSkill1()
     {
+        slashAttackPt.Play();
+        _player.playerAnimator.SetTrigger("Skill1");
         //Temp
         if(colls != null)
         {
             foreach(Collider coll in colls) 
             {
                 coll.GetComponent<MelleEnemy>().TakeDamage(damage);
-                _player.playerAnimator.SetTrigger("Skill1");
+                // _player.playerAnimator.SetTrigger("Skill1");
                 print($"데미지 받은 적 : {coll.name} 남은 체력 : {coll.GetComponent<NormalEnemy>().health}");
-                slashAttackPt.Play();
+                // slashAttackPt.Play();
             }
         }
-        //slashAttackPt.Play();
-       //_player.playerAnimator.SetTrigger("Skill1");
     }
 
     public override void UseSkill2()
