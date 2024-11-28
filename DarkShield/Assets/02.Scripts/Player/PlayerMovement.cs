@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(Rigidbody))]
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour, IMovable
 {
     public float moveSpeed;
     public float dashSpeed;
@@ -16,16 +16,12 @@ public class PlayerMovement : MonoBehaviour
     {
         Init();
     }
-    private void Start()
-    {
-        _agent.speed = moveSpeed;
-    }
 
-    public void Move(Vector2 inputDir)
-    {
-        Vector3 actualMove = new Vector3(inputDir.x, 0, inputDir.y);
-        _agent.Move(actualMove.normalized * moveSpeed * Time.deltaTime);
-    }
+    // public void Move(Vector2 inputDir)
+    // {
+    //     Vector3 actualMove = new Vector3(inputDir.x, 0, inputDir.y);
+    //     _agent.Move(actualMove.normalized * moveSpeed * Time.deltaTime);
+    // }
 
     public void Dash()
     {
@@ -44,7 +40,6 @@ public class PlayerMovement : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-
         _agent.isStopped = false;
     }
 
@@ -52,8 +47,27 @@ public class PlayerMovement : MonoBehaviour
     {
         _agent = GetComponent<NavMeshAgent>();
     }
+    
     public void Spawn(Vector3 position)
     {
         _agent.Warp(position);
+    }
+    
+    public float MoveSpeed 
+    {
+        get 
+        {
+            return moveSpeed;
+        }
+        set
+        {
+            moveSpeed = value;
+        } 
+    }    
+    public void Move(Vector3 dir)
+    {
+        // Vector3 actualMove =  dir;
+        _agent.Move(dir.normalized * moveSpeed * Time.deltaTime);
+
     }
 }

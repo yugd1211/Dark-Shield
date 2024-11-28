@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
@@ -30,7 +27,7 @@ public class Player : MonoBehaviour
     {
         if (playerStateMachine.CurState == playerStateMachine.walkState/*!= playerStateMachine.skill1State && playerStateMachine.CurState != playerStateMachine.dashState*/)
         {
-            playerMovement.Move(playerInputManager.InputMoveDir);
+            playerMovement.Move(new Vector3(playerInputManager.InputMoveDir.x, 0, playerInputManager.InputMoveDir.y));
         }
         playerStateMachine.OnUpdate();
     }
