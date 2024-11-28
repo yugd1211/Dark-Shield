@@ -20,13 +20,17 @@ public abstract class EleteEnemy : MonoBehaviour
     public float rangedAttackRange = 10f;
     public float attackCooldown = 2f;   
     protected float lastAttackTime = 0f;
-    protected void Start()
+
+    public float maxHP = 800f;
+    public RectTransform hpBarForeground; // 초록색 HP 
+
+    private void Start()
     {
         nmAgent = GetComponent<NavMeshAgent>();
         target = GameObject.Find("Player").transform;
         _animaton = GetComponent<Animator>();
     }
-    void Update()
+    private void Update()
     {
         Move();
         Attack();
@@ -34,7 +38,6 @@ public abstract class EleteEnemy : MonoBehaviour
 
     private void Move()
     {
-
         float distanceToPlayer = Vector3.Distance(transform.position, target.position);
         if (distanceToPlayer <= detectionRange && distanceToPlayer > attackRange)
         {
@@ -51,17 +54,20 @@ public abstract class EleteEnemy : MonoBehaviour
 
     public abstract void Attack();
 
-    private void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     {
         _animaton.SetTrigger("Hit");
         health -= damage;
+        health = Mathf.Clamp(health, 0, maxHP);
+        float hpPercent = health / maxHP;
+        hpBarForeground.localScale = new Vector3(hpPercent, 1, 1); // 너비만 조정
         if (health <= 0)
         {
             Die();
         }
     }
 
-    private void Die()
+    public void Die()
     {
         _animaton.SetTrigger("Die");
         Destroy(gameObject);
