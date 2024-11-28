@@ -2,33 +2,43 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Slash : Skill
+public class Slash : MonoBehaviour
 {
-    [SerializeField] private Collider _slashColl; //키고 끔을 제어해야 할 변수
-    private void Awake()
-    {
-        Init();
-    }
+	public float damage;
+	[SerializeField] private ParticleSystem slashFX;
+	private Collider _slashArea;
 
-    public override void UseSkill(Player player)
-    {
-        _slashColl.enabled = true;
-    }
+	private void Awake()
+	{
+		Init();
+	}
 
-    protected override void Init()
-    {
-        base.Init();
-        _slashColl = GetComponentInParent<Collider>();
-    }
+	public void UseSkill()
+	{
+		StartCoroutine(UseSlash());
+	}
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other is null)
-        {
-            print("감지된 적이 없습니다.");
-            return;
-        }
-        other.GetComponent<EnemyTest>().TakeDamage(skillDamage);
-        skillFX.Play();
-    }
+	private IEnumerator UseSlash()
+	{
+		_slashArea.enabled = true;
+		ParticleSystem slashInstance = Instantiate(slashFX, transform.position, Quaternion.identity);
+		yield return new WaitForSeconds(0.6f);
+		slashInstance.Play();
+		yield return new WaitForSeconds(0.5f);
+		//�۵��� �ȵǳ�...
+		//slashInstance.Stop();
+		//Destroy(slashInstance, 1f);
+		_slashArea.enabled = false;
+
+	}
+
+	private void OnTriggerEnter(Collider other)
+	{
+		other.GetComponent<EnemyTest>().TakeDamage(damage);
+	}
+
+	private void Init()
+	{
+		_slashArea = GetComponent<Collider>();
+	}
 }

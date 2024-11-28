@@ -5,38 +5,30 @@ using UnityEngine;
 
 public class Sword : Weapon
 {
-    [SerializeField] private Player _player;
+	[SerializeField] private Player _player;
 
-    //public Skill slashSkill;
+	private Slash _slash;
 
-    public SlashTest slashTest;
+	private void Awake()
+	{
+		Init();
+	}
 
-    private void Awake()
-    {
-        Init();
-        _player = GameObject.Find("Player").GetComponent<Player>();
-        _player.curWeopon = this;
-        slashTest = GetComponent<SlashTest>();
-    }
+	public override void UseSkill1()
+	{
+		_player.playerAnimator.SetTrigger("Skill1");
+		_slash.UseSkill();
+	}
 
-    public override void UseSkill1()
-    {
-        _player.playerAnimator.SetTrigger("Skill1");
-        slashTest.UseSkill();
-    }
+	public override void UseSkill2()
+	{
+		_player.playerAnimator.SetTrigger("Skill2");
+	}
 
-    public override void UseSkill2()
-    {
-        _player.playerAnimator.SetTrigger("Skill2");
-    }
-
-    private void Init()
-    {
-        //_player = GetComponent<Player>();
-    }
-
-    //public override void UseSkill(Player player, Skill skill)
-    //{
-    //    skill.UseSkill(player);
-    //}
+	private void Init()
+	{
+		_player = GameObject.Find("Player").GetComponent<Player>();
+		_player.curWeopon = this;
+		_slash = GetComponentInChildren<Slash>();
+	}
 }

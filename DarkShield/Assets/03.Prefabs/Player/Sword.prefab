@@ -1,5 +1,73 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &829698127413304906
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7765208755379437758}
+  - component: {fileID: 4862772196514972077}
+  - component: {fileID: 702603949106597229}
+  m_Layer: 0
+  m_Name: Slash
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7765208755379437758
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 829698127413304906}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8869631043891970653}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &4862772196514972077
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 829698127413304906}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 127
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 0.27, y: 1.7, z: 0.29967642}
+  m_Center: {x: -0.000000008802588, y: 0.82, z: -9.751319e-10}
+--- !u!114 &702603949106597229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 829698127413304906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f697cd59373f0043bf1519b2996d762, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 20
+  slashFX: {fileID: 5042364891608396608, guid: d5439109e51cdf34eb446177b051eb57, type: 3}
 --- !u!1 &3994626178766799071
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,9 +79,7 @@ GameObject:
   - component: {fileID: 8869631043891970653}
   - component: {fileID: 2506580263009721350}
   - component: {fileID: 4645140319737778043}
-  - component: {fileID: 6091580549557570276}
   - component: {fileID: 2339175853240654710}
-  - component: {fileID: 1170575641066432894}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -33,7 +99,8 @@ Transform:
   m_LocalPosition: {x: 0.0307, y: -0.09550009, z: -0.06549998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7765208755379437758}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -90, y: -13.698, z: 4.152}
 --- !u!33 &2506580263009721350
@@ -86,27 +153,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6091580549557570276
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3994626178766799071}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 128
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 127
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Size: {x: 0.061516818, y: 1.518537, z: 0.29967642}
-  m_Center: {x: -0.000000008802588, y: 0.5907318, z: -9.751319e-10}
 --- !u!114 &2339175853240654710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,18 +167,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 1780898119580613364, guid: 09b8405b37521c141a88bb7b9bdca3f7, type: 3}
   slashTest: {fileID: 0}
---- !u!114 &1170575641066432894
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3994626178766799071}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f697cd59373f0043bf1519b2996d762, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 20
-  slashFX: {fileID: 5042364891608396608, guid: d5439109e51cdf34eb446177b051eb57, type: 3}
-  slashArea: {fileID: 0}
