@@ -46,6 +46,23 @@ public class Player : MonoBehaviour
 		playerAnimator = GetComponent<Animator>();
 	}
 
+	public float moveDistance;
+
+	public void CustomTeleport()
+	{
+		var renderers = GetComponentsInChildren<Renderer>();
+		foreach (var rend in renderers)
+		{
+			rend.enabled = false;
+		}
+		transform.position += transform.forward * moveDistance;
+
+		foreach (var rend in renderers)
+		{
+			rend.enabled = true;
+		}
+	}
+
 	#region 애니메이션 이벤트 함수 ENDXX
 	public void EndDash()
 	{

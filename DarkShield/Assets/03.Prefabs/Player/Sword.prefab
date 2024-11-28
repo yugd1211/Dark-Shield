@@ -96,11 +96,12 @@ Transform:
   m_GameObject: {fileID: 3994626178766799071}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7046547, y: -0.05883713, z: -0.05883713, w: 0.7046547}
-  m_LocalPosition: {x: 0.0307, y: -0.09550009, z: -0.06549998}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7765208755379437758}
+  - {fileID: 4837937029380233074}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -90, y: -13.698, z: 4.152}
 --- !u!33 &2506580263009721350
@@ -165,5 +166,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a88a4847ada015541b5683ede8a93e5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 1780898119580613364, guid: 09b8405b37521c141a88bb7b9bdca3f7, type: 3}
-  slashTest: {fileID: 0}
+--- !u!1 &6553541720480595123
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4837937029380233074}
+  - component: {fileID: 5552926435526627098}
+  m_Layer: 0
+  m_Name: TeleportSlash
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4837937029380233074
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6553541720480595123}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8869631043891970653}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5552926435526627098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6553541720480595123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32319e7197f9ba541bee6929cef16c9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 30
+  _teleportSlashArea: {fileID: 0}

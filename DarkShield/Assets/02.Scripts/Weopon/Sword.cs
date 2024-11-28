@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class Sword : Weapon
 {
-	[SerializeField] private Player _player;
+	private Player _player;
 
 	private Slash _slash;
+	private TeleportSlash _teleportSlash;
 
 	private void Awake()
 	{
@@ -23,6 +24,7 @@ public class Sword : Weapon
 	public override void UseSkill2()
 	{
 		_player.playerAnimator.SetTrigger("Skill2");
+		_teleportSlash.UseSkill();
 	}
 
 	private void Init()
@@ -30,5 +32,6 @@ public class Sword : Weapon
 		_player = GameObject.Find("Player").GetComponent<Player>();
 		_player.curWeopon = this;
 		_slash = GetComponentInChildren<Slash>();
+		_teleportSlash = GetComponentInChildren<TeleportSlash>();
 	}
 }
