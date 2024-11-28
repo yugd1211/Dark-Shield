@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RangedEnemy : NormalEnemy
+public class RangedEnemy : Enemy
 {
-
+    public ObjectPool objectPool;
     public GameObject projectilePrefab; // 원거리 투사체
     public Transform firePoint; // 투사체 발사 위치
 
     private Animator _animator;
+
+
 
     private void Awake()
     {
@@ -43,15 +45,27 @@ public class RangedEnemy : NormalEnemy
             Quaternion lookRotation = Quaternion.LookRotation(new Vector3(directionToPlayer.x, 0, directionToPlayer.z)); // y축은 고정
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 10f); // 부드럽게 회전
 
-            GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+            GameObject projectile = objectPool.GetObject();
+            projectile.transform.position = firePoint.position;
+            projectile.transform.rotation = firePoint.rotation;
+
             Rigidbody rb = projectile.GetComponent<Rigidbody>();
             rb.velocity = (player.position - firePoint.position).normalized * 10f; // 투사체 속도
-            Fire fire = projectile.GetComponent<Fire>();
+            Projectile fire = projectile.GetComponent<Projectile>();
             fire.damage = this.AttackPower;
 
             lastAttackTime = Time.time;
+
+            StartCoroutine(ReturnProjectileToPool(projectile, 2f));
         }
     }
+
+    private IEnumerator ReturnProjectileToPool(GameObject projectile, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        objectPool.ReturnObject(projectile);
+    }
+
 
     private IEnumerator ResetAttackAnimation()
     {

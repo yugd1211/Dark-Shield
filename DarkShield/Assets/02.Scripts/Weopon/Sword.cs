@@ -45,9 +45,9 @@ public class Sword : Weapon
         {
             foreach(Collider coll in colls) 
             {
-                coll.GetComponent<MelleEnemy>().TakeDamage(damage);
+                coll.GetComponent<RangedEnemy>().TakeDamage(damage);
                 // _player.playerAnimator.SetTrigger("Skill1");
-                print($"데미지 받은 적 : {coll.name} 남은 체력 : {coll.GetComponent<NormalEnemy>().health}");
+                print($"데미지 받은 적 : {coll.name} 남은 체력 : {coll.GetComponent<Enemy>().health}");
                 // slashAttackPt.Play();
             }
         }
