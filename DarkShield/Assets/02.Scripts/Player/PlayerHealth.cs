@@ -31,7 +31,7 @@ public class PlayerHealth : MonoBehaviour
     {
         health -= damage;
 
-        //CurState == idleState || CurState == walkState
+        //CurState == idleState || CurState == walkState && 디버프 지형이면 안가게
         if (_player.playerStateMachine.CanEnterHitState())
         {
             IsHit = true;

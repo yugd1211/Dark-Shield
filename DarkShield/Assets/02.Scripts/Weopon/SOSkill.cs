@@ -5,17 +5,16 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SOSkill", menuName = "ScriptableObject/Skill")]
 public class SOSkill : ScriptableObject
 {
-	public enum Element
-	{
-		None, FIRE, ELEC, WATER, LIGHT, DARK
-	}
-	//ÇÏ³ªÀÇ ½ºÅ³ ¸¸µé±â
-	//½ºÅ³ Å¬¸³, ½ºÅ³ ÆÄÆ¼Å¬, ½ºÅ³µ¥¹ÌÁö
-	public Element elementType;
-	public string skillName;
-	public float skillDamage;
-	//public int level;
-	//public float skillDamage[];
-	public AnimationClip skillClip;
-	public GameObject skillPrefab;
+    public enum Element
+    {
+        None, FIRE, ELEC, WATER, LIGHT, DARK
+    }
+
+    public Element elementType;
+    public string skillName;
+    public float skillDamage;
+    //ìŠ¤í‚¬ ì—…ê·¸ë ˆì´ë“œ ê°€ëŠ¥í•œ ë³€ìˆ˜
+    //public int level;
+    //public float skillDamage[];
+    public ParticleSystem skillFX;
 }

@@ -15,5 +15,4 @@ MonoBehaviour:
   elementType: 0
   skillName: Slash
   skillDamage: 10
-  skillClip: {fileID: 7400000, guid: 562f30cfe087f854f9ecb446d80b0c52, type: 2}
-  skillPrefab: {fileID: 6888954314782828592, guid: d5439109e51cdf34eb446177b051eb57, type: 3}
+  skillFX: {fileID: 5042364891608396608, guid: d5439109e51cdf34eb446177b051eb57, type: 3}

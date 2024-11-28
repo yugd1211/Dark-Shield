@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
     private void Init()
     {
         playerStateMachine = new StateMachine(this);
-        curWeopon = GetComponent<Weapon>();
+        //curWeopon = GetComponent<Weapon>();
         playerMovement = GetComponent<PlayerMovement>();
         playerInputManager = GetComponent<PlayerInputManager>();
         playerHealth = GetComponent<PlayerHealth>();
@@ -51,14 +51,9 @@ public class Player : MonoBehaviour
         playerStateMachine.dashState.EndDash();
     }
 
-    public void EndSkill1()
+    public void EndSkill()
     {
-        playerStateMachine.skill1State.EndSkill1();
-    }
-
-    public void EndSkill2()
-    {
-        playerStateMachine.skill2State.EndSkill2();
+        playerStateMachine.skillState.EndSkill();
     }
 
     public void EndHit()

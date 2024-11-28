@@ -10,8 +10,10 @@ public class PlayerInputManager : MonoBehaviour
 {
     public Vector2 InputMoveDir { get; private set; }
     public bool IsDash { get; set; }
-    public bool IsSkill1 { get; set; }
-    public bool IsSkill2 { get; set; }
+    public bool IsSkill { get; set; }
+
+    public bool IsLeftMousePressed { get; set; }
+    public bool IsRightMousePressed { get; set; }
 
     public void OnMove(Context context)
     {
@@ -26,19 +28,20 @@ public class PlayerInputManager : MonoBehaviour
         }
     }
 
-    public void OnSkill1(Context context)
+    public void OnSkill(Context context)
     {
-        if (context.performed && !IsSkill1)
+        if (context.performed && !IsSkill)
         {
-            IsSkill1 = true;
-        }
-    }
+            IsSkill = true;
 
-    public void OnSkill2(Context context)
-    {
-        if (context.performed && !IsSkill2)
-        {
-            IsSkill2 = true;
+            if (context.control.name == "leftButton")
+            {
+                IsLeftMousePressed = true;
+            }
+            else if (context.control.name == "rightButton")
+            {
+                IsRightMousePressed = true;
+            }
         }
     }
 }

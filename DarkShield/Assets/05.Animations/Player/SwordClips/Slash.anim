@@ -85648,7 +85648,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 1.2
-    functionName: EndSkill1
+    functionName: EndSkill
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
