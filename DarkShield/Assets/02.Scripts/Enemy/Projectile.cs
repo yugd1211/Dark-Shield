@@ -36,12 +36,6 @@ public class Projectile: MonoBehaviour
     }
 
 
-    /*private void OnEnable()
-    {
-        // 5초 후에 비활성화 (풀로 반환)
-        Invoke("Deactivate", 5f);
-    }*/
-
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
@@ -53,13 +47,6 @@ public class Projectile: MonoBehaviour
 
         Deactivate();
     }
-
-    /*private void Deactivate()
-    {
-        CancelInvoke(); // 예약된 호출 취소
-        ProjectilePool.ReturnObject(this.gameObject); // 오브젝트를 풀로 반환
-    }*/
-
     private void Deactivate()
     {
         isLaunched = false; // 이동 중지

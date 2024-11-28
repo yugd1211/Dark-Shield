@@ -73,7 +73,7 @@ public class ChaosEmperor : Boss
         //GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
         //Rigidbody rb = projectile.GetComponent<Rigidbody>();
         //rb.velocity = (target.position - firePoint.position).normalized * 10f; // 투사체 속도;
-        Bulllet fire = projectile.GetComponent<Bulllet>();
+        Projectile fire = projectile.GetComponent<Projectile>();
         fire.Launch(target.position);
         this.AttackPower = fire.damage;
 
