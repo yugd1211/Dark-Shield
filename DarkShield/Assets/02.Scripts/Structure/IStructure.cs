@@ -1,9 +1,6 @@
-using UnityEngine;
-
 public interface IStructure
 {
-	public float EffectAmount { get; set; }
-	public void Affect(IMovable target);
-	public void OnTargetEnter(IMovable target);
-	public void OnTargetExit(IMovable target);
+	public void Affect(Unit target);
+	public void OnTargetEnter(Unit target);
+	public void OnTargetExit(Unit target);
 }

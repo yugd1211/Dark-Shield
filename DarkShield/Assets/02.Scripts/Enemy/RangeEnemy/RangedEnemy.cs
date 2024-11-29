@@ -9,9 +9,6 @@ public class RangedEnemy : Enemy
     public Transform firePoint; // 투사체 발사 위치
 
     private Animator _animator;
-
-
-
     private void Awake()
     {
         attackRange = 10f;
