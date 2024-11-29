@@ -75,9 +75,9 @@ public class Player : Unit
 
     #endregion
 
-    public override void TakeDamage(float amount)
+    public override void TakeDamage(float amount, bool isHit)
     {
-        playerHealth.TakeDamage(amount);
+        playerHealth.TakeDamage(amount, isHit);
     }
 
     public override void Move(Vector3 dir)

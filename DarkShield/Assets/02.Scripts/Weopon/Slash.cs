@@ -43,7 +43,7 @@ public class Slash : MonoBehaviour
                 }
             }
             //중복 검사 해야 함.
-            other2.TakeDamage(damage);
+            other2.TakeDamage(damage, false);
         }
     }
 
