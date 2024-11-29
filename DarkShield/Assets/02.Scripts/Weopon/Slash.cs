@@ -31,7 +31,7 @@ public class Slash : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        other.GetComponent<EnemyTest>().TakeDamage(damage);
+        other.GetComponent<NormalEnemy>().TakeDamage(damage);
     }
 
     private void Init()

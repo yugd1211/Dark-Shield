@@ -2,11 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
     public float maxHealth;
     public float health;
+    public float HealthAmount
+    {
+        get
+        {
+            return health / maxHealth;
+        }
+    }
+    private Slider _playerHpbar;
+
     public bool Death
     {
         get
@@ -27,9 +37,15 @@ public class PlayerHealth : MonoBehaviour
         health = maxHealth;
     }
 
+    private void Update()
+    {
+        _playerHpbar.value = HealthAmount;
+    }
+
     public void TakeDamage(float damage)
     {
         health -= damage;
+        if (health <= 0) health = 0;
 
         //CurState == idleState || CurState == walkState && 디버프 지형이면 안가게
         if (_player.playerStateMachine.CanEnterHitState())
@@ -41,5 +57,6 @@ public class PlayerHealth : MonoBehaviour
     private void Init()
     {
         _player = GetComponent<Player>();
+        _playerHpbar = GameObject.Find("PlayerHpBar").GetComponent<Slider>();
     }
 }

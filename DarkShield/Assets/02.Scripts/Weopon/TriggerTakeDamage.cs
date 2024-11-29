@@ -23,7 +23,7 @@ public class TriggerTakeDamage : MonoBehaviour
             }
         }
         //중복 검사 해야 함.
-        other.GetComponent<EnemyTest>().TakeDamage(damage);
+        other.GetComponent<NormalEnemy>().TakeDamage(damage);
         _colls.Clear();
     }
 }
