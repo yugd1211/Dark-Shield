@@ -1731,6 +1731,7 @@ GameObject:
   - component: {fileID: 5305652195719045097}
   - component: {fileID: 1830679344230214121}
   - component: {fileID: 7806374736677409207}
+  - component: {fileID: 2826431204139153654}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -2042,6 +2043,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 9caa3d8a-6b2f-4e8e-8bad-6ede561bd9be
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 501c2907-1a4b-49bf-b2e5-209d5c572d65
+    m_ActionName: UI/Interact[/Keyboard/e,/Keyboard/enter,/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
@@ -2107,6 +2112,27 @@ MonoBehaviour:
     StartPositionRotation: {fileID: 2395131874593038836}
     DestroyAfter: 7
     UseLocalPosition: 0
+--- !u!65 &2826431204139153654
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5548407114382569846}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.43, y: 1.84, z: 1.66}
+  m_Center: {x: 0, y: 1.03, z: 0}
 --- !u!1 &5625537504552777652
 GameObject:
   m_ObjectHideFlags: 0
