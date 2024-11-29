@@ -195,6 +195,8 @@ MonoBehaviour:
   attackRange: 1
   health: 200
   AttackPower: 20
+  maxHP: 200
+  hpBarForeground: {fileID: 0}
 --- !u!114 &813635263055596743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,7 +215,10 @@ MonoBehaviour:
   attackRange: 1
   health: 200
   AttackPower: 20
-  projectilePrefab: {fileID: 7540322385283460732, guid: d4f120847baf05e498a7738f03c555e4, type: 3}
+  maxHP: 200
+  hpBarForeground: {fileID: 0}
+  objectPool: {fileID: 387995671944015093, guid: 6c937bc182161c146a9c9983aed75c36, type: 3}
+  projectilePrefab: {fileID: 1029503652214038219, guid: e2b1ce82f800009458d87be38ad563f0, type: 3}
   firePoint: {fileID: 666555359866303909}
 --- !u!1 &826217281864639283
 GameObject:

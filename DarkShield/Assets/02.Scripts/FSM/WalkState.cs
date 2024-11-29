@@ -26,15 +26,10 @@ public class WalkState : IState
             _player.playerStateMachine.TransitionTo(_player.playerStateMachine.dieState);
         }
 
-        //Skill1
-        if (_player.playerInputManager.IsSkill1)
+        //Skill
+        if (_player.playerInputManager.IsSkill)
         {
-            _player.playerStateMachine.TransitionTo(_player.playerStateMachine.skill1State);
-        }
-        //Skill2
-        else if (_player.playerInputManager.IsSkill2)
-        {
-            _player.playerStateMachine.TransitionTo(_player.playerStateMachine.skill2State);
+            _player.playerStateMachine.TransitionTo(_player.playerStateMachine.skillState);
         }
         //Dash
         else if (_player.playerInputManager.IsDash)

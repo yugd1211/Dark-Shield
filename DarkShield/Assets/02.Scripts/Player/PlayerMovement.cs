@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour, IMovable
 {
     public float moveSpeed;
     public float dashSpeed;
+    public float rotateSpeed;
     public float dashInterval;
 
     private NavMeshAgent _agent;
@@ -17,11 +18,20 @@ public class PlayerMovement : MonoBehaviour, IMovable
         Init();
     }
 
-    // public void Move(Vector2 inputDir)
-    // {
-    //     Vector3 actualMove = new Vector3(inputDir.x, 0, inputDir.y);
-    //     _agent.Move(actualMove.normalized * moveSpeed * Time.deltaTime);
-    // }
+    public void Move(Vector2 inputDir)
+    {
+        Vector3 actualMove = new Vector3(inputDir.x, 0, inputDir.y);
+        _agent.Move(actualMove.normalized * moveSpeed * Time.deltaTime);
+    }
+
+    public void Rotate(Vector2 inputDir)
+    {
+        if (inputDir.sqrMagnitude < 0.1f) return;
+
+        Vector3 direction = new Vector3(inputDir.x, 0, inputDir.y);
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotateSpeed * Time.deltaTime);
+    }
 
     public void Dash()
     {
@@ -40,6 +50,7 @@ public class PlayerMovement : MonoBehaviour, IMovable
             elapsedTime += Time.deltaTime;
             yield return null;
         }
+
         _agent.isStopped = false;
     }
 
@@ -47,23 +58,23 @@ public class PlayerMovement : MonoBehaviour, IMovable
     {
         _agent = GetComponent<NavMeshAgent>();
     }
-    
+
     public void Spawn(Vector3 position)
     {
         _agent.Warp(position);
     }
-    
-    public float MoveSpeed 
+
+    public float MoveSpeed
     {
-        get 
+        get
         {
             return moveSpeed;
         }
         set
         {
             moveSpeed = value;
-        } 
-    }    
+        }
+    }
     public void Move(Vector3 dir)
     {
         // Vector3 actualMove =  dir;
