@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : Unit
 {
     public StateMachine playerStateMachine;
     public Weapon curWeopon;
@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
     {
         if (playerStateMachine.CurState == playerStateMachine.walkState)
         {
-            playerMovement.Move(new Vector3(playerInputManager.InputMoveDir.x, 0, playerInputManager.InputMoveDir.y));
+            Move(new Vector3(playerInputManager.InputMoveDir.x, 0, playerInputManager.InputMoveDir.y).normalized);
             playerMovement.Rotate(playerInputManager.InputMoveDir);
         }
         playerStateMachine.OnUpdate();
@@ -37,6 +37,7 @@ public class Player : MonoBehaviour
         playerHealth = GetComponent<PlayerHealth>();
         playerAnimator = GetComponent<Animator>();
         playerStateMachine.Init(playerStateMachine.idleState);
+        MoveSpeed = 5;
     }
 
     public float moveDistance;
@@ -71,5 +72,16 @@ public class Player : MonoBehaviour
     {
         playerStateMachine.hitState.EndHit();
     }
+
     #endregion
+
+    public override void TakeDamage(float amount)
+    {
+        playerHealth.TakeDamage(amount);
+    }
+
+    public override void Move(Vector3 dir)
+    {
+        playerMovement.Move(dir * MoveSpeed);
+    }
 }

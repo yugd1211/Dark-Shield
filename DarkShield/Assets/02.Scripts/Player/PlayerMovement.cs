@@ -4,9 +4,8 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(Rigidbody))]
-public class PlayerMovement : MonoBehaviour, IMovable
+public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed;
     public float dashSpeed;
     public float rotateSpeed;
     public float dashInterval;
@@ -16,12 +15,6 @@ public class PlayerMovement : MonoBehaviour, IMovable
     private void Awake()
     {
         Init();
-    }
-
-    public void Move(Vector2 inputDir)
-    {
-        Vector3 actualMove = new Vector3(inputDir.x, 0, inputDir.y);
-        _agent.Move(actualMove.normalized * moveSpeed * Time.deltaTime);
     }
 
     public void Rotate(Vector2 inputDir)
@@ -63,22 +56,9 @@ public class PlayerMovement : MonoBehaviour, IMovable
     {
         _agent.Warp(position);
     }
-
-    public float MoveSpeed
+    public void Move(Vector3 actualMove)
     {
-        get
-        {
-            return moveSpeed;
-        }
-        set
-        {
-            moveSpeed = value;
-        }
-    }
-    public void Move(Vector3 dir)
-    {
-        // Vector3 actualMove =  dir;
-        _agent.Move(dir.normalized * moveSpeed * Time.deltaTime);
+        _agent.Move(actualMove * Time.deltaTime);
 
     }
 }

@@ -7,6 +7,7 @@ public class Slash : MonoBehaviour
     public float damage;
     [SerializeField] private ParticleSystem slashFX;
     private Collider _slashArea;
+    private List<Collider> _colls;
 
     private void Awake()
     {
@@ -31,11 +32,24 @@ public class Slash : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        other.GetComponent<Enemy>().TakeDamage(damage);
+        if (other.TryGetComponent<IDamageable>(out IDamageable other2))
+        {
+            _colls.Add(other);
+            foreach (Collider coll in _colls)
+            {
+                if (_colls.Contains(coll))
+                {
+                    continue;
+                }
+            }
+            //중복 검사 해야 함.
+            other2.TakeDamage(damage);
+        }
     }
 
     private void Init()
     {
         _slashArea = GetComponent<Collider>();
+        _colls = new List<Collider>();
     }
 }
