@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class Projectile: MonoBehaviour
+public class Projectile : MonoBehaviour
 {
     public float damage = 40f; // 기본 데미지
     private ObjectPool ProjectilePool;
@@ -36,13 +36,13 @@ public class Projectile: MonoBehaviour
     }
 
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            Debug.Log("플레이어가 원거리 공격에 맞음!");
+            //Debug.Log("플레이어가 원거리 공격에 맞음!");
 
-            collision.collider.GetComponent<PlayerHealth>().TakeDamage(damage);// 투사체 제거
+            other.GetComponent<PlayerHealth>().TakeDamage(damage);// 투사체 제거
         }
 
         Deactivate();

@@ -49,9 +49,10 @@ public class RangedEnemy : Enemy
             projectile.transform.position = firePoint.position;
             projectile.transform.rotation = firePoint.rotation;
 
-            Rigidbody rb = projectile.GetComponent<Rigidbody>();
-            rb.velocity = (player.position - firePoint.position).normalized * 10f; // 투사체 속도
+            //Rigidbody rb = projectile.GetComponent<Rigidbody>();
+            //rb.velocity = (player.position - firePoint.position).normalized * 10f; // 투사체 속도
             Projectile fire = projectile.GetComponent<Projectile>();
+            fire.Launch(player.position);
             fire.damage = this.AttackPower;
 
             lastAttackTime = Time.time;
