@@ -14,7 +14,7 @@ public abstract class Boss : MonoBehaviour
 
     public float attackRange = 1;
 
-    public float health = 1000;//현재 채력
+    public float health = 1000f;//현재 채력
     public float AttackPower = 20f;//공격력
 
 
@@ -22,6 +22,10 @@ public abstract class Boss : MonoBehaviour
     public float attackCooldown = 2f;//공격 쿨타임
     protected float lastAttackTime = 0f;
     protected Animator _animation;
+
+    public float maxHP = 1000f;
+    public RectTransform hpBarForeground; // 초록색 HP 
+
 
     protected void Start()
     {
@@ -54,19 +58,23 @@ public abstract class Boss : MonoBehaviour
         }
     }
 
-
     public abstract void Attack();
-    private void TakeDamage(float damage)
+
+    public void TakeDamage(float damage)
     {
         _animation.SetTrigger("Hit");
         health -= damage;
+        health = Mathf.Clamp(health, 0, maxHP);
+        Debug.Log("Health after clamping: " + health);
+        float hpPercent = health / maxHP;
+        hpBarForeground.localScale = new Vector3(hpPercent, 1, 1); // 너비만 조정
         if (health <= 0)
         {
             Die();
         }
     }
 
-    private void Die()
+    public void Die()
     {
         _animation.SetTrigger("Die");
         Destroy(gameObject);

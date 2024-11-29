@@ -8,28 +8,11 @@ public class RangedEnemy : Enemy
     public GameObject projectilePrefab; // 원거리 투사체
     public Transform firePoint; // 투사체 발사 위치
 
-    private Animator _animator;
-
-
-
-    private void Awake()
-    {
-        attackRange = 10f;
-        _animator = GetComponent<Animator>();
-    }
-
     public override void Attack()
     {
-        /*if(isCheckPlayer())
-        {
-            RangedAttack();
-            _animator.SetBool("IsRangeAttack", true);
-            lastAttackTime = Time.time;
-            StartCoroutine(ResetAttackAnimation());
-        }*/
         if (isCheckPlayer() && Time.time >= lastAttackTime + attackCooldown)
         {
-            _animator.SetBool("IsRangeAttack", true);
+            _animotor.SetBool("IsRangeAttack", true);
             RangedAttack();
             lastAttackTime = Time.time;
             StartCoroutine(ResetAttackAnimation());
@@ -49,9 +32,8 @@ public class RangedEnemy : Enemy
             projectile.transform.position = firePoint.position;
             projectile.transform.rotation = firePoint.rotation;
 
-            Rigidbody rb = projectile.GetComponent<Rigidbody>();
-            rb.velocity = (player.position - firePoint.position).normalized * 10f; // 투사체 속도
             Projectile fire = projectile.GetComponent<Projectile>();
+            fire.Launch(player.position);
             fire.damage = this.AttackPower;
 
             lastAttackTime = Time.time;
@@ -73,7 +55,7 @@ public class RangedEnemy : Enemy
         yield return new WaitForSeconds(1.0f);
 
         // 공격 애니메이션 종료
-        _animator.SetBool("IsRangeAttack", false);
+        _animotor.SetBool("IsRangeAttack", false);
     }
 
 

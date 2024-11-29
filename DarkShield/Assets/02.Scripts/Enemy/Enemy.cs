@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public abstract class Enemy : MonoBehaviour
 {
     public Transform player; // 플레이어 위치
-    NavMeshAgent agent; // NavMeshAgent
+    protected NavMeshAgent agent; // NavMeshAgent
     public float detectionRange = 15f; // 플레이어 탐지 범위
     public float attackCooldown = 2f; // 공격 쿨타임
 
@@ -21,12 +21,35 @@ public abstract class Enemy : MonoBehaviour
     public float maxHP = 200f;
     public RectTransform hpBarForeground; // 초록색 HP 
 
-    private Animator _animotor;
-    void Start()
+    protected Animator _animotor;
+
+    protected IState currentState;
+    public NavMeshAgent Agent
+    {
+        get {return agent;}
+        set { agent = value;}
+    }
+
+    public Animator animator
+    {
+        get { return _animotor; }
+        set { _animotor = value; }
+    }
+
+    private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         _animotor = GetComponent<Animator>();
         player = GameObject.Find("Player").transform;
+        //ChangeState(new IdleState(this)); // 초기 상태
+    }
+
+
+    public void ChangeState(IState newState)
+    {
+        currentState?.OnExit(); // 이전 상태 종료
+        currentState = newState; // 새로운 상태로 변경
+        currentState?.OnEnter(); // 새로운 상태 진입
     }
 
     //근거리 애너미, 원거리 애너미 클래스로 만들기
@@ -37,6 +60,7 @@ public abstract class Enemy : MonoBehaviour
         // 1. move > move, attack 함수로 나누기
         // 2. move, attack, 추적
         // 
+        currentState?.OnUpdate(); // 현재 상태 실행
     }
 
     private void Move()
