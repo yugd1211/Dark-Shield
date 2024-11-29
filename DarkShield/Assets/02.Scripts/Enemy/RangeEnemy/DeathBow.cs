@@ -72,10 +72,7 @@ public class DeathBow: EleteEnemy
             projectile.transform.position = firePoint.position;
             projectile.transform.rotation = firePoint.rotation;
 
-            // 투사체 생성
-            //GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
-            //Rigidbody rb = projectile.GetComponent<Rigidbody>();
-            //rb.velocity = (target.position - firePoint.position).normalized * 10f; // 투사체 속도
+            
             Projectile fire = projectile.GetComponent<Projectile>();
             fire.Launch(target.position);
             this.attackpower = fire.damage;
