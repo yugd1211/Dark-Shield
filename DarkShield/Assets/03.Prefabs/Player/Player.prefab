@@ -1848,7 +1848,7 @@ MonoBehaviour:
   playerAnimator: {fileID: 0}
   rightHand: {fileID: 8626961973477679758}
   swordPrefab: {fileID: 3994626178766799071, guid: bf59326c3262b4d41bd4612d47a6b2e8, type: 3}
-  moveDistance: 8
+  moveDistance: 9
 --- !u!114 &8521270409646426696
 MonoBehaviour:
   m_ObjectHideFlags: 0

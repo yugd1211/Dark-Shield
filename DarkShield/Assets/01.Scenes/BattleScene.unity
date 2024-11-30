@@ -2700,10 +2700,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2015640563}
     m_Modifications:
-    - target: {fileID: 1780898119580613364, guid: 09b8405b37521c141a88bb7b9bdca3f7, type: 3}
-      propertyPath: moveDistance
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: 5548407114382569846, guid: 09b8405b37521c141a88bb7b9bdca3f7, type: 3}
       propertyPath: m_Name
       value: Player
