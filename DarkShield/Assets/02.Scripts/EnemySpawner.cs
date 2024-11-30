@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+	public bool isAllWavesCompleted;
+	
 	private EnemyManager _enemyManager;
-
 	private EnemySpawnData _enemySpawnData;
 	private int _currentWave = 0;
 	private bool _isSpawning = false;
@@ -13,6 +14,7 @@ public class EnemySpawner : MonoBehaviour
 	{
 		_enemyManager = enemyManager;
 		_enemySpawnData = enemySpawnData;
+		isAllWavesCompleted = false;
 	}
 
 	private Coroutine _spawnCoroutine;
@@ -27,6 +29,7 @@ public class EnemySpawner : MonoBehaviour
 
 	private IEnumerator SpawnEnemies()
 	{
+		isAllWavesCompleted = false;
 		while (_currentWave < _enemySpawnData.waves.Count)
 		{
 			EnemySpawnWave wave = _enemySpawnData.waves[_currentWave];
@@ -43,7 +46,7 @@ public class EnemySpawner : MonoBehaviour
 			yield return new WaitUntil(() => _enemyManager.GetEnemies().Count == 0);
 			_currentWave++;
 		}
-
+		isAllWavesCompleted = true;
 		_spawnCoroutine = null;
 	}
 }
