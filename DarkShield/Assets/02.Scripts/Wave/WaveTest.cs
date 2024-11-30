@@ -2,17 +2,13 @@ using UnityEngine;
 
 public class WaveTest : MonoBehaviour
 { 
-	private EnemySpawner _enemySpawner;
+	private EnemyManager _enemyManager;
 	public EnemySpawnData enemySpawnData;
-
-	private void Awake()
-	{
-		_enemySpawner = gameObject.AddComponent<EnemySpawner>();
-		_enemySpawner.Init(enemySpawnData);
-	}
 	
 	private void Start()
 	{
-		_enemySpawner.StartSpawning();
+		_enemyManager = FindObjectOfType<EnemyManager>();
+		_enemyManager.Init(enemySpawnData);
+		_enemyManager.StartSpawning();
 	}
 }
