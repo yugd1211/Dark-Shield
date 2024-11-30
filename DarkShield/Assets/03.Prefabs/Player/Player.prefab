@@ -1732,7 +1732,6 @@ GameObject:
   - component: {fileID: 5305652195719045097}
   - component: {fileID: 1830679344230214121}
   - component: {fileID: 2826431204139153654}
-  - component: {fileID: 1042194668914934795}
   - component: {fileID: 9078853630159424669}
   m_Layer: 3
   m_Name: Player
@@ -1862,10 +1861,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d616afe23edf13b40886d20f02423ec9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  dashSpeed: 10
+  dashSpeed: 20
   rotateSpeed: 10
-  dashInterval: 0.5
+  dashInterval: 0.2
 --- !u!114 &1889660622249963835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1955,7 +1953,7 @@ MonoBehaviour:
     m_ActionName: Player/Attack[/Mouse/leftButton,/Keyboard/enter]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1042194668914934795}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: InteractableTmpPlayer, Assembly-CSharp
         m_MethodName: OnInteract
         m_Mode: 0
@@ -2110,19 +2108,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.56, y: 1.55, z: 0.52}
   m_Center: {x: 0, y: 1.03, z: 0}
---- !u!114 &1042194668914934795
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5548407114382569846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de2f584e750af2043935f853ea1f8df0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  detectionRadius: 5.09
 --- !u!114 &9078853630159424669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2136,17 +2121,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Effects:
-  - Effect: {fileID: 1563435664761700, guid: 96c2388d3a717254c918608a033b4bf3, type: 3}
-    StartPositionRotation: {fileID: 5027777045419114931}
-    DestroyAfter: 3
-    UseLocalPosition: 0
   - Effect: {fileID: 1934977346563538, guid: 8c2a99d5d9b4d4a4d973ce3412f51745, type: 3}
     StartPositionRotation: {fileID: 7467792361902482568}
-    DestroyAfter: 6
-    UseLocalPosition: 0
-  - Effect: {fileID: 1427184144938852, guid: dc97aa01df27d194d8e5911051209943, type: 3}
-    StartPositionRotation: {fileID: 2395131874593038836}
-    DestroyAfter: 6
+    DestroyAfter: 3
     UseLocalPosition: 0
 --- !u!1 &5625537504552777652
 GameObject:
