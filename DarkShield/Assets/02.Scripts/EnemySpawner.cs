@@ -8,27 +8,30 @@ public class EnemySpawner : MonoBehaviour
 
 	private EnemySpawnData _enemySpawnData;
 	private int _currentWave = 0;
-	
-	
+	private bool _isSpawning = false;
+
 	public void Init(EnemySpawnData enemySpawnData)
 	{
 		_enemySpawnData = enemySpawnData;
 	}
-	
+
+	private Coroutine _spawnCoroutine;
+
 	public void StartSpawning()
 	{
-		StartCoroutine(SpawnEnemies());
+		if (_spawnCoroutine == null)
+		{
+			_spawnCoroutine = StartCoroutine(SpawnEnemies());
+		}
 	}
-	
+
 	private IEnumerator SpawnEnemies()
 	{
-		// list가 비어있으면 소환 해야함
-		// 해당 wave의 소환이 끝나면 currentWave 증가
-		// currentWave가 wave의 갯수보다 많아지면 소환 끝
-		// 마지막에 Spawn이 끝났음을 알리든 bool값으로 갖고 있든 해야함
-		foreach (EnemySpawnWave wave in _enemySpawnData.waves)
+		while (_currentWave < _enemySpawnData.waves.Count)
 		{
-			foreach (EnemySpawnInfo enemyInfo in wave.enemies)
+			EnemySpawnWave wave = _enemySpawnData.waves[_currentWave];
+
+			foreach (var enemyInfo in wave.enemies)
 			{
 				for (int i = 0; i < enemyInfo.count; i++)
 				{
@@ -36,6 +39,13 @@ public class EnemySpawner : MonoBehaviour
 					yield return new WaitForSeconds(wave.spawnFrequency);
 				}
 			}
+
+			// 해당 Wave의 적이 다 죽었는지 확인하기 위한 WaitUntil
+			// yield return new WaitUntil(() => _isWaveComplete);
+			_currentWave++;
 		}
+
+		_spawnCoroutine = null; // 코루틴이 끝났음을 표시
+		Debug.Log("All waves have been spawned.");
 	}
 }
