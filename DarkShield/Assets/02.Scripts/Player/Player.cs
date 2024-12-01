@@ -31,7 +31,6 @@ public class Player : Unit
 	private void Init()
 	{
 		playerStateMachine = new StateMachine(this);
-		//curWeopon = GetComponent<Weapon>();
 		playerMovement = GetComponent<PlayerMovement>();
 		playerInputManager = GetComponent<PlayerInputManager>();
 		playerHealth = GetComponent<PlayerHealth>();
