@@ -13,7 +13,7 @@ public class Sword : Weapon
 		Init();
 	}
 
-	public override void UseSkill(SkillType skillType)
+	public override void UseSkill(ActionType skillType)
 	{
 		_player.playerAnimator.SetTrigger(skillType.ToString());
 		if (skills.TryGetValue(skillType, out Skill skill))

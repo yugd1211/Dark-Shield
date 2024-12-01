@@ -68,7 +68,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillType: 1
   damage: 20
-  slashFX: {fileID: 5042364891608396608, guid: d5439109e51cdf34eb446177b051eb57, type: 3}
+  slashFX: {fileID: 6888954314782828592, guid: d5439109e51cdf34eb446177b051eb57, type: 3}
 --- !u!1 &3994626178766799071
 GameObject:
   m_ObjectHideFlags: 0

@@ -2124,7 +2124,7 @@ MonoBehaviour:
   - Effect: {fileID: 1934977346563538, guid: 8c2a99d5d9b4d4a4d973ce3412f51745, type: 3}
     StartPositionRotation: {fileID: 7467792361902482568}
     DestroyAfter: 3
-    UseLocalPosition: 0
+    UseLocalPosition: 1
 --- !u!1 &5625537504552777652
 GameObject:
   m_ObjectHideFlags: 0

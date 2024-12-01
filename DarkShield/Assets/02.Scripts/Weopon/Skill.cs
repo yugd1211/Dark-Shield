@@ -4,12 +4,12 @@ using UnityEngine;
 
 public abstract class Skill : MonoBehaviour
 {
-	public SkillType skillType;
+	public ActionType skillType;
 
 	public abstract void UseSkill();
 }
 
-public enum SkillType
+public enum ActionType
 {
 	Dash,
 	Skill1,

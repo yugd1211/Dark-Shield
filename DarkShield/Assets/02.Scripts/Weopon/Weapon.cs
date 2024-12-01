@@ -7,14 +7,14 @@ using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
 {
-	protected Dictionary<SkillType, Skill> skills;
+	protected Dictionary<ActionType, Skill> skills;
 
 	protected virtual void Awake()
 	{
-		skills = new Dictionary<SkillType, Skill>();
+		skills = new Dictionary<ActionType, Skill>();
 	}
 
-	public abstract void UseSkill(SkillType skillType);
+	public abstract void UseSkill(ActionType skillType);
 
 	public void SetSkill(Skill skill)
 	{

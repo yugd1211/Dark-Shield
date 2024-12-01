@@ -5,10 +5,11 @@ using UnityEngine;
 public class Slash : Skill
 {
 	public float damage;
-	[SerializeField] private ParticleSystem slashFX;
+	[SerializeField] private GameObject slashFX;
 	private Collider _slashArea;
 	private List<Collider> _colls;
 	private Weapon _weapon;
+	private AnimationEventEffects _eventEfftects;
 
 	private void Awake()
 	{
@@ -28,9 +29,9 @@ public class Slash : Skill
 	private IEnumerator UseSlash()
 	{
 		_slashArea.enabled = true;
-		ParticleSystem slashInstance = Instantiate(slashFX, transform.position, Quaternion.identity);
+		GameObject slashInstance = Instantiate(slashFX, transform.position, Quaternion.identity);
 		yield return new WaitForSeconds(0.6f);
-		slashInstance.Play();
+		slashInstance.GetComponent<ParticleSystem>().Play();
 		yield return new WaitForSeconds(0.5f);
 		_slashArea.enabled = false;
 		_colls.Clear();
