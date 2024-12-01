@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Skill : MonoBehaviour
 {
-	public ActionType skillType;
+	public ActionType actionType;
 
 	public abstract void UseSkill();
 }

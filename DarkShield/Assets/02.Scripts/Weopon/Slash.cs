@@ -1,15 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Slash : Skill
 {
-	public float damage;
-	[SerializeField] private GameObject slashFX;
 	private Collider _slashArea;
 	private List<Collider> _colls;
 	private Weapon _weapon;
-	private AnimationEventEffects _eventEfftects;
+	private AnimationEventEffects _eventEffects;
+	private AnimationEventEffects.EffectInfo _effect;
+	private Transform _startPositionRotation;
+
+	[Header("임시변수")]
+	//AnimationEventEffects 에서 임시로 사용하기 위한 변수들, SOSkill로 넘기기 위한 변수들
+	public float damage;
+	public GameObject Effect;
+	public float DestroyAfter = 10f;
+	public bool useLocalPosition = false;
 
 	private void Awake()
 	{
@@ -19,20 +27,20 @@ public class Slash : Skill
 	private void Start()
 	{
 		_weapon.SetSkill(this);
+		_effect = new AnimationEventEffects.EffectInfo(Effect, _startPositionRotation, DestroyAfter, useLocalPosition);
 	}
 
 	public override void UseSkill()
 	{
+		_eventEffects.SetEffects(_effect);
 		StartCoroutine(UseSlash());
 	}
 
 	private IEnumerator UseSlash()
 	{
+		yield return new WaitForSeconds(0.1f);
 		_slashArea.enabled = true;
-		GameObject slashInstance = Instantiate(slashFX, transform.position, Quaternion.identity);
-		yield return new WaitForSeconds(0.6f);
-		slashInstance.GetComponent<ParticleSystem>().Play();
-		yield return new WaitForSeconds(0.5f);
+		yield return new WaitForSeconds(0.3f);
 		_slashArea.enabled = false;
 		_colls.Clear();
 
@@ -60,5 +68,7 @@ public class Slash : Skill
 		_slashArea = GetComponent<Collider>();
 		_colls = new List<Collider>();
 		_weapon = GetComponentInParent<Weapon>();
+		_eventEffects = GameObject.Find("Player").GetComponent<AnimationEventEffects>();
+		_startPositionRotation = _eventEffects.transform;
 	}
 }

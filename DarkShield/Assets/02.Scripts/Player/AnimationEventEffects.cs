@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AnimationEventEffects : MonoBehaviour
 {
-	public EffectInfo[] Effects;
+	public List<EffectInfo> effects;
 
 	[System.Serializable]
 	public class EffectInfo
@@ -13,23 +13,41 @@ public class AnimationEventEffects : MonoBehaviour
 		public Transform StartPositionRotation;
 		public float DestroyAfter = 10;
 		public bool UseLocalPosition = true;
+
+		public EffectInfo(GameObject effect, Transform startPositionRotation, float destroyAfter, bool useLocalPosition)
+		{
+			Effect = effect;
+			StartPositionRotation = startPositionRotation;
+			DestroyAfter = destroyAfter;
+			UseLocalPosition = useLocalPosition;
+		}
 	}
 
-	void InstantiateEffect(int EffectNumber)
+	public void SetEffects(EffectInfo effectInfo)
 	{
-		if (Effects == null || Effects.Length <= EffectNumber)
+		effects.Add(effectInfo);
+	}
+
+	public void InstantiateEffect(int EffectNumber)
+	{
+		if (effects == null || effects.Count <= EffectNumber)
 		{
 			Debug.LogError("Incorrect effect number or effect is null");
 		}
 
-		var instance = Instantiate(Effects[EffectNumber].Effect, Effects[EffectNumber].StartPositionRotation.position, Effects[EffectNumber].StartPositionRotation.rotation);
+		var instance = Instantiate(effects[EffectNumber].Effect, effects[EffectNumber].StartPositionRotation.position, effects[EffectNumber].StartPositionRotation.rotation);
 
-		if (Effects[EffectNumber].UseLocalPosition)
+		if (effects[EffectNumber].UseLocalPosition)
 		{
-			instance.transform.parent = Effects[EffectNumber].StartPositionRotation.transform;
+			instance.transform.parent = effects[EffectNumber].StartPositionRotation.transform;
 			instance.transform.localPosition = Vector3.zero;
 			instance.transform.localRotation = new Quaternion();
 		}
-		Destroy(instance, Effects[EffectNumber].DestroyAfter);
+		Destroy(instance, effects[EffectNumber].DestroyAfter);
+	}
+
+	public void EndEffect()
+	{
+		effects.Clear();
 	}
 }

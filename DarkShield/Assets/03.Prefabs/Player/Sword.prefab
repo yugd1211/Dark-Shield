@@ -66,9 +66,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f697cd59373f0043bf1519b2996d762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillType: 1
+  actionType: 1
   damage: 20
-  slashFX: {fileID: 6888954314782828592, guid: d5439109e51cdf34eb446177b051eb57, type: 3}
+  Effect: {fileID: 6888954314782828592, guid: d5439109e51cdf34eb446177b051eb57, type: 3}
+  DestroyAfter: 5
+  useLocalPosition: 0
 --- !u!1 &3994626178766799071
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,5 +213,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32319e7197f9ba541bee6929cef16c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillType: 2
+  actionType: 2
   damage: 30
+  Effect: {fileID: 1934977346563538, guid: 8c2a99d5d9b4d4a4d973ce3412f51745, type: 3}
+  DestroyAfter: 10
+  useLocalPosition: 0

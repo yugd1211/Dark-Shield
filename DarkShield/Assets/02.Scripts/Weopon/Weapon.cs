@@ -18,10 +18,10 @@ public abstract class Weapon : MonoBehaviour
 
 	public void SetSkill(Skill skill)
 	{
-		if (skills.ContainsKey(skill.skillType))
+		if (skills.ContainsKey(skill.actionType))
 		{
-			Debug.LogError($"중복된 스킬 타입입니다. {skill.skillType}");
+			Debug.LogError($"중복된 스킬 타입입니다. {skill.actionType}");
 		}
-		skills.Add(skill.skillType, skill);
+		skills.Add(skill.actionType, skill);
 	}
 }
