@@ -1,9 +1,7 @@
-using UnityEngine;
 public class BattleStage : Stage
 {
+	// Spawn에 대한 Data가 담김
 	public EnemySpawnData enemySpawnData;
-	// EnemySpawner 객체로 변경
-	public GameObject EnemySpawner;
 	
 	public override void Init(StageManager stageManager)
 	{

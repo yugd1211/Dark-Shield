@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class ShopUI : MonoBehaviour
 {
-	private PlayerInput _playerInput;
+	public PlayerInput _playerInput;
     
 	private void Start()
 	{
