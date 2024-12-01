@@ -1848,7 +1848,7 @@ MonoBehaviour:
   playerAnimator: {fileID: 0}
   rightHand: {fileID: 8626961973477679758}
   swordPrefab: {fileID: 3994626178766799071, guid: bf59326c3262b4d41bd4612d47a6b2e8, type: 3}
-  moveDistance: 9
+  moveDistance: 8
 --- !u!114 &8521270409646426696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2120,11 +2120,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 876e82b3775b7fe468df43009c4d1abb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Effects:
-  - Effect: {fileID: 1934977346563538, guid: 8c2a99d5d9b4d4a4d973ce3412f51745, type: 3}
-    StartPositionRotation: {fileID: 7467792361902482568}
-    DestroyAfter: 3
-    UseLocalPosition: 0
   effects: []
 --- !u!1 &5625537504552777652
 GameObject:

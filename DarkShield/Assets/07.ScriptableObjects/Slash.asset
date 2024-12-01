@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ActionType: 1
   damage: 20
-  skillEffect: {fileID: 6888954314782828592, guid: d5439109e51cdf34eb446177b051eb57, type: 3}
+  skillEffect: {fileID: 1949624779417528, guid: e73124b5ba126cc499fb7e927b7a79ac, type: 3}
   destroyAfter: 3
   useLocalPosition: 0
