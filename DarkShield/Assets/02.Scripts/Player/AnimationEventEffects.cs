@@ -14,12 +14,12 @@ public class AnimationEventEffects : MonoBehaviour
 		public float DestroyAfter = 10;
 		public bool UseLocalPosition = true;
 
-		public EffectInfo(GameObject effect, Transform startPositionRotation, float destroyAfter, bool useLocalPosition)
+		public EffectInfo(SOSkill skillData, Transform trasform)
 		{
-			Effect = effect;
-			StartPositionRotation = startPositionRotation;
-			DestroyAfter = destroyAfter;
-			UseLocalPosition = useLocalPosition;
+			Effect = skillData.skillEffect;
+			StartPositionRotation = trasform;
+			DestroyAfter = skillData.destroyAfter;
+			UseLocalPosition = skillData.useLocalPosition;
 		}
 	}
 

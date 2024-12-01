@@ -10,11 +10,9 @@ public class TeleportSlash : Skill
 	private AnimationEventEffects _eventEffects;
 	private AnimationEventEffects.EffectInfo _effect;
 	private Transform _startPositionRotation;
+	[SerializeField] private SOSkill _skillData;
 
 	public float damage;
-	public GameObject Effect;
-	public float DestroyAfter = 10f;
-	public bool useLocalPosition = false;
 
 	private void Awake()
 	{
@@ -24,7 +22,7 @@ public class TeleportSlash : Skill
 	private void Start()
 	{
 		_weapon.SetSkill(this);
-		_effect = new AnimationEventEffects.EffectInfo(Effect, _startPositionRotation, DestroyAfter, useLocalPosition);
+		_effect = new AnimationEventEffects.EffectInfo(_skillData, _startPositionRotation);
 	}
 
 	public override void UseSkill()
@@ -45,9 +43,12 @@ public class TeleportSlash : Skill
 	private void Init()
 	{
 		_teleportSlashArea = GameObject.Find("TeleportSlashCollider").GetComponent<Collider>();
+		damage = _skillData.damage;
 		_teleportSlashArea.GetComponent<TriggerTakeDamage>().damage = damage;
 		_weapon = GetComponentInParent<Weapon>();
 		_eventEffects = GameObject.Find("Player").GetComponent<AnimationEventEffects>();
 		_startPositionRotation = _teleportSlashArea.transform;
+
+		actionType = _skillData.ActionType;
 	}
 }

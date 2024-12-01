@@ -4,8 +4,7 @@ using UnityEngine;
 
 public abstract class Skill : MonoBehaviour
 {
-	public ActionType actionType;
-
+	[HideInInspector] public ActionType actionType;
 	public abstract void UseSkill();
 }
 

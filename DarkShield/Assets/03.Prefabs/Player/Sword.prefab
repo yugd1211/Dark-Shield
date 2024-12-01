@@ -67,10 +67,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionType: 1
+  _skillData: {fileID: 11400000, guid: d7eb39127b9aba240a54d5761c578829, type: 2}
   damage: 20
-  Effect: {fileID: 6888954314782828592, guid: d5439109e51cdf34eb446177b051eb57, type: 3}
-  DestroyAfter: 5
-  useLocalPosition: 0
 --- !u!1 &3994626178766799071
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,7 +212,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionType: 2
+  _skillData: {fileID: 11400000, guid: 610b321dffb13e742bba6b3822daf030, type: 2}
   damage: 30
-  Effect: {fileID: 1934977346563538, guid: 8c2a99d5d9b4d4a4d973ce3412f51745, type: 3}
-  DestroyAfter: 10
-  useLocalPosition: 0
