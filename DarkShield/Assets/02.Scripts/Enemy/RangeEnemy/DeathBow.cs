@@ -72,6 +72,7 @@ public class DeathBow: EleteEnemy
 
             
             Projectile fire = projectile.GetComponent<Projectile>();
+            fire.target = "Player";
             fire.Launch(player.position);
             this.AttackPower = fire.damage;
 

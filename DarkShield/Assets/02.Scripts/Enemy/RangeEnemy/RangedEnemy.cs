@@ -42,6 +42,7 @@ public class RangedEnemy : Enemy
 
 
             Projectile fire = projectile.GetComponent<Projectile>();
+            fire.target = "Player";
             fire.Launch(player.position);
             fire.damage = this.AttackPower;
 

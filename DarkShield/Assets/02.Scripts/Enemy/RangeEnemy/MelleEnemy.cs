@@ -32,7 +32,8 @@ public class MelleEnemy : Enemy
         if (distanceToPlayer <= attackRange)
         {
             // 플레이어에게 데미지 적용
-            player.GetComponent<PlayerHealth>().TakeDamage(AttackPower);
+            player.GetComponent<PlayerHealth>().TakeDamage(AttackPower, true);
+            
         }
     }
 
