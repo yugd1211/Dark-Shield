@@ -8,10 +8,12 @@ public class CoinPick : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")) // 플레이어와 충돌하면
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player")) // 플레이어와 충돌하면
         {
             CoinManager.instance.AddCoins(coinValue); // 코인 증가
             Destroy(gameObject); // 코인 오브젝트 제거
         }
     }
 }
+
+    

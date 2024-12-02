@@ -13,7 +13,7 @@ public class AttackState : IState
     public void OnEnter()
     {
         enemy.agent.isStopped = true;
-        enemy._animotor.SetBool("IsMoving", false);
+        enemy.animotor.SetBool("IsMoving", false);
     }
 
     public void OnUpdate()

@@ -13,7 +13,7 @@ public class ChaseState : IState
     public void OnEnter()
     {
         enemy.agent.isStopped = false;
-        enemy._animotor.SetBool("IsMoving", true);
+        enemy.animotor.SetBool("IsMoving", true);
     }
 
     public void OnUpdate()
@@ -36,6 +36,6 @@ public class ChaseState : IState
     public void OnExit()
     {
         enemy.agent.isStopped = true; // 추적 중지
-        enemy._animotor.SetBool("IsMoving", false);
+        enemy.animotor.SetBool("IsMoving", false);
     }
 }
