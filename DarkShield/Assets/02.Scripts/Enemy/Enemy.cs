@@ -21,6 +21,9 @@ public abstract class Enemy : MonoBehaviour
     private IState _currentState;
     public Animator _animotor;
 
+    public GameObject coinPrefab;
+    public Transform CoinSpawnPoint;
+
     protected virtual void Start()
     {
         agent = GetComponent<NavMeshAgent>();

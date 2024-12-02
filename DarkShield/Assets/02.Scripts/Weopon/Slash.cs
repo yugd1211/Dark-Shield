@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,7 +33,8 @@ public class Slash : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent<IDamageable>(out IDamageable other2))
+        // if (other.TryGetComponent<IDamageable>(out IDamageable other2))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             _colls.Add(other);
             foreach (Collider coll in _colls)
@@ -43,7 +45,7 @@ public class Slash : MonoBehaviour
                 }
             }
             //중복 검사 해야 함.
-            other2.TakeDamage(damage, false);
+            other.GetComponent<Enemy>().TakeDamage(damage);
         }
     }
 
