@@ -35,11 +35,11 @@ public class PlayerInputManager : MonoBehaviour
         {
             IsSkill = true;
 
-            if (context.control.name == "leftButton")
-            {
-                IsLeftMousePressed = true;
-            }
-            else if (context.control.name == "rightButton")
+            //if (context.control.name == "leftButton")
+            //{
+            //    IsLeftMousePressed = true;
+            //}
+            if (context.control.name == "rightButton")
             {
                 IsRightMousePressed = true;
             }
