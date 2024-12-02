@@ -1731,7 +1731,6 @@ GameObject:
   - component: {fileID: 930009176190210612}
   - component: {fileID: 5305652195719045097}
   - component: {fileID: 1830679344230214121}
-  - component: {fileID: 2826431204139153654}
   - component: {fileID: 9078853630159424669}
   m_Layer: 3
   m_Name: Player
@@ -1848,7 +1847,7 @@ MonoBehaviour:
   playerAnimator: {fileID: 0}
   rightHand: {fileID: 8626961973477679758}
   swordPrefab: {fileID: 3994626178766799071, guid: bf59326c3262b4d41bd4612d47a6b2e8, type: 3}
-  moveDistance: 9
+  moveDistance: 8
 --- !u!114 &8521270409646426696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1863,7 +1862,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dashSpeed: 20
   rotateSpeed: 10
-  dashInterval: 0.2
+  dashInterval: 0.15
 --- !u!114 &1889660622249963835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2087,27 +2086,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectionRadius: 5.09
---- !u!65 &2826431204139153654
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5548407114382569846}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.56, y: 1.55, z: 0.52}
-  m_Center: {x: 0, y: 1.03, z: 0}
 --- !u!114 &9078853630159424669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2120,11 +2098,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 876e82b3775b7fe468df43009c4d1abb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Effects:
-  - Effect: {fileID: 1934977346563538, guid: 8c2a99d5d9b4d4a4d973ce3412f51745, type: 3}
-    StartPositionRotation: {fileID: 7467792361902482568}
-    DestroyAfter: 3
-    UseLocalPosition: 0
+  effects: []
 --- !u!1 &5625537504552777652
 GameObject:
   m_ObjectHideFlags: 0

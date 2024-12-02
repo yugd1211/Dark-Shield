@@ -807,7 +807,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8759113280796953676
 Transform:
   m_ObjectHideFlags: 0
@@ -915,13 +915,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  agent: {fileID: 0}
   detectionRange: 15
   attackCooldown: 2
-  attackRange: 1
+  attackRange: 3
+  lastAttackTime: 0
   health: 200
   AttackPower: 20
   maxHP: 200
   hpBarForeground: {fileID: 4800335952473966721}
+  _animotor: {fileID: 1589763654615296876}
   objectPool: {fileID: 387995671944015093, guid: 6c937bc182161c146a9c9983aed75c36, type: 3}
   projectilePrefab: {fileID: 1029503652214038219, guid: e2b1ce82f800009458d87be38ad563f0, type: 3}
   firePoint: {fileID: 8759113280796953676}
