@@ -23,7 +23,6 @@ public class MelleEnemy : Enemy
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(directionToPlayer.x, 0, directionToPlayer.z)); // y축은 고정
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 10f); // 부드럽게 회전
         _animotor.SetTrigger("MelleAttack");
-        print("근접 공격 실행!!");
     }
 
     public void ApplyDamage()
@@ -34,11 +33,6 @@ public class MelleEnemy : Enemy
         {
             // 플레이어에게 데미지 적용
             player.GetComponent<PlayerHealth>().TakeDamage(AttackPower);
-            Debug.Log("플레이어에게 근접 공격 피해를 입혔습니다!");
-        }
-        else
-        {
-            print("플레이어가 공격 범위 밖에 있습니다.");
         }
     }
 

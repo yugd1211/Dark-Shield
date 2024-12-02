@@ -52,7 +52,6 @@ public class DeathBow: EleteEnemy
             transform.position += dashDirection * dashSpeed * Time.deltaTime;
             yield return null; // 한 프레임 대기
         }
-        print("원거리 대쉬 공격 실행");
         isDashing = false;
     }
 
@@ -62,7 +61,6 @@ public class DeathBow: EleteEnemy
         {
             _animotor.SetTrigger("RangeAttack");
 
-            Debug.Log("원거리 공격 실행!");
 
             Vector3 directionToPlayer = (player.position - transform.position).normalized;
             Quaternion lookRotation = Quaternion.LookRotation(new Vector3(directionToPlayer.x, 0, directionToPlayer.z)); // y축은 고정
@@ -94,7 +92,7 @@ public class DeathBow: EleteEnemy
     {
         if (collision.transform.CompareTag("Player") && isDashing)
         {
-            print("돌진 공격 성공");
+            //print("돌진 공격 성공");
         }
     }
 }
