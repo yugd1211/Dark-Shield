@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TeleportSlash : Skill
@@ -48,7 +47,6 @@ public class TeleportSlash : Skill
 		_weapon = GetComponentInParent<Weapon>();
 		_eventEffects = GameObject.Find("Player").GetComponent<AnimationEventEffects>();
 		_startPositionRotation = _teleportSlashArea.transform;
-
 		actionType = _skillData.ActionType;
 	}
 }

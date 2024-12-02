@@ -15,7 +15,6 @@ public class Player : Unit
     private void Awake()
     {
         Init();
-        Instantiate(swordPrefab, rightHand);
     }
 
     private void Update()
@@ -37,6 +36,8 @@ public class Player : Unit
         playerAnimator = GetComponent<Animator>();
         playerStateMachine.Init(playerStateMachine.idleState);
         MoveSpeed = 5;
+        curWeopon = Instantiate(swordPrefab, rightHand).GetComponent<Weapon>();
+        curWeopon.Init(this);
     }
 
     public float moveDistance;

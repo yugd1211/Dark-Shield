@@ -176,7 +176,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4837937029380233074}
-  - component: {fileID: 5552926435526627098}
+  - component: {fileID: 5152430405049804546}
   m_Layer: 0
   m_Name: TeleportSlash
   m_TagString: Untagged
@@ -199,7 +199,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8869631043891970653}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5552926435526627098
+--- !u!114 &5152430405049804546
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -211,6 +211,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32319e7197f9ba541bee6929cef16c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionType: 2
+  actionType: 0
   _skillData: {fileID: 11400000, guid: 610b321dffb13e742bba6b3822daf030, type: 2}
-  damage: 30
+  damage: 100
