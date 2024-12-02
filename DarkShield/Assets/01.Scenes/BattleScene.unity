@@ -9470,7 +9470,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1765950748239592567, guid: aec6dccac925c514fb07577bc269b61f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8759113280796953676, guid: aec6dccac925c514fb07577bc269b61f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -20065,26 +20065,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2015640563}
     m_Modifications:
-    - target: {fileID: 4439788565868254952, guid: 238d8185dddf6244fa30dd3dd741b7f9, type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4439788565868254952, guid: 238d8185dddf6244fa30dd3dd741b7f9, type: 3}
-      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4439788565868254952, guid: 238d8185dddf6244fa30dd3dd741b7f9, type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4439788565868254952, guid: 238d8185dddf6244fa30dd3dd741b7f9, type: 3}
-      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4439788565868254952, guid: 238d8185dddf6244fa30dd3dd741b7f9, type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 6465988335437896285, guid: 238d8185dddf6244fa30dd3dd741b7f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
