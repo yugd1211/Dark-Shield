@@ -18,7 +18,7 @@ public class DeathBow: EleteEnemy
 
     public override void Attack()
     {
-        float distanceToPlayer = Vector3.Distance(transform.position, target.position);
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
         if (distanceToPlayer <= attackRange && Time.time >= lastAttackTime + attackCooldown)
         {
             AttackPatern();
@@ -41,10 +41,10 @@ public class DeathBow: EleteEnemy
 
     IEnumerator DashAttack()
     {
-        _animaton.SetTrigger("DashAttack");
+        _animotor.SetTrigger("DashAttack");
 
         isDashing = true;
-        dashDirection = (target.position - transform.position).normalized;
+        dashDirection = (player.position - transform.position).normalized;
         float startTime = Time.time;
 
         while (Time.time < startTime + dashDuration)
@@ -60,11 +60,11 @@ public class DeathBow: EleteEnemy
     {
         if (Time.time >= lastAttackTime + attackCooldown)
         {
-            _animaton.SetTrigger("RangeAttack");
+            _animotor.SetTrigger("RangeAttack");
 
             Debug.Log("원거리 공격 실행!");
 
-            Vector3 directionToPlayer = (target.position - transform.position).normalized;
+            Vector3 directionToPlayer = (player.position - transform.position).normalized;
             Quaternion lookRotation = Quaternion.LookRotation(new Vector3(directionToPlayer.x, 0, directionToPlayer.z)); // y축은 고정
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 10f); // 부드럽게 회전
 
@@ -74,8 +74,8 @@ public class DeathBow: EleteEnemy
 
             
             Projectile fire = projectile.GetComponent<Projectile>();
-            fire.Launch(target.position);
-            this.attackpower = fire.damage;
+            fire.Launch(player.position);
+            this.AttackPower = fire.damage;
 
             lastAttackTime = Time.time;
 

@@ -17,14 +17,14 @@ public class RangedEnemy : Enemy
 
     public override void Attack()
     {
-
-        if (isCheckPlayer() && Time.time >= lastAttackTime + attackCooldown)
+        if (Time.time >= lastAttackTime + attackCooldown)
         {
             _animator.SetBool("IsRangeAttack", true);
             RangedAttack();
             lastAttackTime = Time.time;
             StartCoroutine(ResetAttackAnimation());
         }
+
     }
 
     private void RangedAttack()

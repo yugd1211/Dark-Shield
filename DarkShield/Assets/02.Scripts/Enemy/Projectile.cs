@@ -47,6 +47,8 @@ public class Projectile : MonoBehaviour
 
         Deactivate();
     }
+
+  
     private void Deactivate()
     {
         isLaunched = false; // 이동 중지

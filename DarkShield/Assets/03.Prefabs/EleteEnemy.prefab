@@ -1982,15 +1982,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 879d20fe845c1964caf272bbb722bc16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  player: {fileID: 0}
+  agent: {fileID: 0}
   detectionRange: 15
-  attackRange: 3
-  health: 800
-  attackpower: 40
-  rangedAttackRange: 10
   attackCooldown: 2
+  attackRange: 3
+  lastAttackTime: 0
+  health: 800
+  AttackPower: 20
   maxHP: 800
   hpBarForeground: {fileID: 0}
+  _animotor: {fileID: 0}
+  rangedAttackRange: 10
   dashSpeed: 20
   dashDuration: 0.5
   projectilePrefab: {fileID: 1029503652214038219, guid: e2b1ce82f800009458d87be38ad563f0, type: 3}
