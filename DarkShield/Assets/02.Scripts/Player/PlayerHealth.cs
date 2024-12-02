@@ -42,13 +42,13 @@ public class PlayerHealth : MonoBehaviour
         _playerHpbar.value = HealthAmount;
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, bool isHit)
     {
         health -= damage;
         if (health <= 0) health = 0;
 
         //CurState == idleState || CurState == walkState && 디버프 지형이면 안가게
-        if (_player.playerStateMachine.CanEnterHitState())
+        if (_player.playerStateMachine.CanEnterHitState() && isHit)
         {
             IsHit = true;
         }

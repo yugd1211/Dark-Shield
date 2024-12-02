@@ -5,7 +5,7 @@ using UnityEngine;
 public class TeleportSlash : MonoBehaviour
 {
     public float damage;
-    [SerializeField] private Collider _teleportSlashArea;
+    private Collider _teleportSlashArea;
 
     private void Awake()
     {
@@ -23,13 +23,8 @@ public class TeleportSlash : MonoBehaviour
         _teleportSlashArea.enabled = true;
         yield return new WaitForSeconds(2f);
         _teleportSlashArea.enabled = false;
-
+        _teleportSlashArea.GetComponent<TriggerTakeDamage>().colls.Clear();
     }
-
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    other.GetComponent<EnemyTest>().TakeDamage(damage);
-    //}
 
     private void Init()
     {

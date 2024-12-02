@@ -42,7 +42,7 @@ public class Projectile : MonoBehaviour
         {
             //Debug.Log("플레이어가 원거리 공격에 맞음!");
 
-            other.GetComponent<PlayerHealth>().TakeDamage(damage);// 투사체 제거
+            other.GetComponent<PlayerHealth>().TakeDamage(damage, true);// 투사체 제거
         }
 
         Deactivate();
