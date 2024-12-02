@@ -5,25 +5,27 @@ using UnityEngine;
 public class TriggerTakeDamage : MonoBehaviour
 {
     public float damage;
-    private List<Collider> _colls;
+    public List<Collider> colls;
 
     private void Awake()
     {
-        _colls = new List<Collider>();
+        colls = new List<Collider>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        _colls.Add(other);
-        foreach (Collider coll in _colls)
+        if (other.TryGetComponent<IDamageable>(out IDamageable other2))
         {
-            if (_colls.Contains(coll))
+            colls.Add(other);
+            foreach (Collider coll in colls)
             {
-                continue;
+                if (colls.Contains(coll))
+                {
+                    continue;
+                }
             }
+            //중복 검사 해야 함.
+            other2.TakeDamage(damage, false);
         }
-        //중복 검사 해야 함.
-        other.GetComponent<Enemy>().TakeDamage(damage);
-        _colls.Clear();
     }
 }

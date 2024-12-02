@@ -359,10 +359,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 127
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
@@ -383,6 +383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
+  colls: []
 --- !u!1 &703984247346966847
 GameObject:
   m_ObjectHideFlags: 0
@@ -1847,7 +1848,7 @@ MonoBehaviour:
   playerAnimator: {fileID: 0}
   rightHand: {fileID: 8626961973477679758}
   swordPrefab: {fileID: 3994626178766799071, guid: bf59326c3262b4d41bd4612d47a6b2e8, type: 3}
-  moveDistance: 8
+  moveDistance: 9
 --- !u!114 &8521270409646426696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1860,10 +1861,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d616afe23edf13b40886d20f02423ec9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  dashSpeed: 10
+  dashSpeed: 20
   rotateSpeed: 10
-  dashInterval: 0.5
+  dashInterval: 0.2
 --- !u!114 &1889660622249963835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2121,17 +2121,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Effects:
-  - Effect: {fileID: 1563435664761700, guid: 96c2388d3a717254c918608a033b4bf3, type: 3}
-    StartPositionRotation: {fileID: 5027777045419114931}
-    DestroyAfter: 3
-    UseLocalPosition: 0
   - Effect: {fileID: 1934977346563538, guid: 8c2a99d5d9b4d4a4d973ce3412f51745, type: 3}
     StartPositionRotation: {fileID: 7467792361902482568}
-    DestroyAfter: 6
-    UseLocalPosition: 0
-  - Effect: {fileID: 1427184144938852, guid: dc97aa01df27d194d8e5911051209943, type: 3}
-    StartPositionRotation: {fileID: 2395131874593038836}
-    DestroyAfter: 6
+    DestroyAfter: 3
     UseLocalPosition: 0
 --- !u!1 &5625537504552777652
 GameObject:
