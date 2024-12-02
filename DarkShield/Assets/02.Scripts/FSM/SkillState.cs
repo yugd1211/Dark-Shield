@@ -15,11 +15,15 @@ public class SkillState : IState
     {
         if (_player.playerInputManager.IsLeftMousePressed)
         {
-            _player.curWeopon.UseSkill1();
+            _player.curWeopon.UseSkill(ActionType.Skill1);
         }
         else if (_player.playerInputManager.IsRightMousePressed)
         {
-            _player.curWeopon.UseSkill2();
+            _player.curWeopon.UseSkill(ActionType.Skill2);
+        }
+        else if (_player.playerInputManager.IsQPressed)
+        {
+            _player.curWeopon.UseSkill(ActionType.Skill3);
         }
     }
 
@@ -36,6 +40,7 @@ public class SkillState : IState
     {
         _player.playerInputManager.IsLeftMousePressed = false;
         _player.playerInputManager.IsRightMousePressed = false;
+        _player.playerInputManager.IsQPressed = false;
         _player.playerInputManager.IsSkill = false;
     }
 
