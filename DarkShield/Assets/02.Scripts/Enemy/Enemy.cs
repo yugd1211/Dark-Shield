@@ -19,12 +19,14 @@ public abstract class Enemy : MonoBehaviour
     public RectTransform hpBarForeground; // 초록색 HP 
 
     private IState _currentState;
-    public Animator _animotor;
+    public Animator animotor;
+
+    public GameObject coinPrefab;
 
     protected virtual void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        _animotor = GetComponent<Animator>();
+        animotor = GetComponent<Animator>();
         player = GameObject.Find("Player").transform;
         SetState(new EnemyIdleState(this));
 
@@ -45,7 +47,7 @@ public abstract class Enemy : MonoBehaviour
     public abstract void Attack();
     public void TakeDamage(float damage)
     {
-        _animotor.SetTrigger("Hit");
+        animotor.SetTrigger("Hit");
         health -= damage;
         health = Mathf.Clamp(health, 0, maxHP);
         float hpPercent = health / maxHP;
@@ -58,7 +60,7 @@ public abstract class Enemy : MonoBehaviour
 
     public void Die()
     {
-        _animotor.SetTrigger("Death");
+        animotor.SetTrigger("Death");
         FindObjectOfType<EnemyManager>().RemoveEnemy(this);
         Destroy(gameObject, 5f);
     }

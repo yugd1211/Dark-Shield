@@ -21,21 +21,21 @@ public class Lava : MonoBehaviour, IStructure
 
     private void Update()
     {
-        foreach (var target in _targets)
-        {
-            if (target.Value >= damageInterval)
-            {
-                target.Key.TakeDamage(damage, false);
-                _targets[target.Key] = 0;
-            }
-            else
-            {
-                _targets[target.Key] += Time.deltaTime;
-            }
-        }
+        Dictionary<Unit, float> tmp = new Dictionary<Unit, float>(_targets);
+        foreach (KeyValuePair<Unit, float> target in tmp)
+            Affect(target.Key);
     }
 
-    public void Affect(Unit target) { }
+    public void Affect(Unit target)
+    {
+        if (_targets[target] >= damageInterval)
+        {
+            target.TakeDamage(damage, false);
+            _targets[target] = 0;
+        }
+        else
+            _targets[target] += Time.deltaTime;
+    }
 
     public void OnTargetEnter(Unit target)
     {

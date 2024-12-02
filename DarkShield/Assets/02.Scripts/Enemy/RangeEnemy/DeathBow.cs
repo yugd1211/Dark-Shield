@@ -41,7 +41,7 @@ public class DeathBow: EleteEnemy
 
     IEnumerator DashAttack()
     {
-        _animotor.SetTrigger("DashAttack");
+        animotor.SetTrigger("DashAttack");
 
         isDashing = true;
         dashDirection = (player.position - transform.position).normalized;
@@ -59,7 +59,7 @@ public class DeathBow: EleteEnemy
     {
         if (Time.time >= lastAttackTime + attackCooldown)
         {
-            _animotor.SetTrigger("RangeAttack");
+            animotor.SetTrigger("RangeAttack");
 
 
             Vector3 directionToPlayer = (player.position - transform.position).normalized;
