@@ -35,18 +35,20 @@ public class Projectile : MonoBehaviour
         Invoke("Deactivate", 5f); // 일정 시간이 지나면 비활성화
     }
 
-
+    public string target;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        if (other.gameObject.layer == LayerMask.NameToLayer(target))
         {
             //Debug.Log("플레이어가 원거리 공격에 맞음!");
 
-            other.GetComponent<PlayerHealth>().TakeDamage(damage, true);// 투사체 제거
+            other.GetComponent<Unit>().TakeDamage(damage, true);// 투사체 제거
         }
 
         Deactivate();
     }
+
+  
     private void Deactivate()
     {
         isLaunched = false; // 이동 중지
