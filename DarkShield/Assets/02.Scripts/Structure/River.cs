@@ -14,6 +14,7 @@ public class River : MonoBehaviour, IStructure
 
 	private void OnTriggerExit(Collider other)
 	{
+		print("OnTriggerExit");
 		if (other.TryGetComponent(out Unit target))
 			OnTargetExit(target);
 	}
@@ -29,9 +30,11 @@ public class River : MonoBehaviour, IStructure
 
 	public void OnTargetExit(Unit target)
 	{
-		if (_targets.TryGetValue(target, out float decreasedSpeed))
+		print($"Exit 1 : {target.name}");
+		if (_targets.ContainsKey(target))
 		{
-			target.MoveSpeed += decreasedSpeed;
+			print("Exit 2");
+			target.MoveSpeed += _targets[target];
 			_targets.Remove(target);
 		}
 	}
