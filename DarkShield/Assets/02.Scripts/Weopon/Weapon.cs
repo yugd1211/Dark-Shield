@@ -7,21 +7,21 @@ using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
 {
-	protected Dictionary<ActionType, Skill> skills;
+    protected Dictionary<ActionType, Skill> skills;
 
-	protected virtual void Awake()
-	{
-		skills = new Dictionary<ActionType, Skill>();
-	}
+    protected virtual void Awake()
+    {
+        skills = new Dictionary<ActionType, Skill>();
+    }
 
-	public abstract void UseSkill(ActionType skillType);
+    public abstract void UseSkill(ActionType skillType);
 
-	public void SetSkill(Skill skill)
-	{
-		if (skills.ContainsKey(skill.actionType))
-		{
-			Debug.LogError($"Áßº¹µÈ ½ºÅ³ Å¸ÀÔÀÔ´Ï´Ù. {skill.actionType}");
-		}
-		skills.Add(skill.actionType, skill);
-	}
+    public void SetSkill(Skill skill)
+    {
+        if (skills.ContainsKey(skill.actionType))
+        {
+            Debug.LogError($"ï¿½ßºï¿½ï¿½ï¿½ ï¿½ï¿½Å³ Å¸ï¿½ï¿½ï¿½Ô´Ï´ï¿½. {skill.actionType}");
+        }
+        skills.Add(skill.actionType, skill);
+    }
 }

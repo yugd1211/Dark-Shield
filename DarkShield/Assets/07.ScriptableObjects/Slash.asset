@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c2ba72d66c82f7408b71a5e805e3e31, type: 3}
   m_Name: Slash
   m_EditorClassIdentifier: 
-  ActionType: 1
+  ActionType: 2
   damage: 20
   skillEffect: {fileID: 1949624779417528, guid: e73124b5ba126cc499fb7e927b7a79ac, type: 3}
   destroyAfter: 3

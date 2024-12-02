@@ -14,6 +14,7 @@ public class PlayerInputManager : MonoBehaviour
 
     public bool IsLeftMousePressed { get; set; }
     public bool IsRightMousePressed { get; set; }
+    public bool IsQPressed { get; set; }
 
     public void OnMove(Context context)
     {
@@ -41,6 +42,10 @@ public class PlayerInputManager : MonoBehaviour
             else if (context.control.name == "rightButton")
             {
                 IsRightMousePressed = true;
+            }
+            else if (context.control.name == "q")
+            {
+                IsQPressed = true;
             }
         }
     }

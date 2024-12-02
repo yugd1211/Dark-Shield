@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public float dashInterval;
 
     private NavMeshAgent _agent;
+    private Player _player;
 
     private void Awake()
     {
@@ -37,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 dashDirection = transform.forward;
         float elapsedTime = 0f;
 
+        //_player.playerAnimator.SetTrigger("Dash");
         while (elapsedTime < dashInterval)
         {
             transform.position += dashDirection * dashSpeed * Time.deltaTime;
@@ -50,6 +52,7 @@ public class PlayerMovement : MonoBehaviour
     private void Init()
     {
         _agent = GetComponent<NavMeshAgent>();
+        _player = GameObject.Find("Player").GetComponent<Player>();
     }
 
     public void Spawn(Vector3 position)

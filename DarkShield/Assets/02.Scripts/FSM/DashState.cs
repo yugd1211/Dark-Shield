@@ -12,8 +12,6 @@ public class DashState : IState
     }
     public void OnEnter()
     {
-        _player.playerMovement.Dash();
-
         _player.playerAnimator.SetTrigger("Dash");
     }
 
