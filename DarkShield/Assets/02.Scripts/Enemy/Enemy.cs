@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
-
 
 public abstract class Enemy : MonoBehaviour
 {
@@ -60,5 +56,10 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
-
+    public void Die()
+    {
+        _animotor.SetTrigger("Death");
+        FindObjectOfType<EnemyManager>().RemoveEnemy(this);
+        Destroy(gameObject, 5f);
+    }
 }

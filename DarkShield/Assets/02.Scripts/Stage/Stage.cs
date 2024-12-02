@@ -7,6 +7,7 @@ public class Stage : MonoBehaviour
 	public StageManager stageManager;
 	public Stage nextStage;
 	public Transform playerStartPos;
+	public Portal portal;
 
 
 	public virtual void Init(StageManager stageManager)
@@ -16,6 +17,7 @@ public class Stage : MonoBehaviour
 		playerStartPos = transform.Find("PlayerStartPosition").transform;
 		if (player == true && playerStartPos == true)
 			player.playerMovement.Spawn(playerStartPos.position);
+		portal = GetComponentInChildren<Portal>();
 	}
 	
 	public void MoveNextStage()
