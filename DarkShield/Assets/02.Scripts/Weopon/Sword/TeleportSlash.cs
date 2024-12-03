@@ -4,22 +4,14 @@ using UnityEngine;
 public class TeleportSlash : Skill
 {
     private Collider _teleportSlashArea;
-    private Weapon _weapon;
-
     private AnimationEventEffects _eventEffects;
     private AnimationEventEffects.EffectInfo _effect;
     private Transform _startPositionRotation;
 
     public float damage;
 
-    private void Awake()
-    {
-        Init();
-    }
-
     private void Start()
     {
-        _weapon.SetSkill(this);
         _effect = new AnimationEventEffects.EffectInfo(skillData, _startPositionRotation);
     }
 
@@ -38,14 +30,14 @@ public class TeleportSlash : Skill
         _teleportSlashArea.GetComponent<TriggerTakeDamage>().colls.Clear();
     }
 
-    private void Init()
+    public override void Init(Player player)
     {
         _teleportSlashArea = GameObject.Find("TeleportSlashCollider").GetComponent<Collider>();
         damage = skillData.damage;
         _teleportSlashArea.GetComponent<TriggerTakeDamage>().damage = damage;
-        _weapon = GetComponentInParent<Weapon>();
-        _eventEffects = GameObject.Find("Player").GetComponent<AnimationEventEffects>();
         _startPositionRotation = _teleportSlashArea.transform;
+
+        _eventEffects = player.GetComponent<AnimationEventEffects>();
         actionType = skillData.ActionType;
     }
 }

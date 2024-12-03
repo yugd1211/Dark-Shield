@@ -9,6 +9,10 @@ public class Dash : Skill
     public float dashInterval = 0.4f;
 
     private NavMeshAgent _agent;
+    //추후에 Dash 이펙트에 사용할 변수들
+    //private AnimationEventEffects _eventEffects;
+    //private AnimationEventEffects.EffectInfo _effect;
+    //private Transform _startPositionRotation;
 
     private void Awake()
     {
@@ -17,6 +21,7 @@ public class Dash : Skill
 
     public override void UseSkill()
     {
+        //_eventEffects.SetEffects(_effect);
         StartCoroutine(UseDash());
     }
 
@@ -27,7 +32,6 @@ public class Dash : Skill
         Vector3 dashDirection = transform.forward;
         float elapsedTime = 0f;
 
-        //_player.playerAnimator.SetTrigger("Dash");
         while (elapsedTime < dashInterval)
         {
             transform.position += dashDirection * dashSpeed * Time.deltaTime;
@@ -38,9 +42,17 @@ public class Dash : Skill
         _agent.isStopped = false;
     }
 
-    private void Init()
+    public override void Init(Player player)
+    {
+    }
+
+    public void Init()
     {
         _agent = GetComponent<NavMeshAgent>();
+        //Dash 이펙트를 사용하기 위한 초기화 해야 할 변수들
+        //_eventEffects = GetComponent<AnimationEventEffects>();
+        //_startPositionRotation = transform;
+        //_effect = new AnimationEventEffects.EffectInfo(skillData, transform);
     }
 
 }

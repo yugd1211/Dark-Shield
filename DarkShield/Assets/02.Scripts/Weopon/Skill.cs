@@ -6,6 +6,8 @@ public abstract class Skill : MonoBehaviour
     public SOSkill skillData;
 
     public abstract void UseSkill();
+
+    public abstract void Init(Player player);
 }
 
 public enum ActionType
