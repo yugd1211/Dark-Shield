@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class MeleeSlash : Skill
 {
-    //private Weapon _weapon;
     private AnimationEventEffects _eventEffects;
     private AnimationEventEffects.EffectInfo _effect;
     private Transform _startPositionRotation;

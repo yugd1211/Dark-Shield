@@ -6677,7 +6677,7 @@ MonoBehaviour:
   dashSpeed: 10
   dashInterval: 0.4
   maxDashCount: 1
-  maxDashCooltime: 3
+  maxDashCooltime: 0.5
 --- !u!1 &7655688472642754298
 GameObject:
   m_ObjectHideFlags: 0

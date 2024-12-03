@@ -16,7 +16,13 @@ public class PlayerInputManager : MonoBehaviour
     public bool IsRightMousePressed { get; set; }
     public bool IsQPressed { get; set; }
 
+    //임시 변수들
+    public bool IsNonCombo { get; set; }
+    public int count;
+    public int performedCount;
+
     private Player player;
+    public Context ComboContext;
 
     private void Awake()
     {
@@ -38,10 +44,21 @@ public class PlayerInputManager : MonoBehaviour
 
     public void OnSkill(Context context)
     {
+        //Combo Attack
+        if (context.performed && count <= 3 && context.control.name == "leftButton" && !IsNonCombo)
+        {
+            if (context.performed) print($"performedCount : {++performedCount} ");
+            ComboContext = context;
+            count++;
+            print(count);
+            IsSkill = true;
+            IsLeftMousePressed = true;
+        }
+
         if (context.performed && !IsSkill)
         {
             IsSkill = true;
-
+            IsNonCombo = true;
             //if (context.control.name == "leftButton")
             //{
             //    IsLeftMousePressed = true;
