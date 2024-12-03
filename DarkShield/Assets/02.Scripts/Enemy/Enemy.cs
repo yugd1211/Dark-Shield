@@ -23,6 +23,8 @@ public abstract class Enemy : MonoBehaviour
 
     public GameObject coinPrefab;
 
+    public float DestroyTime = 8;
+
     protected virtual void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -47,6 +49,8 @@ public abstract class Enemy : MonoBehaviour
     public abstract void Attack();
     public void TakeDamage(float damage)
     {
+        if (_currentState.GetType() == typeof(DeadState))
+            return ;
         animotor.SetTrigger("Hit");
         health -= damage;
         health = Mathf.Clamp(health, 0, maxHP);
