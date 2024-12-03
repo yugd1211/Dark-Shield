@@ -39,9 +39,7 @@ public class Projectile : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer(target))
-        {
-            //Debug.Log("플레이어가 원거리 공격에 맞음!");
-
+        { 
             other.GetComponent<Unit>().TakeDamage(damage, true);// 투사체 제거
         }
 
