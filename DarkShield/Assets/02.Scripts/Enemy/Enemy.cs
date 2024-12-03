@@ -22,6 +22,7 @@ public abstract class Enemy : MonoBehaviour
     public Animator animotor;
 
     public GameObject coinPrefab;
+    public bool hasDroppedCoin = false;
 
     protected virtual void Start()
     {

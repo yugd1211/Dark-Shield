@@ -1913,7 +1913,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2130262719604435494
 Transform:
   m_ObjectHideFlags: 0
@@ -2019,14 +2019,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f23bbace2173c1c45bd4673f38ee2517, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  player: {fileID: 0}
+  agent: {fileID: 0}
   detectionRange: 15
-  meleeRange: 2
+  attackCooldown: 2
   attackRange: 6
+  lastAttackTime: 0
   health: 1000
   AttackPower: 20
+  maxHP: 200
+  hpBarForeground: {fileID: 0}
+  animotor: {fileID: 0}
+  coinPrefab: {fileID: 0}
   rangedAttackRange: 10
-  attackCooldown: 2
   dashSpeed: 20
   dashDuration: 0.5
   projectilePrefab: {fileID: 2997671593523866240, guid: 7e390d1281d95974ba5775056c98c88a, type: 3}

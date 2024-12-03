@@ -16,7 +16,7 @@ public class ChaosEmperor : Boss
     public ObjectPool objectPool;
     public override void Attack()
     {
-        float distanceToPlayer = Vector3.Distance(transform.position, target.position);
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
         if (distanceToPlayer <= attackRange && Time.time >= lastAttackTime + attackCooldown)
         {
             AttackPattern();
@@ -39,9 +39,9 @@ public class ChaosEmperor : Boss
 
     IEnumerator DashAttack() //대쉬 공격 메서드
     {
-        _animation.SetTrigger("Dash");
+        animotor.SetTrigger("Dash");
         isDashing = true;
-        dashDirection = (target.position - transform.position).normalized;
+        dashDirection = (player.position - transform.position).normalized;
         float startTime = Time.time;
 
         while (Time.time < startTime + dashDuration)
@@ -50,7 +50,7 @@ public class ChaosEmperor : Boss
             yield return null; // 한 프레임 대기
         }
         print("원거리 대쉬 공격 실행");
-        //this.AttackPower = 40;
+        this.AttackPower = 40;
         isDashing = false;
     }
 
@@ -58,10 +58,10 @@ public class ChaosEmperor : Boss
     private void PerformRangedAttack() //원거리 투사체 공격 메서드
     {
 
-        _animation.SetTrigger("RangeAttack");
+        animotor.SetTrigger("RangeAttack");
         Debug.Log("원거리 공격 실행!");
 
-        Vector3 directionToPlayer = (target.position - transform.position).normalized;
+        Vector3 directionToPlayer = (player.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(directionToPlayer.x, 0, directionToPlayer.z)); // y축은 고정
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 10f); // 부드럽게 회전
 
@@ -71,7 +71,7 @@ public class ChaosEmperor : Boss
 
         Projectile fire = projectile.GetComponent<Projectile>();
         fire.target = "Player";
-        fire.Launch(target.position);
+        fire.Launch(player.position);
         this.AttackPower = fire.damage;
 
         StartCoroutine(ReturnProjectileToPool(projectile, 5f));
