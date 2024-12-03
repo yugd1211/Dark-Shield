@@ -7,6 +7,7 @@ public class EnemyManager : MonoBehaviour
 	private readonly List<Enemy> _enemies = new List<Enemy>();
 	
 	public List<Enemy> GetEnemies() => new List<Enemy>(_enemies);
+	
 
 	public void Init(EnemySpawnData enemySpawnData)
 	{
