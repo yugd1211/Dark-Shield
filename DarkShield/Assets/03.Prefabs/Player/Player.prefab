@@ -6579,6 +6579,7 @@ MonoBehaviour:
   playerHealth: {fileID: 0}
   playerAnimator: {fileID: 0}
   mouseLookDir: {fileID: 0}
+  playerDash: {fileID: 0}
   rightHand: {fileID: 5869150831064480869}
   swordPrefab: {fileID: 3994626178766799071, guid: bf59326c3262b4d41bd4612d47a6b2e8, type: 3}
   moveDistance: 8
@@ -6594,9 +6595,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d616afe23edf13b40886d20f02423ec9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashSpeed: 10
   rotateSpeed: 10
-  dashInterval: 0.4
 --- !u!114 &2459746766564888364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6677,6 +6676,8 @@ MonoBehaviour:
   skillData: {fileID: 0}
   dashSpeed: 10
   dashInterval: 0.4
+  maxDashCount: 1
+  maxDashCooltime: 3
 --- !u!1 &7655688472642754298
 GameObject:
   m_ObjectHideFlags: 0

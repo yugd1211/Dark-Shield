@@ -16,6 +16,13 @@ public class PlayerInputManager : MonoBehaviour
     public bool IsRightMousePressed { get; set; }
     public bool IsQPressed { get; set; }
 
+    private Player player;
+
+    private void Awake()
+    {
+        player = GetComponent<Player>();
+    }
+
     public void OnMove(Context context)
     {
         InputMoveDir = context.ReadValue<Vector2>();
@@ -23,7 +30,7 @@ public class PlayerInputManager : MonoBehaviour
 
     public void OnDash(Context context)
     {
-        if (context.performed && !IsDash)
+        if (context.performed && !IsDash && player.playerDash.CanDash())
         {
             IsDash = true;
         }

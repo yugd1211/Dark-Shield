@@ -7,6 +7,11 @@ public class Dash : Skill
 {
     public float dashSpeed = 10f;
     public float dashInterval = 0.4f;
+    public int maxDashCount;
+    public float maxDashCooltime = 1f;
+
+    private float _curDashCooltime = 0f;
+    private int _curDashCount;
 
     private NavMeshAgent _agent;
     //추후에 Dash 이펙트에 사용할 변수들
@@ -27,6 +32,7 @@ public class Dash : Skill
 
     private IEnumerator UseDash()
     {
+        _curDashCount++;
         _agent.isStopped = true;
 
         Vector3 dashDirection = transform.forward;
@@ -40,6 +46,27 @@ public class Dash : Skill
         }
 
         _agent.isStopped = false;
+        if (!CanDash()) StartCoroutine(DashCooltime());
+    }
+
+    //쿨타임이 도는 메서드
+    private IEnumerator DashCooltime()
+    {
+        //현재 쿨타임이 max쿨타임보다 작을때까지
+        while (_curDashCooltime <= maxDashCooltime)
+        {
+            _curDashCooltime += Time.deltaTime;
+            yield return null;
+        }
+
+        _curDashCount = 0;
+        _curDashCooltime = 0f;
+    }
+
+    public bool CanDash()
+    {
+        if (_curDashCount < maxDashCount) return true;
+        else return false;
     }
 
     public override void Init(Player player)

@@ -6224,6 +6224,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7265699774883659522, guid: 238d8185dddf6244fa30dd3dd741b7f9, type: 3}
+      propertyPath: maxDashCooltime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7509375128569891226, guid: 238d8185dddf6244fa30dd3dd741b7f9, type: 3}
       propertyPath: m_Name
       value: Player
