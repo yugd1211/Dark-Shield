@@ -38,11 +38,9 @@ public class Projectile : MonoBehaviour
     public string target;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer(target))
+        if(other.TryGetComponent<IDamageable>(out IDamageable unit))
         {
-            //Debug.Log("플레이어가 원거리 공격에 맞음!");
-
-            other.GetComponent<Unit>().TakeDamage(damage, true);// 투사체 제거
+            unit.TakeDamage(damage, true);
         }
 
         Deactivate();

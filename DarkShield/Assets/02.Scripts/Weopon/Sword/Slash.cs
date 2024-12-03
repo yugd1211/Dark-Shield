@@ -43,7 +43,7 @@ public class Slash : Skill
 
 	private void OnTriggerEnter(Collider other)
 	{
-/*
+
 		if (other.TryGetComponent<IDamageable>(out IDamageable other2))
 		{
 			_colls.Add(other);
@@ -56,14 +56,14 @@ public class Slash : Skill
 			}
 			other2.TakeDamage(damage, false);
 		}
-*/
+
 
 
 		// 임시로 에너미가 데미지를 받기위해서 이렇게 수정함
-        if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        /*if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
 			other.GetComponent<Enemy>().TakeDamage(damage);
-        }
+        }*/
 
 
     }
