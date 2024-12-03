@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public partial class StageManager : MonoBehaviour
+public class StageManager : MonoBehaviour
 {
     public Player player;
     
@@ -33,27 +33,5 @@ public partial class StageManager : MonoBehaviour
     {
         currStage = stage;
         currStage.Init(this);
-    }
-}
-
-public partial class StageManager
-{
-    // 임시 싱글톤
-    private static StageManager _instance;
-    public static StageManager Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = FindObjectOfType<StageManager>();
-                if (_instance == null)
-                {
-                    GameObject container = new GameObject("StageManager");
-                    _instance = container.AddComponent<StageManager>();
-                }
-            }
-            return _instance;
-        }
     }
 }
