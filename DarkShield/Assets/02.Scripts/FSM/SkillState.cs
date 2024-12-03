@@ -1,57 +1,60 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 public class SkillState : IState
 {
-    private Player _player;
+	private Player _player;
 
-    public SkillState(Player player)
-    {
-        _player = player;
-    }
+	public SkillState(Player player)
+	{
+		_player = player;
+	}
 
-    public void OnEnter()
-    {
-        if (_player.playerInputManager.IsRightMousePressed)
-        {
-            _player.curWeopon.UseSkill(ActionType.Skill2);
-        }
-        else if (_player.playerInputManager.IsQPressed)
-        {
-            _player.curWeopon.UseSkill(ActionType.Skill3);
-        }
-    }
+	public void OnEnter()
+	{
+		if (_player.playerInputManager.IsRightMousePressed)
+		{
+			_player.curWeopon.UseSkill(ActionType.Skill2);
+		}
+		else if (_player.playerInputManager.IsQPressed)
+		{
+			_player.curWeopon.UseSkill(ActionType.Skill3);
+		}
+	}
 
-    public void OnUpdate()
-    {
-        //Die
-        if (_player.playerHealth.Death)
-        {
-            _player.playerStateMachine.TransitionTo(_player.playerStateMachine.dieState);
-        }
+	public void OnUpdate()
+	{
+		//Die
+		if (_player.playerHealth.Death)
+		{
+			_player.playerStateMachine.TransitionTo(_player.playerStateMachine.dieState);
+		}
 
-        if (_player.playerInputManager.ComboContext.performed && !_player.playerInputManager.IsNonCombo)
-        {
-            _player.curWeopon.UseSkill(ActionType.Skill1);
-        }
-    }
+		if (_player.playerInputManager.ComboContext.performed && !_player.playerInputManager.IsNonCombo && _player.playerInputManager.ComboContext.control.name == "leftButton")
+		{
+			Debug.Log("1");
+			_player.curWeopon.UseSkill(ActionType.Skill1);
+		}
+	}
 
-    public void OnExit()
-    {
-        _player.playerInputManager.IsLeftMousePressed = false;
-        _player.playerInputManager.IsRightMousePressed = false;
-        _player.playerInputManager.IsQPressed = false;
-        _player.playerInputManager.IsSkill = false;
+	public void OnExit()
+	{
+		_player.playerInputManager.IsLeftMousePressed = false;
+		_player.playerInputManager.IsRightMousePressed = false;
+		_player.playerInputManager.IsQPressed = false;
+		_player.playerInputManager.IsSkill = false;
 
-        //Temp Combo
-        _player.playerInputManager.IsNonCombo = false;
-        _player.playerInputManager.count = 0;
-    }
+		//Temp Combo
+		//_player.playerInputManager.IsNonCombo = false;
+		//_player.playerInputManager.count = 0;
+		_player.playerInputManager.ResetComboState();
+	}
 
-    public void EndSkill()
-    {
-        _player.playerStateMachine.TransitionTo(_player.playerStateMachine.idleState);
-    }
+	public void EndSkill()
+	{
+		_player.playerStateMachine.TransitionTo(_player.playerStateMachine.idleState);
+	}
 }
