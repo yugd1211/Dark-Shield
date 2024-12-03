@@ -1,7 +1,8 @@
+using System.Net.WebSockets;
 using UnityEngine;
 using UnityEngine.AI;
 
-public abstract class Enemy : MonoBehaviour
+public abstract class Enemy : Unit
 {
     public Transform player; // 플레이어 위치
     public NavMeshAgent agent; // NavMeshAgent
@@ -22,6 +23,8 @@ public abstract class Enemy : MonoBehaviour
     public Animator animotor;
 
     public GameObject coinPrefab;
+
+    public float DestroyTime = 8;
 
     protected virtual void Start()
     {
@@ -45,8 +48,17 @@ public abstract class Enemy : MonoBehaviour
     }
 
     public abstract void Attack();
-    public void TakeDamage(float damage)
+
+    public override void Move(Vector3 dir)
     {
+        agent.SetDestination(dir);
+    }
+
+
+    public override void TakeDamage(float damage, bool isHit)
+    {
+        if (_currentState.GetType() == typeof(DeadState))
+            return ;
         animotor.SetTrigger("Hit");
         health -= damage;
         health = Mathf.Clamp(health, 0, maxHP);

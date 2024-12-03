@@ -29,7 +29,7 @@ public class ChaseState : IState
         }
         else
         {
-            enemy.agent.SetDestination(enemy.player.position); // 플레이어를 추적
+            enemy.Move(enemy.player.position);
         }
     }
 
