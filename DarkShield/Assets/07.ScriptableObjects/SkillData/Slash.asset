@@ -17,3 +17,4 @@ MonoBehaviour:
   skillEffect: {fileID: 1949624779417528, guid: e73124b5ba126cc499fb7e927b7a79ac, type: 3}
   destroyAfter: 3
   useLocalPosition: 0
+  isSkillAimingAtMouse: 1

@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionType: 1
-  _skillData: {fileID: 11400000, guid: d7eb39127b9aba240a54d5761c578829, type: 2}
+  skillData: {fileID: 11400000, guid: d7eb39127b9aba240a54d5761c578829, type: 2}
   damage: 20
 --- !u!1 &3994626178766799071
 GameObject:
@@ -96,7 +96,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3994626178766799071}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.33351916, y: 0.9406977, z: -0.0598795, w: 0.01634945}
+  m_LocalRotation: {x: 0.33351728, y: 0.94069827, z: -0.059881046, w: 0.01635138}
   m_LocalPosition: {x: 0.106, y: -0.049, z: -0.04}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -212,5 +212,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionType: 0
-  _skillData: {fileID: 11400000, guid: 610b321dffb13e742bba6b3822daf030, type: 2}
+  skillData: {fileID: 11400000, guid: 610b321dffb13e742bba6b3822daf030, type: 2}
   damage: 100

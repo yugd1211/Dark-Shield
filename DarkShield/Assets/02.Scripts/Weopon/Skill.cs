@@ -3,6 +3,8 @@ using UnityEngine;
 public abstract class Skill : MonoBehaviour
 {
     [HideInInspector] public ActionType actionType;
+    public SOSkill skillData;
+
     public abstract void UseSkill();
 }
 

@@ -8,6 +8,7 @@ public class Player : Unit
     public PlayerInputManager playerInputManager;
     public PlayerHealth playerHealth;
     public Animator playerAnimator;
+    public MouseLook mouseLookDir;
 
     [SerializeField] private Transform rightHand;
     [SerializeField] private GameObject swordPrefab;
@@ -34,6 +35,7 @@ public class Player : Unit
         playerInputManager = GetComponent<PlayerInputManager>();
         playerHealth = GetComponent<PlayerHealth>();
         playerAnimator = GetComponent<Animator>();
+        mouseLookDir = GetComponent<MouseLook>();
         playerStateMachine.Init(playerStateMachine.idleState);
         MoveSpeed = 5;
         curWeopon = Instantiate(swordPrefab, rightHand).GetComponent<Weapon>();
