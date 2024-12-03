@@ -4,10 +4,10 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
 	public EnemySpawner enemySpawner;
+	
 	private readonly List<Enemy> _enemies = new List<Enemy>();
 	
 	public List<Enemy> GetEnemies() => new List<Enemy>(_enemies);
-	
 
 	public void Init(EnemySpawnData enemySpawnData)
 	{
@@ -27,8 +27,4 @@ public class EnemyManager : MonoBehaviour
 		_enemies.Remove(enemy);
 	}
 
-	public void StartSpawning()
-	{
-		enemySpawner?.StartSpawning();
-	}
 }

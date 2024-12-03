@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b6650438ef181e4daa7f529fd398c75, type: 3}
-  m_Name: Stage01
+  m_Name: Stage05
   m_EditorClassIdentifier: 
   waves:
   - enemies:
