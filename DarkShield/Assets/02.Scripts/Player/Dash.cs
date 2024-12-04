@@ -14,6 +14,7 @@ public class Dash : Skill
     private int _curDashCount;
 
     private NavMeshAgent _agent;
+    private Collider _playerCollider;
     //추후에 Dash 이펙트에 사용할 변수들
     //private AnimationEventEffects _eventEffects;
     //private AnimationEventEffects.EffectInfo _effect;
@@ -33,19 +34,21 @@ public class Dash : Skill
     private IEnumerator UseDash()
     {
         _curDashCount++;
-        _agent.isStopped = true;
+        //_agent.isStopped = true;
 
         Vector3 dashDirection = transform.forward;
         float elapsedTime = 0f;
 
+        _playerCollider.enabled = false;
         while (elapsedTime < dashInterval)
         {
             transform.position += dashDirection * dashSpeed * Time.deltaTime;
             elapsedTime += Time.deltaTime;
             yield return null;
         }
+        _playerCollider.enabled = true;
 
-        _agent.isStopped = false;
+        //_agent.isStopped = false;
         if (!CanDash()) StartCoroutine(DashCooltime());
     }
 
@@ -76,6 +79,7 @@ public class Dash : Skill
     public void Init()
     {
         _agent = GetComponent<NavMeshAgent>();
+        _playerCollider = GetComponent<Collider>();
         //Dash 이펙트를 사용하기 위한 초기화 해야 할 변수들
         //_eventEffects = GetComponent<AnimationEventEffects>();
         //_startPositionRotation = transform;
