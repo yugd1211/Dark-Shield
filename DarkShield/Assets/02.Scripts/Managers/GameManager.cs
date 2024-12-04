@@ -36,7 +36,7 @@ public partial class GameManager : MonoBehaviour
 		// 예를들면 Weapon의 Init을 Awake에서 하는 것
 		player = FindObjectOfType<Player>();
 		// player = Instantiate(playerPrefab).GetComponent<Player>();
-		player.Init();
+		// player.Init();
 	}
 }
 

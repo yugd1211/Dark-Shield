@@ -7,10 +7,7 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: Hit
-    m_EventTreshold: 0
+  m_Conditions: []
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 5956177199371651264}
   m_Solo: 0
@@ -97,7 +94,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0.20009637
   m_TransitionOffset: 0.01871387
   m_ExitTime: 0.6929673
-  m_HasExitTime: 0
+  m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -373,17 +370,14 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: MelleAttack
-    m_EventTreshold: 0
+  m_Conditions: []
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 5956177199371651264}
   m_Solo: 0
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0.15751457
   m_TransitionOffset: 0
   m_ExitTime: 0.875
   m_HasExitTime: 1
@@ -413,7 +407,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: a0c9dacff69d25741a7d77ec61b589cc, type: 3}
+  m_Motion: {fileID: 7400000, guid: 5e7374bfb5a1f354583810a38bd54c9e, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
