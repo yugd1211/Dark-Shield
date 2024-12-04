@@ -917,7 +917,7 @@ MonoBehaviour:
   player: {fileID: 0}
   agent: {fileID: 0}
   detectionRange: 15
-  attackCooldown: 1
+  attackCooldown: 4
   attackRange: 3
   lastAttackTime: 0
   health: 200
@@ -926,7 +926,9 @@ MonoBehaviour:
   hpBarForeground: {fileID: 4800335952473966721}
   animotor: {fileID: 0}
   coinPrefab: {fileID: 1151114758848143735, guid: 877220dd96143ed48b9fd03a949f8781, type: 3}
+  coinpool: {fileID: 8128104576699582198, guid: 97f6abeccc868ec41bcb3192152b3b83, type: 3}
   DestroyTime: 8
+  coin: 100
   objectPool: {fileID: 387995671944015093, guid: 6c937bc182161c146a9c9983aed75c36, type: 3}
   projectilePrefab: {fileID: 1029503652214038219, guid: e2b1ce82f800009458d87be38ad563f0, type: 3}
   firePoint: {fileID: 8759113280796953676}
