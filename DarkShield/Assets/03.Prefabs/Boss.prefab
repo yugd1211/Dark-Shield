@@ -2025,12 +2025,15 @@ MonoBehaviour:
   attackCooldown: 2
   attackRange: 6
   lastAttackTime: 0
-  health: 1000
+  health: 800
   AttackPower: 20
-  maxHP: 200
+  maxHP: 800
   hpBarForeground: {fileID: 0}
   animotor: {fileID: 0}
-  coinPrefab: {fileID: 0}
+  coinPrefab: {fileID: 1151114758848143735, guid: 877220dd96143ed48b9fd03a949f8781, type: 3}
+  coinpool: {fileID: 8128104576699582198, guid: 97f6abeccc868ec41bcb3192152b3b83, type: 3}
+  DestroyTime: 8
+  coin: 600
   rangedAttackRange: 10
   dashSpeed: 20
   dashDuration: 0.5

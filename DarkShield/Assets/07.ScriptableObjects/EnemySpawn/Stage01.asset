@@ -18,3 +18,10 @@ MonoBehaviour:
       enemyPrefab: {fileID: 4502777388522414491, guid: aec6dccac925c514fb07577bc269b61f, type: 3}
       count: 3
     spawnFrequency: 1
+  - enemies:
+    - enemyName: meleeEnemy
+      enemyPrefab: {fileID: 4502777388522414491, guid: aec6dccac925c514fb07577bc269b61f, type: 3}
+      count: 3
+    spawnFrequency: 0
+  - enemies: []
+    spawnFrequency: 0
