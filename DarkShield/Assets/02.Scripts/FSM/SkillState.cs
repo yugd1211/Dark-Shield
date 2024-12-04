@@ -35,7 +35,6 @@ public class SkillState : IState
 
 		if (_player.playerInputManager.ComboContext.performed && !_player.playerInputManager.IsNonCombo && _player.playerInputManager.ComboContext.control.name == "leftButton")
 		{
-			Debug.Log("1");
 			_player.curWeopon.UseSkill(ActionType.Skill1);
 		}
 	}
