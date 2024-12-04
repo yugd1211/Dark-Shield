@@ -9,14 +9,10 @@ public abstract class Weapon : MonoBehaviour
 {
     protected Dictionary<ActionType, Skill> skills;
     protected Player player;
-    
-    
-    protected virtual void Awake()
-    {
-        skills = new Dictionary<ActionType, Skill>();
-    }
 
     public abstract void UseSkill(ActionType skillType);
+
+    public abstract void UseSkill(ActionType skillType, int comboCnt);
 
     public void SetSkill(Skill skill)
     {
@@ -26,10 +22,24 @@ public abstract class Weapon : MonoBehaviour
         }
         skills.Add(skill.actionType, skill);
     }
-    
+
+    private void FindSkill()
+    {
+        Skill[] findSkills = GetComponentsInChildren<Skill>();
+        foreach (Skill skill in findSkills)
+        {
+            skill.Init(player);
+            SetSkill(skill);
+        }
+    }
+
     public void Init(Player player)
     {
         this.player = player;
         player.curWeopon = this;
+
+        skills = new Dictionary<ActionType, Skill>();
+
+        FindSkill();
     }
 }
