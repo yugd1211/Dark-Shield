@@ -9,8 +9,7 @@ public class RangedSlash : Skill
     private AnimationEventEffects _eventEffects;
     private AnimationEventEffects.EffectInfo _effect;
     private Transform _startPositionRotation;
-
-    public float damage;
+    private Player _player;
 
     public override void UseSkill()
     {
@@ -30,33 +29,23 @@ public class RangedSlash : Skill
 
     private void OnTriggerEnter(Collider other)
     {
-        /*
-                if (other.TryGetComponent<IDamageable>(out IDamageable other2))
-                {
-                    _colls.Add(other);
-                    foreach (Collider coll in _colls)
-                    {
-                        if (_colls.Contains(coll))
-                        {
-                            continue;
-                        }
-                    }
-                    other2.TakeDamage(damage, false);
-                }
-        */
-
-
-        // 임시로 에너미가 데미지를 받기위해서 이렇게 수정함
-        if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        if (other.TryGetComponent<IDamageable>(out IDamageable damageable))
         {
-            other.GetComponent<Enemy>().TakeDamage(damage, false);
+            _colls.Add(other);
+            foreach (Collider coll in _colls)
+            {
+                if (_colls.Contains(coll))
+                {
+                    continue;
+                }
+            }
+            damageable.TakeDamage(_player.playerStat.GetFinalDamage(this), false);
         }
-
-
     }
 
     public override void Init(Player player)
     {
+        _player = player;
         _slashArea = GetComponent<Collider>();
         _colls = new List<Collider>();
         _eventEffects = player.GetComponent<AnimationEventEffects>();

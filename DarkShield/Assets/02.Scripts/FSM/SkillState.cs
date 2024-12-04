@@ -33,12 +33,12 @@ public class SkillState : IState
             _player.playerStateMachine.TransitionTo(_player.playerStateMachine.dieState);
         }
 
+        //ComboAttack
         if (_player.playerInputManager.ComboContext.performed && !_player.playerInputManager.IsNonCombo
             && _player.playerInputManager.ComboContext.control.name == "leftButton" && !_player.playerInputManager.IsComboTrigger)
         {
             _player.playerInputManager.count++;
-            //1 == true,  0 == false
-            _player.playerInputManager.ComboTrigger(1);
+            _player.playerInputManager.ComboTrigger(1); //1 == true,  0 == false
             _player.curWeopon.UseSkill(ActionType.Skill1);
         }
     }
@@ -50,7 +50,7 @@ public class SkillState : IState
         _player.playerInputManager.IsQPressed = false;
         _player.playerInputManager.IsSkill = false;
 
-        //Temp Combo
+        //Combo Init
         _player.playerInputManager.IsNonCombo = false;
         _player.playerInputManager.count = 0;
         _player.playerInputManager.ComboTrigger(0);

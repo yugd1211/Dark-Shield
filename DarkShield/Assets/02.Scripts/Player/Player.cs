@@ -10,14 +10,10 @@ public class Player : Unit
     public Animator playerAnimator;
     public MouseLook mouseLookDir;
     public Dash playerDash;
+    public PlayerStat playerStat;
 
     [SerializeField] private Transform rightHand;
     [SerializeField] private GameObject swordPrefab;
-
-    private void Awake()
-    {
-        // Init();
-    }
 
     private void Update()
     {
@@ -38,6 +34,7 @@ public class Player : Unit
         playerAnimator = GetComponent<Animator>();
         mouseLookDir = GetComponent<MouseLook>();
         playerDash = GetComponent<Dash>();
+        playerStat = GetComponent<PlayerStat>();
         playerStateMachine.Init(playerStateMachine.idleState);
         MoveSpeed = 5;
         curWeopon = Instantiate(swordPrefab, rightHand).GetComponent<Weapon>();
@@ -59,7 +56,6 @@ public class Player : Unit
 
     public void EndSkill()
     {
-        print("endSkill이 호출 됌.");
         playerStateMachine.skillState.EndSkill();
     }
 

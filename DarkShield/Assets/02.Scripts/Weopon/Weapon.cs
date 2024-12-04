@@ -9,6 +9,7 @@ public abstract class Weapon : MonoBehaviour
 {
     protected Dictionary<ActionType, Skill> skills;
     protected Player player;
+    public float damage;
 
     public abstract void UseSkill(ActionType skillType);
 

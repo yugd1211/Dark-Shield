@@ -16,13 +16,13 @@ public class PlayerInputManager : MonoBehaviour
     public bool IsRightMousePressed { get; set; }
     public bool IsQPressed { get; set; }
 
-    //임시 변수들
+    //ComboAttack 변수들
     public bool IsNonCombo { get; set; }
-    public int count;
+    public int count { get; set; }
     public bool IsComboTrigger { get; set; }
+    public Context ComboContext;
 
     private Player player;
-    public Context ComboContext;
 
     private void Awake()
     {
@@ -68,6 +68,7 @@ public class PlayerInputManager : MonoBehaviour
         }
     }
 
+    //애니메이션 이벤트 메서드에서 사용함.
     public void ComboTrigger(int number)
     {
         IsComboTrigger = (number == 0) ? false : true;

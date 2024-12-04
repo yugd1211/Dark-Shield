@@ -6298,6 +6298,7 @@ GameObject:
   - component: {fileID: 8739916437266222326}
   - component: {fileID: 8906646681993283997}
   - component: {fileID: 7265699774883659522}
+  - component: {fileID: 2129013575976396667}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -6592,6 +6593,7 @@ MonoBehaviour:
   playerAnimator: {fileID: 0}
   mouseLookDir: {fileID: 0}
   playerDash: {fileID: 0}
+  playerStat: {fileID: 0}
   rightHand: {fileID: 5869150831064480869}
   swordPrefab: {fileID: 3994626178766799071, guid: bf59326c3262b4d41bd4612d47a6b2e8, type: 3}
   moveDistance: 8
@@ -6620,8 +6622,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00f314e8a77b3c5439560833537d8bf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1000
+  maxHealth: 0
   health: 0
+  _playerData: {fileID: 11400000, guid: 2906d60c01ffc7845a93a9a858ec8b07, type: 2}
 --- !u!114 &5677061061668729711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6634,8 +6637,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fe93efd9bfa81d43b90f8f6960187d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 0
-  performedCount: 0
 --- !u!114 &8080719680001475292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6688,10 +6689,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionType: 0
   skillData: {fileID: 0}
+  damage: 0
   dashSpeed: 10
   dashInterval: 0.4
   maxDashCount: 1
   maxDashCooltime: 0.5
+--- !u!114 &2129013575976396667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7509375128569891226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fdc7cde2bc673341a79d1b6a84f7cd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerData: {fileID: 11400000, guid: 2906d60c01ffc7845a93a9a858ec8b07, type: 2}
 --- !u!1 &7655688472642754298
 GameObject:
   m_ObjectHideFlags: 0
