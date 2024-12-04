@@ -2031,7 +2031,7 @@ MonoBehaviour:
   player: {fileID: 0}
   agent: {fileID: 0}
   detectionRange: 15
-  attackCooldown: 2
+  attackCooldown: 3
   attackRange: 2
   lastAttackTime: 0
   health: 200
@@ -2040,7 +2040,9 @@ MonoBehaviour:
   hpBarForeground: {fileID: 3575503426541293975}
   animotor: {fileID: 0}
   coinPrefab: {fileID: 0}
+  coinpool: {fileID: 0}
   DestroyTime: 8
+  coin: 0
 --- !u!1 &4992612314972088132
 GameObject:
   m_ObjectHideFlags: 0

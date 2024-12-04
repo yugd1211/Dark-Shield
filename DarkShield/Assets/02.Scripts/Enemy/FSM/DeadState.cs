@@ -14,10 +14,7 @@ public class DeadState : IState
     {
         enemy.animotor.SetTrigger("Death");
         GameObject.Destroy(enemy.gameObject, enemy.DestroyTime); // 2초 뒤 적 제거
-        if (enemy.coinPrefab != null)
-        {
-            GameObject.Instantiate(enemy.coinPrefab, enemy.transform.position, Quaternion.identity);
-        }
+        enemy.DropCoin();
     }
 
     public void OnUpdate()

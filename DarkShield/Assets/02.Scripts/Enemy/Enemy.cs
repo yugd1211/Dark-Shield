@@ -24,7 +24,11 @@ public abstract class Enemy : Unit
 
     public GameObject coinPrefab;
 
+    public ObjectPool coinpool;
+
     public float DestroyTime = 8;
+
+    public int coin;
 
     protected virtual void Start()
     {
@@ -75,4 +79,19 @@ public abstract class Enemy : Unit
     {
         FindObjectOfType<EnemyManager>().RemoveEnemy(this);
     }
+    public void DropCoin()
+    {
+        if(coinpool != null)
+        {
+            GameObject CoinPick = coinpool.GetObject();
+            CoinPick.GetComponent<CoinPick>().coinValue = coin;
+            if (CoinPick != null)
+            {
+                CoinPick.transform.position = transform.position; // 적 위치에 배치
+                CoinPick.transform.rotation = transform.rotation;
+                CoinPick.SetActive(true);
+            }
+        }
+    }
+
 }

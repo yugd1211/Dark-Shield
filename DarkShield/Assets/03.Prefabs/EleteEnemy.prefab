@@ -1991,10 +1991,12 @@ MonoBehaviour:
   health: 800
   AttackPower: 20
   maxHP: 800
-  hpBarForeground: {fileID: 0}
+  hpBarForeground: {fileID: 7621828671350864588, guid: 7257c17f3f89f764986b4a0f70c2802e, type: 3}
   animotor: {fileID: 0}
-  coinPrefab: {fileID: 0}
+  coinPrefab: {fileID: 1151114758848143735, guid: 877220dd96143ed48b9fd03a949f8781, type: 3}
+  coinpool: {fileID: 8128104576699582198, guid: 97f6abeccc868ec41bcb3192152b3b83, type: 3}
   DestroyTime: 8
+  coin: 300
   rangedAttackRange: 10
   dashSpeed: 20
   dashDuration: 0.5
