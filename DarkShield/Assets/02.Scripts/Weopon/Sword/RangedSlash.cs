@@ -49,7 +49,7 @@ public class RangedSlash : Skill
         // 임시로 에너미가 데미지를 받기위해서 이렇게 수정함
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
-            other.GetComponent<Enemy>().TakeDamage(damage);
+            other.GetComponent<Enemy>().TakeDamage(damage, false);
         }
 
 
