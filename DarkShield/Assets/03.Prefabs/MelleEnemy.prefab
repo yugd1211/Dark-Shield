@@ -1900,7 +1900,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8097689291981198415
 Transform:
   m_ObjectHideFlags: 0
@@ -2032,13 +2032,15 @@ MonoBehaviour:
   agent: {fileID: 0}
   detectionRange: 15
   attackCooldown: 2
-  attackRange: 1
+  attackRange: 2
   lastAttackTime: 0
   health: 200
   AttackPower: 20
   maxHP: 200
   hpBarForeground: {fileID: 3575503426541293975}
-  _animotor: {fileID: 0}
+  animotor: {fileID: 0}
+  coinPrefab: {fileID: 0}
+  DestroyTime: 8
 --- !u!1 &4992612314972088132
 GameObject:
   m_ObjectHideFlags: 0
