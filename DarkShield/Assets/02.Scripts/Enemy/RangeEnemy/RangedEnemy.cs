@@ -11,13 +11,13 @@ public class RangedEnemy : Enemy
     private Animator _animator;
     private void Awake()
     {
-        attackRange = 10f;
         _animator = GetComponent<Animator>();
     }
 
     public override void Attack()
     {
-        if (Time.time >= lastAttackTime + attackCooldown)
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        if (distanceToPlayer <= attackRange && Time.time >= lastAttackTime + attackCooldown)
         {
             _animator.SetBool("IsRangeAttack", true);
             RangedAttack();
@@ -34,7 +34,7 @@ public class RangedEnemy : Enemy
 
             Vector3 directionToPlayer = (player.position - transform.position).normalized;
             Quaternion lookRotation = Quaternion.LookRotation(new Vector3(directionToPlayer.x, 0, directionToPlayer.z)); // y축은 고정
-            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 10f); // 부드럽게 회전
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 360f); // 부드럽게 회전
 
             GameObject projectile = objectPool.GetObject();
             projectile.transform.position = firePoint.position;
@@ -48,7 +48,10 @@ public class RangedEnemy : Enemy
 
             lastAttackTime = Time.time;
 
+            SetState(new EnemyIdleState(this));
+
             StartCoroutine(ReturnProjectileToPool(projectile, 2f));
+
         }
     }
 

@@ -1992,7 +1992,9 @@ MonoBehaviour:
   AttackPower: 20
   maxHP: 800
   hpBarForeground: {fileID: 0}
-  _animotor: {fileID: 0}
+  animotor: {fileID: 0}
+  coinPrefab: {fileID: 0}
+  DestroyTime: 8
   rangedAttackRange: 10
   dashSpeed: 20
   dashDuration: 0.5
