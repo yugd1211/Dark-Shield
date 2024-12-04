@@ -10,11 +10,6 @@ public class TeleportSlash : Skill
 
     public float damage;
 
-    private void Start()
-    {
-        _effect = new AnimationEventEffects.EffectInfo(skillData, _startPositionRotation);
-    }
-
     public override void UseSkill()
     {
         _eventEffects.SetEffects(_effect);
@@ -38,6 +33,8 @@ public class TeleportSlash : Skill
         _startPositionRotation = _teleportSlashArea.transform;
 
         _eventEffects = player.GetComponent<AnimationEventEffects>();
+        _effect = new AnimationEventEffects.EffectInfo(skillData, _startPositionRotation);
+
         actionType = skillData.ActionType;
     }
 }
