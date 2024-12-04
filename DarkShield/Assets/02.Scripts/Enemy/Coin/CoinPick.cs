@@ -15,7 +15,7 @@ public class CoinPick : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player")) // 플레이어와 충돌하면
         {
-            CoinManager.instance.AddCoins(coinValue); // 코인 증가
+            GameManager.Instance.gold.AddGold(coinValue); // 플레이어의 골드에 코인의 값만큼 추가
             if(coinPool != null)
             {
                 coinPool.ReturnObject(this.gameObject);
