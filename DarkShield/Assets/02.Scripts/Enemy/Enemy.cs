@@ -67,13 +67,12 @@ public abstract class Enemy : Unit
         if (health <= 0)
         {
             SetState(new DeadState(this));
+            Die();
         }
     }
 
     public void Die()
     {
-        animotor.SetTrigger("Death");
         FindObjectOfType<EnemyManager>().RemoveEnemy(this);
-        Destroy(gameObject, 5f);
     }
 }

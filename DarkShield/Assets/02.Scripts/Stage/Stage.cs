@@ -18,6 +18,7 @@ public class Stage : MonoBehaviour
 		if (player == true && playerStartPos == true)
 			player.playerMovement.Spawn(playerStartPos.position);
 		portal = GetComponentInChildren<Portal>();
+		portal.Init();
 	}
 	
 	public void MoveNextStage()

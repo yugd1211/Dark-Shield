@@ -33,7 +33,6 @@ public class EnemySpawner : MonoBehaviour
 		while (_currentWave < _enemySpawnData.waves.Count)
 		{
 			EnemySpawnWave wave = _enemySpawnData.waves[_currentWave];
-
 			foreach (EnemySpawnInfo enemyInfo in wave.enemies)
 			{
 				for (int i = 0; i < enemyInfo.count; i++)
