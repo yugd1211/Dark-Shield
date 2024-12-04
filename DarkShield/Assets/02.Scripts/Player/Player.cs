@@ -59,6 +59,7 @@ public class Player : Unit
 
     public void EndSkill()
     {
+        print("endSkill이 호출 됌.");
         playerStateMachine.skillState.EndSkill();
     }
 

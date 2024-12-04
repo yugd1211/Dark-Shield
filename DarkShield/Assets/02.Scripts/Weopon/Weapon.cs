@@ -12,8 +12,6 @@ public abstract class Weapon : MonoBehaviour
 
     public abstract void UseSkill(ActionType skillType);
 
-    public abstract void UseSkill(ActionType skillType, int comboCnt);
-
     public void SetSkill(Skill skill)
     {
         if (skills.ContainsKey(skill.actionType))
