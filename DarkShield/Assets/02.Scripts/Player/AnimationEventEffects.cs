@@ -48,6 +48,7 @@ public class AnimationEventEffects : MonoBehaviour
 
 	public void EndEffect()
 	{
+		print("이펙트 프리팹 지워짐");
 		effects.Clear();
 	}
 }

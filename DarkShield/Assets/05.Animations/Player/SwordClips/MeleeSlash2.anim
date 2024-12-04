@@ -115930,6 +115930,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 1.7333333
+    functionName: ComboTrigger
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 2.2
     functionName: InstantiateEffect
     data: 
@@ -115937,22 +115944,15 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 2.2333333
-    functionName: EndEffect
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 2.3333333
-    functionName: ComboTrigger
+  - time: 3.8333333
+    functionName: EndSkill
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 3.8333333
-    functionName: EndSkill
+    functionName: EndEffect
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
