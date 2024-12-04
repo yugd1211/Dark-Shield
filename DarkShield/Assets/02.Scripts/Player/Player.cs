@@ -16,7 +16,7 @@ public class Player : Unit
 
     private void Awake()
     {
-        Init();
+        // Init();
     }
 
     private void Update()
@@ -29,7 +29,7 @@ public class Player : Unit
         playerStateMachine.OnUpdate();
     }
 
-    private void Init()
+    public void Init()
     {
         playerStateMachine = new StateMachine(this);
         playerMovement = GetComponent<PlayerMovement>();

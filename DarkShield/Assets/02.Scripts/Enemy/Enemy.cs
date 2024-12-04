@@ -30,7 +30,7 @@ public abstract class Enemy : Unit
     {
         agent = GetComponent<NavMeshAgent>();
         animotor = GetComponent<Animator>();
-        player = GameObject.Find("Player").transform;
+        player = GameManager.Instance.player.transform;
         SetState(new EnemyIdleState(this));
 
     }

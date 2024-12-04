@@ -9,7 +9,7 @@ public class EnemySpawner : MonoBehaviour
 	private EnemySpawnData _enemySpawnData;
 	private int _currentWave = 0;
 	private bool _isSpawning = false;
-
+	private Transform[] _enemySpawnPoint;
 	public void Init(EnemyManager enemyManager, EnemySpawnData enemySpawnData)
 	{
 		_enemyManager = enemyManager;
@@ -19,8 +19,9 @@ public class EnemySpawner : MonoBehaviour
 
 	private Coroutine _spawnCoroutine;
 
-	public void StartSpawning()
+	public void StartSpawning(Transform[] enemySpawnPoint)
 	{
+		_enemySpawnPoint = enemySpawnPoint;
 		if (_spawnCoroutine == null)
 		{
 			_spawnCoroutine = StartCoroutine(SpawnEnemies());
@@ -32,20 +33,24 @@ public class EnemySpawner : MonoBehaviour
 		isAllWavesCompleted = false;
 		while (_currentWave < _enemySpawnData.waves.Count)
 		{
-			EnemySpawnWave wave = _enemySpawnData.waves[_currentWave];
-			foreach (EnemySpawnInfo enemyInfo in wave.enemies)
-			{
-				for (int i = 0; i < enemyInfo.count; i++)
-				{
-					Enemy newEnemy = Instantiate(enemyInfo.enemyPrefab, transform.position, Quaternion.identity);
-					_enemyManager.AddEnemy(newEnemy);
-					yield return new WaitForSeconds(wave.spawnFrequency);
-				}
-			}
-			yield return new WaitUntil(() => _enemyManager.GetEnemies().Count == 0);
+			yield return StartCoroutine(SpawnWave(_enemySpawnData.waves[_currentWave]));
 			_currentWave++;
 		}
 		isAllWavesCompleted = true;
 		_spawnCoroutine = null;
+	}
+
+	private IEnumerator SpawnWave(EnemySpawnWave wave)
+	{
+		foreach (EnemySpawnInfo enemyInfo in wave.enemies)
+		{
+			for (int i = 0; i < enemyInfo.count; i++)
+			{
+				Enemy newEnemy = Instantiate(enemyInfo.enemyPrefab, _enemySpawnPoint[Random.Range(0, _enemySpawnPoint.Length)].position, Quaternion.identity);
+				_enemyManager.AddEnemy(newEnemy);
+				yield return new WaitForSeconds(wave.spawnFrequency);
+			}
+		}
+		yield return new WaitUntil(() => _enemyManager.GetEnemies().Count == 0);
 	}
 }
