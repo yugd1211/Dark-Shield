@@ -1,4 +1,3 @@
-using TMPro.EditorUtilities;
 using UnityEngine;
 
 public class Stage : MonoBehaviour
@@ -18,6 +17,10 @@ public class Stage : MonoBehaviour
 		if (player == true && playerStartPos == true)
 			player.playerMovement.Spawn(playerStartPos.position);
 		portal = GetComponentInChildren<Portal>();
+		if (this as ShopStage)
+			portal.OnCanInteract += () => true;
+		else if (this as BattleStage)
+			portal.OnCanInteract += () => GameManager.Instance.enemyManager.enemySpawner.isAllWavesCompleted;
 		portal.Init();
 	}
 	

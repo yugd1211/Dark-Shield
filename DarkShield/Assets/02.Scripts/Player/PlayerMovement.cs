@@ -6,12 +6,9 @@ using UnityEngine.AI;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
-    public float dashSpeed;
     public float rotateSpeed;
-    public float dashInterval;
 
     private NavMeshAgent _agent;
-    private Player _player;
 
     private void Awake()
     {
@@ -27,41 +24,19 @@ public class PlayerMovement : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotateSpeed * Time.deltaTime);
     }
 
-    public void Dash()
+    public void Move(Vector3 actualMove)
     {
-        StartCoroutine(DashCoroutine());
-    }
-    private IEnumerator DashCoroutine()
-    {
-        _agent.isStopped = true;
+        _agent.Move(actualMove * Time.deltaTime);
 
-        Vector3 dashDirection = transform.forward;
-        float elapsedTime = 0f;
-
-        //_player.playerAnimator.SetTrigger("Dash");
-        while (elapsedTime < dashInterval)
-        {
-            transform.position += dashDirection * dashSpeed * Time.deltaTime;
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-
-        _agent.isStopped = false;
-    }
-
-    private void Init()
-    {
-        _agent = GetComponent<NavMeshAgent>();
-        _player = GameObject.Find("Player").GetComponent<Player>();
     }
 
     public void Spawn(Vector3 position)
     {
         _agent.Warp(position);
     }
-    public void Move(Vector3 actualMove)
-    {
-        _agent.Move(actualMove * Time.deltaTime);
 
+    private void Init()
+    {
+        _agent = GetComponent<NavMeshAgent>();
     }
 }

@@ -1833,6 +1833,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6275858903724563461}
   - component: {fileID: 6283195601198500255}
+  - component: {fileID: 8312176924148121856}
   m_Layer: 3
   m_Name: TeleportSlashCollider
   m_TagString: Untagged
@@ -1848,8 +1849,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4824407343307800458}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.47, y: 0.46, z: 10.5}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1879,6 +1880,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 7}
   m_Center: {x: 0, y: 0.73, z: 3.75}
+--- !u!114 &8312176924148121856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4824407343307800458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 896e84875de26e842b37f972d3b81cde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  colls: []
 --- !u!1 &4890962561594659658
 GameObject:
   m_ObjectHideFlags: 0
@@ -6273,14 +6288,16 @@ GameObject:
   - component: {fileID: 2464802440761205255}
   - component: {fileID: 4961689719385396982}
   - component: {fileID: 9149616440625570863}
+  - component: {fileID: 6583324739478104877}
+  - component: {fileID: 4439788565868254952}
   - component: {fileID: 1296944447731897333}
   - component: {fileID: 4435017900139555850}
   - component: {fileID: 2459746766564888364}
-  - component: {fileID: 4439788565868254952}
   - component: {fileID: 5677061061668729711}
-  - component: {fileID: 6583324739478104877}
   - component: {fileID: 8080719680001475292}
   - component: {fileID: 8739916437266222326}
+  - component: {fileID: 8906646681993283997}
+  - component: {fileID: 7265699774883659522}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -6384,55 +6401,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
---- !u!114 &1296944447731897333
-MonoBehaviour:
+--- !u!195 &6583324739478104877
+NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7509375128569891226}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f71f82e70ddfc14091c7ae35358df23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  curWeopon: {fileID: 0}
-  playerMovement: {fileID: 0}
-  playerInputManager: {fileID: 0}
-  playerHealth: {fileID: 0}
-  playerAnimator: {fileID: 0}
-  rightHand: {fileID: 5869150831064480869}
-  swordPrefab: {fileID: 3994626178766799071, guid: bf59326c3262b4d41bd4612d47a6b2e8, type: 3}
-  moveDistance: 8
---- !u!114 &4435017900139555850
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7509375128569891226}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d616afe23edf13b40886d20f02423ec9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dashSpeed: 10
-  rotateSpeed: 10
-  dashInterval: 0.4
---- !u!114 &2459746766564888364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7509375128569891226}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00f314e8a77b3c5439560833537d8bf7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 1000
-  health: 0
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 0
+  m_AutoRepath: 1
+  m_Height: 1.23
+  m_BaseOffset: 0.02
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!114 &4439788565868254952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6495,7 +6485,19 @@ MonoBehaviour:
     m_ActionId: 6c2ab1b8-8984-453a-af3d-a3c78ae1679a
     m_ActionName: Player/Attack[/Mouse/leftButton,/Keyboard/enter]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8739916437266222326}
+        m_TargetAssemblyTypeName: Interactor, Assembly-CSharp
+        m_MethodName: OnInteract
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 852140f2-7766-474d-8707-702459ba45f3
     m_ActionName: Player/Interact[/Keyboard/e]
   - m_PersistentCalls:
@@ -6571,6 +6573,55 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1296944447731897333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7509375128569891226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f71f82e70ddfc14091c7ae35358df23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curWeopon: {fileID: 0}
+  playerMovement: {fileID: 0}
+  playerInputManager: {fileID: 0}
+  playerHealth: {fileID: 0}
+  playerAnimator: {fileID: 0}
+  mouseLookDir: {fileID: 0}
+  playerDash: {fileID: 0}
+  rightHand: {fileID: 5869150831064480869}
+  swordPrefab: {fileID: 3994626178766799071, guid: bf59326c3262b4d41bd4612d47a6b2e8, type: 3}
+  moveDistance: 8
+--- !u!114 &4435017900139555850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7509375128569891226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d616afe23edf13b40886d20f02423ec9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateSpeed: 10
+--- !u!114 &2459746766564888364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7509375128569891226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00f314e8a77b3c5439560833537d8bf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1000
+  health: 0
 --- !u!114 &5677061061668729711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6583,28 +6634,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fe93efd9bfa81d43b90f8f6960187d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!195 &6583324739478104877
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7509375128569891226}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 0
-  m_AutoRepath: 1
-  m_Height: 1.23
-  m_BaseOffset: 0.02
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  count: 0
+  performedCount: 0
 --- !u!114 &8080719680001475292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6631,6 +6662,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectionRadius: 2
+--- !u!114 &8906646681993283997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7509375128569891226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 903c8ba24aac8144e92d4765e11f8acb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7265699774883659522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7509375128569891226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d47fbeb7eac15848b075ff804096a3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionType: 0
+  skillData: {fileID: 0}
+  dashSpeed: 10
+  dashInterval: 0.4
+  maxDashCount: 1
+  maxDashCooltime: 0.5
 --- !u!1 &7655688472642754298
 GameObject:
   m_ObjectHideFlags: 0

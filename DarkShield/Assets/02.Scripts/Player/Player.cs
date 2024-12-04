@@ -8,13 +8,15 @@ public class Player : Unit
     public PlayerInputManager playerInputManager;
     public PlayerHealth playerHealth;
     public Animator playerAnimator;
+    public MouseLook mouseLookDir;
+    public Dash playerDash;
 
     [SerializeField] private Transform rightHand;
     [SerializeField] private GameObject swordPrefab;
 
     private void Awake()
     {
-        Init();
+        // Init();
     }
 
     private void Update()
@@ -27,13 +29,15 @@ public class Player : Unit
         playerStateMachine.OnUpdate();
     }
 
-    private void Init()
+    public void Init()
     {
         playerStateMachine = new StateMachine(this);
         playerMovement = GetComponent<PlayerMovement>();
         playerInputManager = GetComponent<PlayerInputManager>();
         playerHealth = GetComponent<PlayerHealth>();
         playerAnimator = GetComponent<Animator>();
+        mouseLookDir = GetComponent<MouseLook>();
+        playerDash = GetComponent<Dash>();
         playerStateMachine.Init(playerStateMachine.idleState);
         MoveSpeed = 5;
         curWeopon = Instantiate(swordPrefab, rightHand).GetComponent<Weapon>();
