@@ -6299,6 +6299,7 @@ GameObject:
   - component: {fileID: 8906646681993283997}
   - component: {fileID: 7265699774883659522}
   - component: {fileID: 2129013575976396667}
+  - component: {fileID: 6023087968631231379}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -6597,6 +6598,7 @@ MonoBehaviour:
   playerAnimationEventEffects: {fileID: 0}
   rightHand: {fileID: 5869150831064480869}
   swordPrefab: {fileID: 3994626178766799071, guid: bf59326c3262b4d41bd4612d47a6b2e8, type: 3}
+  isEquip: 0
   moveDistance: 8
   isDamaged: 0
 --- !u!114 &4435017900139555850
@@ -6709,6 +6711,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerData: {fileID: 11400000, guid: 2906d60c01ffc7845a93a9a858ec8b07, type: 2}
+--- !u!114 &6023087968631231379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7509375128569891226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38d0448d63fde8440ad6d941ad44a686, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: {r: 0, g: 0, b: 0, a: 0}
+  damage: 10
+  scale: 1
 --- !u!1 &7655688472642754298
 GameObject:
   m_ObjectHideFlags: 0
