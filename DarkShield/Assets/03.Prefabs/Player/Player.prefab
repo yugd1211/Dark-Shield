@@ -6597,6 +6597,7 @@ MonoBehaviour:
   playerAnimationEventEffects: {fileID: 0}
   rightHand: {fileID: 5869150831064480869}
   swordPrefab: {fileID: 3994626178766799071, guid: bf59326c3262b4d41bd4612d47a6b2e8, type: 3}
+  isEquiped: 0
   moveDistance: 8
   isDamaged: 0
 --- !u!114 &4435017900139555850

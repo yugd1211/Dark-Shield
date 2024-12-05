@@ -17,7 +17,7 @@ public class Player : Unit
     [SerializeField] private GameObject swordPrefab;
 
     //무기 장착
-    public bool isEquip;
+    public bool isEquiped;
 
     private void Update()
     {
@@ -49,7 +49,7 @@ public class Player : Unit
         playerAnimator.runtimeAnimatorController = weapon.animController;
         curWeopon = Instantiate(weapon.weaponPrefab, rightHand).GetComponent<Weapon>();
         curWeopon.Init(this);
-        isEquip = true;
+        isEquiped = true;
     }
 
     public float moveDistance;

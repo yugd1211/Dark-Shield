@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting.FullSerializer;
+using UnityEditor;
 using UnityEngine;
 using static UnityEditor.Timeline.TimelinePlaybackControls;
 
@@ -33,9 +34,15 @@ public class SkillState : IState
             _player.playerStateMachine.TransitionTo(_player.playerStateMachine.dieState);
         }
 
-        //전환중일 때 클릭을 막아 놔야 함.
+        AnimatorStateInfo stateInfo = _player.playerAnimator.GetCurrentAnimatorStateInfo(0);
+        Debug.Log(stateInfo.IsName("Combo2"));
+        if ((stateInfo.IsName("Skill1") || stateInfo.IsName("Combo2") || stateInfo.IsName("Combo3")) && stateInfo.normalizedTime >= 0.9f)
+        {
+            _player.playerAnimator.ResetTrigger("Skill1");
+        }
+
         //ComboAttack
-        if (!_player.playerStateMachine.IsTransitioning && _player.playerInputManager.ComboContext.performed && !_player.playerInputManager.IsNonCombo
+        if (_player.playerInputManager.ComboContext.performed && !_player.playerInputManager.IsNonCombo
             && _player.playerInputManager.ComboContext.control.name == "leftButton" && !_player.playerInputManager.IsComboTrigger)
         {
             if (_player.playerStateMachine.CurState != _player.playerStateMachine.skillState) return;
@@ -62,6 +69,7 @@ public class SkillState : IState
 
     public void EndSkill()
     {
+        //Debug.Log("EndSkill이 호출 됌.");
         _player.playerStateMachine.TransitionTo(_player.playerStateMachine.idleState);
     }
 }

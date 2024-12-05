@@ -1614,7 +1614,9 @@ MonoBehaviour:
   - {fileID: 3314756218244737361, guid: 8ade9da1a323cdd45bb1156dc84aa3b8, type: 3}
   shopStagePrefab: {fileID: 370360336871808685, guid: 47c599e90e453484c83165e5d98ddaea, type: 3}
   bossStagePrefab: {fileID: 0}
+  startStagePrefab: {fileID: 370360336871808685, guid: 15fc19ebf4f8382469a8a92ed91a292c, type: 3}
   currStage: {fileID: 0}
+  currentStageIndex: 0
 --- !u!1 &1373705206
 GameObject:
   m_ObjectHideFlags: 0

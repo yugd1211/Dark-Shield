@@ -46,9 +46,9 @@ public class PlayerInputManager : MonoBehaviour
 
     public void OnSkill(Context context)
     {
-        if (!_player.isEquip) return;
+        if (!_player.isEquiped) return;
         //Combo Attack
-        if (context.performed && count < 3 && context.control.name == "leftButton" && !IsNonCombo && !IsComboTrigger
+        if (context.performed && count < 3 && context.control.name == "leftButton" && !IsNonCombo
             && firstComboAttack)
         {
             firstComboAttack = false;

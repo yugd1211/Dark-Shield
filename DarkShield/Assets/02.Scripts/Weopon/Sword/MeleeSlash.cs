@@ -11,7 +11,11 @@ public class MeleeSlash : Skill
 
     public override void UseSkill()
     {
-        if (_eventEffects.effects.Count == 0) _eventEffects.SetEffects(_effect);
+        if (_eventEffects.effects.Count == 0)
+        {
+            //print("이펙트 세팅");
+            _eventEffects.SetEffects(_effect);
+        }
     }
 
 
