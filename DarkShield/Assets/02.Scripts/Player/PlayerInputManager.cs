@@ -20,13 +20,15 @@ public class PlayerInputManager : MonoBehaviour
     public bool IsNonCombo { get; set; }
     public int count { get; set; }
     public bool IsComboTrigger { get; set; }
+    public bool firstComboAttack { get; set; }
     public Context ComboContext;
 
-    private Player player;
+    private Player _player;
 
     private void Awake()
     {
-        player = GetComponent<Player>();
+        _player = GetComponent<Player>();
+        firstComboAttack = true;
     }
 
     public void OnMove(Context context)
@@ -36,7 +38,7 @@ public class PlayerInputManager : MonoBehaviour
 
     public void OnDash(Context context)
     {
-        if (context.performed && !IsDash && player.playerDash.CanDash())
+        if (context.performed && !IsDash && _player.playerDash.CanDash() && !IsSkill)
         {
             IsDash = true;
         }
@@ -44,9 +46,12 @@ public class PlayerInputManager : MonoBehaviour
 
     public void OnSkill(Context context)
     {
+        if (!_player.isEquip) return;
         //Combo Attack
-        if (context.performed && count < 3 && context.control.name == "leftButton" && !IsNonCombo)
+        if (context.performed && count < 3 && context.control.name == "leftButton" && !IsNonCombo && !IsComboTrigger
+            && firstComboAttack)
         {
+            firstComboAttack = false;
             ComboContext = context;
             IsSkill = true;
             IsLeftMousePressed = true;

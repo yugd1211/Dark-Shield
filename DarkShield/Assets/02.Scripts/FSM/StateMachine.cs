@@ -16,6 +16,8 @@ public class StateMachine
 
     public event Action<IState> StateChanged;
 
+    public bool IsTransitioning { get; private set; }
+
     public StateMachine(Player player)
     {
         idleState = new IdleState(player);
@@ -37,9 +39,11 @@ public class StateMachine
 
     public void TransitionTo(IState nextState)
     {
+        IsTransitioning = true;
         CurState.OnExit();
         CurState = nextState;
         nextState.OnEnter();
+        IsTransitioning = false;
 
         StateChanged?.Invoke(nextState);
     }

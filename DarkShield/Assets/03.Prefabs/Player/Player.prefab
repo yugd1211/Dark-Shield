@@ -6341,7 +6341,7 @@ Animator:
   m_GameObject: {fileID: 7509375128569891226}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 0c3be1533cb301b4eac0175fafb46af0, type: 3}
-  m_Controller: {fileID: 9100000, guid: 3a354a53ecfb4ff43b52e770d8f61a8e, type: 2}
+  m_Controller: {fileID: 9100000, guid: 1e42c72cd98ed3c44bbc555800cdc051, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -6594,9 +6594,11 @@ MonoBehaviour:
   mouseLookDir: {fileID: 0}
   playerDash: {fileID: 0}
   playerStat: {fileID: 0}
+  playerAnimationEventEffects: {fileID: 0}
   rightHand: {fileID: 5869150831064480869}
   swordPrefab: {fileID: 3994626178766799071, guid: bf59326c3262b4d41bd4612d47a6b2e8, type: 3}
   moveDistance: 8
+  isDamaged: 0
 --- !u!114 &4435017900139555850
 MonoBehaviour:
   m_ObjectHideFlags: 0
