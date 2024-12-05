@@ -115930,6 +115930,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 1.0666667
+    functionName: TargetScan
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 1.7333333
     functionName: ComboTrigger
     data: 
@@ -115939,6 +115946,13 @@ AnimationClip:
     messageOptions: 0
   - time: 2.2
     functionName: InstantiateEffect
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 2.2
+    functionName: TargetScan
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
