@@ -8,8 +8,12 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class MeleeSlash : Skill
 {
+	public SOSkill meleeSlash1;
+	public SOSkill meleeSlash3;
+
 	private AnimationEventEffects _eventEffects;
 	private AnimationEventEffects.EffectInfo _effect;
+	private AnimationEventEffects.EffectInfo _effect3;
 	private Transform _startPositionRotation;
 
 	//====================================
@@ -51,17 +55,19 @@ public class MeleeSlash : Skill
 		{
 			//print("이펙트 세팅");
 			_eventEffects.SetEffects(_effect);
+			_eventEffects.SetEffects(_effect3);
 		}
 	}
 
-	public void SkillRange()
+	public void SkillRange(float damage)
 	{
 		Collider[] hitColliders = Physics.OverlapBox(_boxCenter, boxSize / 2, _boxCenterPivot.rotation, layerMask);
 
 		foreach (Collider hitCollider in hitColliders)
 		{
 			Debug.Log("감지된 이름 " + hitCollider.name);
-			//hitCollider.GetComponent<IDamageable>().TakeDamage(_player.playerStat.GetFinalDamage(this), false);
+			print("가한 데미지 : " + damage);
+			//hitCollider.GetComponent<IDamageable>().TakeDamage(_player.playerStat.GetFinalDamage(damage), false);
 		}
 	}
 
@@ -70,10 +76,12 @@ public class MeleeSlash : Skill
 		_player = player;
 		_eventEffects = player.GetComponent<AnimationEventEffects>();
 		_startPositionRotation = GameObject.Find("MeleeSlashPivot").transform;
-		_effect = new AnimationEventEffects.EffectInfo(skillData, _startPositionRotation, SkillRange);
+		meleeSlash1.startPositionRotation = GameObject.Find("MeleeSlashPivot").transform;
+		meleeSlash3.startPositionRotation = player.transform;
+		_effect = new AnimationEventEffects.EffectInfo(meleeSlash1, SkillRange);
+		_effect3 = new AnimationEventEffects.EffectInfo(meleeSlash3, SkillRange);
 
 		damage = skillData.damage;
-		actionType = skillData.ActionType;
 
 		_boxCenterPivot = GameObject.Find("MeleeSlashPivot").transform;
 	}

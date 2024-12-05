@@ -14,15 +14,17 @@ public class AnimationEventEffects : MonoBehaviour
 		public Transform StartPositionRotation;
 		public float DestroyAfter = 10;
 		public bool UseLocalPosition = true;
-		public UnityAction targetScan;
+		public UnityAction<float> targetScan;
+		public float damage;
 
-		public EffectInfo(SOSkill skillData, Transform trasform, UnityAction action)
+		public EffectInfo(SOSkill skillData, UnityAction<float> action)
 		{
 			Effect = skillData.skillEffect;
-			StartPositionRotation = trasform;
+			StartPositionRotation = skillData.startPositionRotation;
 			DestroyAfter = skillData.destroyAfter;
 			UseLocalPosition = skillData.useLocalPosition;
 			targetScan = action;
+			damage = skillData.damage;
 		}
 	}
 
@@ -51,7 +53,7 @@ public class AnimationEventEffects : MonoBehaviour
 
 	public void TargetScan(int ActionNumber)
 	{
-		effects[ActionNumber].targetScan?.Invoke();
+		effects[ActionNumber].targetScan?.Invoke(effects[ActionNumber].damage);
 	}
 
 	public void EndEffect()

@@ -32,7 +32,5 @@ public class TeleportSlash : Skill
 
 		_eventEffects = player.GetComponent<AnimationEventEffects>();
 		//_effect = new AnimationEventEffects.EffectInfo(skillData, _startPositionRotation);
-
-		actionType = skillData.ActionType;
 	}
 }

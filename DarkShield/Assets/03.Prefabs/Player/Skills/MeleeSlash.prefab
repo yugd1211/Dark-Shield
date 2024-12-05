@@ -14712,7 +14712,7 @@ GameObject:
   - component: {fileID: 5042364891608396608}
   - component: {fileID: 5433633622677999910}
   m_Layer: 0
-  m_Name: MeleeSlashFX
+  m_Name: MeleeSlash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

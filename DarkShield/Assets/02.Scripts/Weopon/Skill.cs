@@ -2,19 +2,19 @@ using UnityEngine;
 
 public abstract class Skill : MonoBehaviour
 {
-    [HideInInspector] public ActionType actionType;
-    public SOSkill skillData;
-    public float damage;
+	public ActionType actionType;
+	public SOSkill skillData;
+	public float damage;
 
-    public abstract void UseSkill();
+	public abstract void UseSkill();
 
-    public abstract void Init(Player player);
+	public abstract void Init(Player player);
 }
 
 public enum ActionType
 {
-    Dash,
-    Skill1,
-    Skill2,
-    Skill3
+	Dash,
+	Skill1,
+	Skill2,
+	Skill3
 }

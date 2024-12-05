@@ -38,7 +38,7 @@ public class RangedSlash : Skill
 					continue;
 				}
 			}
-			damageable.TakeDamage(_player.playerStat.GetFinalDamage(this), false);
+			//damageable.TakeDamage(_player.playerStat.GetFinalDamage(this), false);
 		}
 	}
 
@@ -52,7 +52,6 @@ public class RangedSlash : Skill
 
 
 		damage = skillData.damage;
-		actionType = skillData.ActionType;
 
 		//_effect = new AnimationEventEffects.EffectInfo(skillData, _startPositionRotation);
 	}
