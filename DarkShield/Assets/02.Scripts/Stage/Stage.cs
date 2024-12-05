@@ -1,31 +1,47 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Stage : MonoBehaviour
 {
 	public Player player;
 	public StageManager stageManager;
-	public Stage nextStage;
+	public List<Portal> portals = new List<Portal>();
+	public List<Transform> portalPoints = new List<Transform>();
+	public GameObject portalPrefab;
+	
+	// Init을 위에서 할당하다보니 인스펙터에서 할당해야함
 	public Transform playerStartPos;
-	public Portal portal;
-
-
 	public virtual void Init(StageManager stageManager)
 	{
 		this.stageManager = stageManager;
 		player = stageManager.player;
-		playerStartPos = transform.Find("PlayerStartPosition").transform;
-		if (player == true && playerStartPos == true)
-			player.playerMovement.Spawn(playerStartPos.position);
-		portal = GetComponentInChildren<Portal>();
-		if (this as ShopStage)
-			portal.OnCanInteract += () => true;
-		else if (this as BattleStage)
-			portal.OnCanInteract += () => GameManager.Instance.enemyManager.enemySpawner.isAllWavesCompleted;
-		portal.Init();
 	}
-	
-	public void MoveNextStage()
+	public virtual void StartStage()
 	{
-		stageManager.ChangeStage(nextStage);
+		if (!player)
+			player = stageManager.player;
+		if (player && playerStartPos)
+			player.playerMovement.Spawn(playerStartPos.position);
+	}
+
+	public void CreateNextPortal()
+	{
+		if (portalPrefab == null)
+			return;
+		Portal newPortal = Instantiate(portalPrefab, portalPoints[0].position, Quaternion.identity).GetComponent<Portal>();
+		newPortal.transform.SetParent(transform);
+		newPortal.Init();
+		if (this is BattleStage)
+			newPortal.OnCanInteract += () => GameManager.Instance.enemyManager.enemySpawner.isAllWavesCompleted;
+		else
+			newPortal.OnCanInteract += () => true;
+		portals.Add(newPortal);
+		portalPoints.RemoveAt(0);
+		newPortal.nextStage = stageManager.CreateStage();
+	}
+
+	public void MoveNextStage(Stage moveStage)
+	{
+		stageManager.ChangeStage(moveStage);
 	}
 }

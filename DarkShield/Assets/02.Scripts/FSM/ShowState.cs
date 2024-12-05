@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,12 +8,12 @@ public class ShowState : MonoBehaviour
 
     private void Awake()
     {
-        player = FindObjectOfType<Player>();
         text = GetComponent<Text>();
     }
 
     private void Start()
     {
+        player = GameManager.Instance.player;
         player.playerStateMachine.StateChanged += ChangeState;
     }
     private void OnDestroy()
