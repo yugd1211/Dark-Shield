@@ -8,7 +8,6 @@ using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
 {
-    public AnimatorController animController;
     protected Dictionary<ActionType, Skill> skills;
     protected Player player;
     public float damage;

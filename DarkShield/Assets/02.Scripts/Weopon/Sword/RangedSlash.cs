@@ -24,7 +24,6 @@ public class RangedSlash : Skill
         yield return new WaitForSeconds(0.3f);
         _slashArea.enabled = false;
         _colls.Clear();
-
     }
 
     private void OnTriggerEnter(Collider other)

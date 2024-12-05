@@ -35,7 +35,7 @@ public class SkillState : IState
         }
 
         AnimatorStateInfo stateInfo = _player.playerAnimator.GetCurrentAnimatorStateInfo(0);
-        Debug.Log(stateInfo.IsName("Combo2"));
+
         if ((stateInfo.IsName("Skill1") || stateInfo.IsName("Combo2") || stateInfo.IsName("Combo3")) && stateInfo.normalizedTime >= 0.9f)
         {
             _player.playerAnimator.ResetTrigger("Skill1");

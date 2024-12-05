@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AnimationEventEffects : MonoBehaviour
 {
     public List<EffectInfo> effects;
+    public static event UnityAction targetScan;
 
     [System.Serializable]
     public class EffectInfo
@@ -46,9 +48,14 @@ public class AnimationEventEffects : MonoBehaviour
         Destroy(instance, effects[EffectNumber].DestroyAfter);
     }
 
+    public void TargetScan()
+    {
+        targetScan?.Invoke();
+    }
+
     public void EndEffect()
     {
-        //print("이펙트 프리팹 지워짐");
+        print("이펙트 프리팹 지워짐");
         effects.Clear();
     }
 }
