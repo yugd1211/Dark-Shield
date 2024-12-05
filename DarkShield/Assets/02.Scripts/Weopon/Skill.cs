@@ -4,6 +4,7 @@ public abstract class Skill : MonoBehaviour
 {
     [HideInInspector] public ActionType actionType;
     public SOSkill skillData;
+    public float damage;
 
     public abstract void UseSkill();
 

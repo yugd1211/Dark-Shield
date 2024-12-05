@@ -10,14 +10,14 @@ public class Player : Unit
     public Animator playerAnimator;
     public MouseLook mouseLookDir;
     public Dash playerDash;
+    public PlayerStat playerStat;
+    public AnimationEventEffects playerAnimationEventEffects;
 
     [SerializeField] private Transform rightHand;
     [SerializeField] private GameObject swordPrefab;
 
-    private void Awake()
-    {
-        // Init();
-    }
+    //무기 장착
+    public bool isEquip;
 
     private void Update()
     {
@@ -38,10 +38,18 @@ public class Player : Unit
         playerAnimator = GetComponent<Animator>();
         mouseLookDir = GetComponent<MouseLook>();
         playerDash = GetComponent<Dash>();
+        playerStat = GetComponent<PlayerStat>();
+        playerAnimationEventEffects = GetComponent<AnimationEventEffects>();
         playerStateMachine.Init(playerStateMachine.idleState);
         MoveSpeed = 5;
-        curWeopon = Instantiate(swordPrefab, rightHand).GetComponent<Weapon>();
+    }
+
+    public void ChangeWeapon(WeaponChange weapon)
+    {
+        playerAnimator.runtimeAnimatorController = weapon.animController;
+        curWeopon = Instantiate(weapon.weaponPrefab, rightHand).GetComponent<Weapon>();
         curWeopon.Init(this);
+        isEquip = true;
     }
 
     public float moveDistance;
@@ -69,8 +77,11 @@ public class Player : Unit
 
     #endregion
 
+    public bool isDamaged = true;
     public override void TakeDamage(float amount, bool isHit)
     {
+        if (!isDamaged)
+            return;
         playerHealth.TakeDamage(amount, isHit);
     }
 

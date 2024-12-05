@@ -8,8 +8,6 @@ public class TeleportSlash : Skill
     private AnimationEventEffects.EffectInfo _effect;
     private Transform _startPositionRotation;
 
-    public float damage;
-
     public override void UseSkill()
     {
         _eventEffects.SetEffects(_effect);

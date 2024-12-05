@@ -66,9 +66,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 1
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0.1
   m_TransitionOffset: 0
-  m_ExitTime: 0.9347826
+  m_ExitTime: 0.95
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -91,9 +91,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.24999952
-  m_TransitionOffset: 0.1741236
-  m_ExitTime: 0.6478075
+  m_TransitionDuration: 0.3816628
+  m_TransitionOffset: 0
+  m_ExitTime: 0.64602107
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -106,7 +106,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Walk
+  m_Name: Run
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -125,7 +125,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 2a1f0e4bf89780646a26922df548dd0d, type: 2}
+  m_Motion: {fileID: 7400000, guid: 15075db23c810094fb3b929f08853a03, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -195,9 +195,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.24134395
+  m_TransitionDuration: 0.28355256
   m_TransitionOffset: 0
-  m_ExitTime: 0.57114667
+  m_ExitTime: 0.5711467
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -527,7 +527,7 @@ AnimatorStateTransition:
   m_IsExit: 0
   serializedVersion: 3
   m_TransitionDuration: 0
-  m_TransitionOffset: 0
+  m_TransitionOffset: 0.06
   m_ExitTime: 0.9166667
   m_HasExitTime: 0
   m_HasFixedDuration: 1
@@ -838,7 +838,7 @@ AnimatorStateTransition:
   serializedVersion: 3
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
-  m_ExitTime: 0.9292453
+  m_ExitTime: 1
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -883,9 +883,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.17403924
-  m_TransitionOffset: 0
-  m_ExitTime: 0.75689715
+  m_TransitionDuration: 0.040328324
+  m_TransitionOffset: 0.16881834
+  m_ExitTime: 0.9568148
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -1048,7 +1048,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Skill1
-  m_Speed: 4
+  m_Speed: 3
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 5277941448973451102}

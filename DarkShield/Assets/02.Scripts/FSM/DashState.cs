@@ -12,6 +12,7 @@ public class DashState : IState
     }
     public void OnEnter()
     {
+        _player.isDamaged = false;
         _player.playerAnimator.SetTrigger("Dash");
     }
 
@@ -26,6 +27,7 @@ public class DashState : IState
 
     public void OnExit()
     {
+        _player.isDamaged = true;
         _player.playerInputManager.IsDash = false;
     }
 

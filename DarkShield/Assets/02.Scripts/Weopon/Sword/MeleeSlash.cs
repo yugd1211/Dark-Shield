@@ -9,18 +9,16 @@ public class MeleeSlash : Skill
     private AnimationEventEffects.EffectInfo _effect;
     private Transform _startPositionRotation;
 
-    public float damage;
-
     public override void UseSkill()
     {
-        _eventEffects.SetEffects(_effect);
+        if (_eventEffects.effects.Count == 0) _eventEffects.SetEffects(_effect);
     }
 
 
     public override void Init(Player player)
     {
         _eventEffects = player.GetComponent<AnimationEventEffects>();
-        _startPositionRotation = _eventEffects.transform;
+        _startPositionRotation = player.transform;
         _effect = new AnimationEventEffects.EffectInfo(skillData, _startPositionRotation);
 
         damage = skillData.damage;

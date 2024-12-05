@@ -2,17 +2,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Animations;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
 {
+    public AnimatorController animController;
     protected Dictionary<ActionType, Skill> skills;
     protected Player player;
+    public float damage;
 
     public abstract void UseSkill(ActionType skillType);
-
-    public abstract void UseSkill(ActionType skillType, int comboCnt);
 
     public void SetSkill(Skill skill)
     {

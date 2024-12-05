@@ -8,6 +8,7 @@ public class PlayerHealth : MonoBehaviour
 {
     public float maxHealth;
     public float health;
+    [SerializeField] private SOPlayerData _playerData;
     public float HealthAmount
     {
         get
@@ -34,6 +35,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Start()
     {
+        maxHealth = _playerData.health;
         health = maxHealth;
     }
 

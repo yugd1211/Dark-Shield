@@ -4,50 +4,51 @@ using UnityEngine;
 
 public class AnimationEventEffects : MonoBehaviour
 {
-	public List<EffectInfo> effects;
+    public List<EffectInfo> effects;
 
-	[System.Serializable]
-	public class EffectInfo
-	{
-		public GameObject Effect;
-		public Transform StartPositionRotation;
-		public float DestroyAfter = 10;
-		public bool UseLocalPosition = true;
+    [System.Serializable]
+    public class EffectInfo
+    {
+        public GameObject Effect;
+        public Transform StartPositionRotation;
+        public float DestroyAfter = 10;
+        public bool UseLocalPosition = true;
 
-		public EffectInfo(SOSkill skillData, Transform trasform)
-		{
-			Effect = skillData.skillEffect;
-			StartPositionRotation = trasform;
-			DestroyAfter = skillData.destroyAfter;
-			UseLocalPosition = skillData.useLocalPosition;
-		}
-	}
+        public EffectInfo(SOSkill skillData, Transform trasform)
+        {
+            Effect = skillData.skillEffect;
+            StartPositionRotation = trasform;
+            DestroyAfter = skillData.destroyAfter;
+            UseLocalPosition = skillData.useLocalPosition;
+        }
+    }
 
-	public void SetEffects(EffectInfo effectInfo)
-	{
-		effects.Add(effectInfo);
-	}
+    public void SetEffects(EffectInfo effectInfo)
+    {
+        effects.Add(effectInfo);
+    }
 
-	public void InstantiateEffect(int EffectNumber)
-	{
-		if (effects == null || effects.Count <= EffectNumber)
-		{
-			Debug.LogError("Incorrect effect number or effect is null");
-		}
+    public void InstantiateEffect(int EffectNumber)
+    {
+        if (effects == null || effects.Count <= EffectNumber)
+        {
+            Debug.LogError("Incorrect effect number or effect is null");
+        }
 
-		var instance = Instantiate(effects[EffectNumber].Effect, effects[EffectNumber].StartPositionRotation.position, effects[EffectNumber].StartPositionRotation.rotation);
+        var instance = Instantiate(effects[EffectNumber].Effect, effects[EffectNumber].StartPositionRotation.position, effects[EffectNumber].StartPositionRotation.rotation);
 
-		if (effects[EffectNumber].UseLocalPosition)
-		{
-			instance.transform.parent = effects[EffectNumber].StartPositionRotation.transform;
-			instance.transform.localPosition = Vector3.zero;
-			instance.transform.localRotation = new Quaternion();
-		}
-		Destroy(instance, effects[EffectNumber].DestroyAfter);
-	}
+        if (effects[EffectNumber].UseLocalPosition)
+        {
+            instance.transform.parent = effects[EffectNumber].StartPositionRotation.transform;
+            instance.transform.localPosition = Vector3.zero;
+            instance.transform.localRotation = new Quaternion();
+        }
+        Destroy(instance, effects[EffectNumber].DestroyAfter);
+    }
 
-	public void EndEffect()
-	{
-		effects.Clear();
-	}
+    public void EndEffect()
+    {
+        //print("이펙트 프리팹 지워짐");
+        effects.Clear();
+    }
 }
