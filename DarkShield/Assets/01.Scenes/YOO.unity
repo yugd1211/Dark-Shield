@@ -349,40 +349,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 264400151}
   m_CullTransparentMesh: 1
---- !u!1 &306516013
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 306516014}
-  m_Layer: 0
-  m_Name: MAIN
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &306516014
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 306516013}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1206375486}
-  - {fileID: 572425158}
-  - {fileID: 1892518763}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &381674027
 GameObject:
   m_ObjectHideFlags: 0
@@ -743,7 +709,7 @@ RectTransform:
   - {fileID: 1951125305}
   - {fileID: 209645975}
   - {fileID: 1816163098}
-  m_Father: {fileID: 306516014}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1428,7 +1394,7 @@ Transform:
   m_Children:
   - {fileID: 909939717}
   - {fileID: 1286526451}
-  m_Father: {fileID: 306516014}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1225482967
 GameObject:
@@ -1612,9 +1578,12 @@ MonoBehaviour:
   stages: []
   battleStagePrefabs:
   - {fileID: 3314756218244737361, guid: 8ade9da1a323cdd45bb1156dc84aa3b8, type: 3}
+  - {fileID: 1653225880045531861, guid: 0c538a63f009aa145b49c0cf4201aa5c, type: 3}
   shopStagePrefab: {fileID: 370360336871808685, guid: 47c599e90e453484c83165e5d98ddaea, type: 3}
   bossStagePrefab: {fileID: 0}
+  startStagePrefab: {fileID: 370360336871808685, guid: 15fc19ebf4f8382469a8a92ed91a292c, type: 3}
   currStage: {fileID: 0}
+  currentStageIndex: 0
 --- !u!1 &1373705206
 GameObject:
   m_ObjectHideFlags: 0
@@ -1978,7 +1947,7 @@ Transform:
   - {fileID: 1807178218}
   - {fileID: 1921798729}
   - {fileID: 1373705207}
-  m_Father: {fileID: 306516014}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1921798728
 GameObject:
@@ -2294,4 +2263,6 @@ CanvasRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 306516014}
+  - {fileID: 1892518763}
+  - {fileID: 572425158}
+  - {fileID: 1206375486}

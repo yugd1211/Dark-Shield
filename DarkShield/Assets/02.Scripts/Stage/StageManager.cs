@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class StageManager : MonoBehaviour
 {
@@ -10,49 +11,68 @@ public class StageManager : MonoBehaviour
     public GameObject[] battleStagePrefabs;
     public GameObject shopStagePrefab;
     public GameObject bossStagePrefab;
+    public GameObject startStagePrefab;
     public Stage currStage;
 
-    private void LinkStage()
-    {
-        for (int i = 0; i < stages.Count - 1; i++)
-        {
-            stages[i].nextStage = stages[i + 1];
-        }
-    }
-
-    private void Init()
+    public int currentStageIndex = 0;
+    
+    public void Init()
     {
         player = FindObjectOfType<Player>();
-        CreateStage();
-        currStage = stages[0];
-        LinkStage();
-        ChangeStage(currStage);
-    }
-    
-    private void Start()
-    {
-        Init();
+        
+        currStage = CreateStage();
+        while (currStage.portalPoints.Count > Random.Range(0, 3))
+            currStage.CreateNextPortal();
     }
 
-    private void CreateStage()
+    private GameObject CreateBattleStage()
     {
-        for (int i = 0; i < 10; i++)
-        {
-            int ran = Random.Range(0, 100);
-            GameObject newStage;
-            if (ran <= 10)
-                newStage = Instantiate(shopStagePrefab);
-            else 
-                newStage = Instantiate(battleStagePrefabs[Random.Range(0, battleStagePrefabs.Length)]);
-            stages.Add(newStage.GetComponent<Stage>());
-            stages[i].transform.position = new Vector3(0, 0, i * 100);
-            stages[i].transform.SetParent(transform);
-        }
+        return Instantiate(battleStagePrefabs[Random.Range(0, battleStagePrefabs.Length)]);
+    }
+
+    private GameObject CreateShopStage()
+    {
+        return Instantiate(shopStagePrefab);
+    }
+    
+    private GameObject CreateBossStage()
+    {
+        return Instantiate(bossStagePrefab);
+    }
+    
+    private GameObject CreateStartStage()
+    {
+        return Instantiate(startStagePrefab);
+    }
+    
+    public Stage CreateStage()
+    {
+        int ran = Random.Range(0, 100);
+        GameObject newStage;
+        if (currentStageIndex == 0)
+            newStage = CreateStartStage();
+        else if (ran <= 10)
+            newStage = CreateShopStage();
+        else 
+            newStage = CreateBattleStage();
+        newStage.transform.position = new Vector3(0, 0, currentStageIndex * 100);
+        newStage.transform.SetParent(transform);
+        
+        Stage stage = newStage.GetComponent<Stage>();
+        stages.Add(stage);
+        currentStageIndex++;
+        stage.Init(this);
+        return stage;
     }
 
     public void ChangeStage(Stage stage)
     {
         currStage = stage;
-        currStage.Init(this);
+        currStage.StartStage();
+        if (currStage is BattleStage battle)
+            battle.StartBattle();
+        
+        for (int i = 0; i < currStage.portalPoints.Count; i++)
+            currStage.CreateNextPortal();
     }
 }
