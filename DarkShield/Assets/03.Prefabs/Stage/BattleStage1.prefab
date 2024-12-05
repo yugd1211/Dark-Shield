@@ -219,14 +219,7 @@ MonoBehaviour:
   nextStage: {fileID: 0}
   nextStages: []
   portal: {fileID: 0}
-  portals: []
-  portalPoints:
-  - {fileID: 4306936743002232686}
-  - {fileID: 5747355875265688543}
-  - {fileID: 2471921011882921577}
-  portalPrefab: {fileID: 3621267533501939211, guid: 1bdcacf071f76af4bb1fcb34fe966bf5, type: 3}
-  playerStartPos: {fileID: 5938372096865031158}
-  enemySpawnData: {fileID: 11400000, guid: b0c1ea438bdd09b48a33683146cadf13, type: 2}
+  enemySpawnData: {fileID: 11400000, guid: 6b96757f92430c54f977b4849d251e89, type: 2}
   enemySpawnPoint:
   - {fileID: 8556176358275333774}
   - {fileID: 7380942123524215075}
