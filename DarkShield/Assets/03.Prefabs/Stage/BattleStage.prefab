@@ -187,7 +187,7 @@ MonoBehaviour:
   nextStage: {fileID: 0}
   playerStartPos: {fileID: 0}
   portal: {fileID: 0}
-  enemySpawnData: {fileID: 11400000, guid: b0c1ea438bdd09b48a33683146cadf13, type: 2}
+  enemySpawnData: {fileID: 11400000, guid: 6b96757f92430c54f977b4849d251e89, type: 2}
   enemySpawnPoint:
   - {fileID: 8556176358275333774}
   - {fileID: 7380942123524215075}
