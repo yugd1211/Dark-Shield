@@ -30,13 +30,15 @@ public partial class GameManager : MonoBehaviour
 		dialogueManager = newDialogueManager;
 		
 		stageManager = FindObjectOfType<StageManager>();
-		
+		stageManager.Init();
 		// Player도 GameManager에서 생성하게끔 할 예정
 		// Player Init에 얽혀있는 것들이 너무 많아서 상의후 결정해햐할듯
 		// 예를들면 Weapon의 Init을 Awake에서 하는 것
 		// player = FindObjectOfType<Player>();
 		player = Instantiate(playerPrefab).GetComponent<Player>();
 		player.Init();
+		stageManager.player = player;
+		stageManager.ChangeStage(stageManager.currStage);
 	}
 }
 

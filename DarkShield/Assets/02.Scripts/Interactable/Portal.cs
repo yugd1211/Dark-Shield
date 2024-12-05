@@ -3,6 +3,7 @@ using System;
 
 public class Portal : AInteractableObeject
 {
+	public Stage nextStage;
 	public event Func<bool> OnCanInteract;
 	
 	private StageManager _stageManager;
@@ -23,7 +24,7 @@ public class Portal : AInteractableObeject
 	public override void Interact(Interactor player)
 	{
 		if (CanInteract())
-			_stageManager.currStage.MoveNextStage();
+			_stageManager.currStage.MoveNextStage(nextStage);
 	}
 
 	public override bool CanInteract()
