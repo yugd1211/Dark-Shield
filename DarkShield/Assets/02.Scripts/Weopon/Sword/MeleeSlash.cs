@@ -20,7 +20,7 @@ public class MeleeSlash : Skill
     //스킬 업에 필요한 변수
     private float damagePercent;
     private float damagePercent3;
-    private ParticleSystem meleeSlash3Fx;
+    private GameObject meleeSlash3Fx;
 
     //====================================
     //오버랩 구현에 필요한 변수
@@ -36,7 +36,6 @@ public class MeleeSlash : Skill
     private Player _player;
     void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.R)) SpecialUpgrade();
         _boxCenter = _boxCenterPivot.TransformPoint(boxOffset);
         _sphereCenter = _player.transform.position;
     }
@@ -112,7 +111,7 @@ public class MeleeSlash : Skill
     public override void SpecialUpgrade()
     {
         // 기존 랜덤 크기 범위 가져오기
-        ParticleSystem.MainModule mainModule = meleeSlash3Fx.main;
+        ParticleSystem.MainModule mainModule = meleeSlash3Fx.GetComponentInChildren<ParticleSystem>().main;
         float minSize = mainModule.startSize.constantMin;
         float maxSize = mainModule.startSize.constantMax;
 
@@ -122,8 +121,8 @@ public class MeleeSlash : Skill
 
         // 새로운 랜덤 크기 설정
         mainModule.startSize = new ParticleSystem.MinMaxCurve(minSize, maxSize);
-
-        //Debug.Log($"파티클 크기 범위: {minSize} ~ {maxSize}");
+        _effect3.Effect = meleeSlash3Fx;
+        Debug.Log($"파티클 크기 범위: {minSize} ~ {maxSize}");
     }
 
     public override void Init(Player player)
@@ -140,6 +139,6 @@ public class MeleeSlash : Skill
 
         damagePercent = meleeSlash1.damagePercent;
         damagePercent3 = meleeSlash1.damagePercent;
-        meleeSlash3Fx = Instantiate(meleeSlash3.skillEffect.GetComponentInChildren<ParticleSystem>());
+        meleeSlash3Fx = Instantiate(meleeSlash3.skillEffect, _player.transform.position, Quaternion.identity);
     }
 }
