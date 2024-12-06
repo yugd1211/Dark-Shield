@@ -426,10 +426,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Puase
       objectReference: {fileID: 0}
-    - target: {fileID: 2753915644211955618, guid: b08023f55e5a21241bcacee79863ff74, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4947953970521693221, guid: b08023f55e5a21241bcacee79863ff74, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -973,6 +969,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 960204530}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1038683484
+
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -989,8 +986,8 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1038683485
+  m_IsActive: 0
+--- !u!224 &1192856441
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1884,11 +1881,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7892915055198511046, guid: 01d367dbdd30bbe46b86b229433d957d, type: 3}
       propertyPath: m_Name
-      value: ShopUI
-      objectReference: {fileID: 0}
-    - target: {fileID: 7892915055198511046, guid: 01d367dbdd30bbe46b86b229433d957d, type: 3}
-      propertyPath: m_IsActive
-      value: 0
+      value: ShopUI (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
