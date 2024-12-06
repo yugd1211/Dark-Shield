@@ -2021,7 +2021,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9140844008274997257, guid: cfb9ad6b33b2ee148becb7b35e7b7ebf, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2314,6 +2314,10 @@ PrefabInstance:
     - target: {fileID: 7892915055198511046, guid: 01d367dbdd30bbe46b86b229433d957d, type: 3}
       propertyPath: m_Name
       value: ShopUI (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7892915055198511046, guid: 01d367dbdd30bbe46b86b229433d957d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
