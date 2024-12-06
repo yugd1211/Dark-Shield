@@ -5,6 +5,7 @@ using System.Linq;
 using TMPro.EditorUtilities;
 using UnityEngine;
 using static UnityEditor.Experimental.GraphView.GraphView;
+using static UnityEngine.ParticleSystem;
 
 public class MeleeSlash : Skill
 {
@@ -15,6 +16,11 @@ public class MeleeSlash : Skill
     private AnimationEventEffects.EffectInfo _effect;
     private AnimationEventEffects.EffectInfo _effect3;
     private Transform _meleeSlashPivot;
+
+    //스킬 업에 필요한 변수
+    private float damagePercent;
+    private float damagePercent3;
+    private ParticleSystem meleeSlash3Fx;
 
     //====================================
     //오버랩 구현에 필요한 변수
@@ -28,9 +34,9 @@ public class MeleeSlash : Skill
     private Vector3 _sphereCenter;
     private Transform _boxCenterPivot; // 박스 중심을 기준으로 할 피벗 Transform
     private Player _player;
-
     void Update()
     {
+        //if (Input.GetKeyDown(KeyCode.R)) SpecialUpgrade();
         _boxCenter = _boxCenterPivot.TransformPoint(boxOffset);
         _sphereCenter = _player.transform.position;
     }
@@ -77,9 +83,9 @@ public class MeleeSlash : Skill
 
         foreach (Collider hitCollider in hitColliders)
         {
-            Debug.Log("감지된 이름 " + hitCollider.name);
-            print("가한 데미지 : " + damage);
-            //hitCollider.GetComponent<IDamageable>().TakeDamage(_player.playerStat.GetFinalDamage(damage), false);
+            //Debug.Log("감지된 이름 " + hitCollider.name);
+            //print("가한 데미지 : " + damage);
+            hitCollider.GetComponent<IDamageable>().TakeDamage(_player.playerStat.GetFinalDamage(damage), false);
         }
     }
 
@@ -89,10 +95,35 @@ public class MeleeSlash : Skill
 
         foreach (Collider hitCollider in hitColliders)
         {
-            Debug.Log("감지된 이름 " + hitCollider.name);
-            print("가한 데미지 : " + damage);
-            //hitCollider.GetComponent<IDamageable>().TakeDamage(_player.playerStat.GetFinalDamage(damage), false);
+            //Debug.Log("감지된 이름 " + hitCollider.name);
+            //print("가한 데미지 : " + damage);
+            hitCollider.GetComponent<IDamageable>().TakeDamage(_player.playerStat.GetFinalDamage(damage), false);
         }
+    }
+
+    public override void DamageUpgrade()
+    {
+        damagePercent += 0.3f;
+        damagePercent3 += 0.5f;
+        _effect.damage *= damagePercent;
+        _effect3.damage *= damagePercent3;
+    }
+
+    public override void SpecialUpgrade()
+    {
+        // 기존 랜덤 크기 범위 가져오기
+        ParticleSystem.MainModule mainModule = meleeSlash3Fx.main;
+        float minSize = mainModule.startSize.constantMin;
+        float maxSize = mainModule.startSize.constantMax;
+
+        minSize *= 1.5f;
+        maxSize *= 1.5f;
+        radius *= 1.5f;
+
+        // 새로운 랜덤 크기 설정
+        mainModule.startSize = new ParticleSystem.MinMaxCurve(minSize, maxSize);
+
+        //Debug.Log($"파티클 크기 범위: {minSize} ~ {maxSize}");
     }
 
     public override void Init(Player player)
@@ -106,5 +137,9 @@ public class MeleeSlash : Skill
         _effect3 = new AnimationEventEffects.EffectInfo(meleeSlash3, SkillSphereRange);
 
         _boxCenterPivot = _meleeSlashPivot;
+
+        damagePercent = meleeSlash1.damagePercent;
+        damagePercent3 = meleeSlash1.damagePercent;
+        meleeSlash3Fx = Instantiate(meleeSlash3.skillEffect.GetComponentInChildren<ParticleSystem>());
     }
 }
