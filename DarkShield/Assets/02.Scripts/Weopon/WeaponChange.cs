@@ -6,7 +6,7 @@ public class WeaponChange : MonoBehaviour, IInteractable
     public AnimatorController animController;
     public GameObject weaponPrefab;
     public float rotateSpeed;
-    public bool CanInteract() => !GameManager.Instance.player.isEquip;
+    public bool CanInteract() => !GameManager.Instance.player.isEquiped;
     
     public void Interact(Interactor player)
     {

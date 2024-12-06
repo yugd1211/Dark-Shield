@@ -42,6 +42,7 @@ public class AnimationEventEffects : MonoBehaviour
             Debug.LogError("Incorrect effect number or effect is null");
         }
 
+        print("이펙트 프리팹 생성됨");
         var instance = Instantiate(effects[EffectNumber].Effect, effects[EffectNumber].StartPositionRotation.position, effects[EffectNumber].StartPositionRotation.rotation);
 
         if (effects[EffectNumber].UseLocalPosition)
