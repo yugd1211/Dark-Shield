@@ -7,6 +7,7 @@ public partial class GameManager : MonoBehaviour
 	[HideInInspector] public EnemyManager enemyManager;
 	[HideInInspector] public DialogueManager dialogueManager;
 	[HideInInspector] public CoinManager coinManager;
+	[HideInInspector] public UpgradeManager upgradeManager;
 	
 	[SerializeField] private List<EnemySpawnData> enemySpawnDatas;
 	
@@ -28,6 +29,8 @@ public partial class GameManager : MonoBehaviour
 		DialogueManager newDialogueManager = new GameObject("DialogueManager").AddComponent<DialogueManager>();
 		newDialogueManager.transform.SetParent(transform);
 		dialogueManager = newDialogueManager;
+		
+		
 		
 		stageManager = FindObjectOfType<StageManager>();
 		stageManager.Init();

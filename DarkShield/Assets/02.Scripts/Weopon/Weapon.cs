@@ -43,4 +43,12 @@ public abstract class Weapon : MonoBehaviour
 
         FindSkill();
     }
+    
+    public void UpgradeSkill(ActionType skillType)
+    {
+        if (skills.ContainsKey(skillType))
+        {
+            // skills[skillType].Upgrade();
+        }
+    }
 }
