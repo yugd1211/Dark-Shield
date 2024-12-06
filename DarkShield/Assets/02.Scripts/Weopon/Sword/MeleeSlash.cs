@@ -36,7 +36,6 @@ public class MeleeSlash : Skill
     private Player _player;
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R)) SpecialUpgrade();
         _boxCenter = _boxCenterPivot.TransformPoint(boxOffset);
         _sphereCenter = _player.transform.position;
     }

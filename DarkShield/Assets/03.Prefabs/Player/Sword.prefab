@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7765208755379437758}
-  - component: {fileID: 4862772196514972077}
   - component: {fileID: 702603949106597229}
   m_Layer: 0
   m_Name: RangedSlash
@@ -33,27 +32,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8869631043891970653}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!65 &4862772196514972077
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 829698127413304906}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 8
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Size: {x: 0.27, y: 1.13, z: 0.29967642}
-  m_Center: {x: -0.000000008802588, y: 0.58, z: -9.751319e-10}
 --- !u!114 &702603949106597229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,6 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionType: 2
   isSkillAimingAtMouse: 1
+  rangedSlash: {fileID: 11400000, guid: d7eb39127b9aba240a54d5761c578829, type: 2}
+  slashPrefab: {fileID: 7009751323347202106, guid: 085c660e96871dc4dac83f42e23db4e7, type: 3}
 --- !u!1 &3994626178766799071
 GameObject:
   m_ObjectHideFlags: 0

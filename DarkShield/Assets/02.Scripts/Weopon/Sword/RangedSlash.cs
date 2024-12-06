@@ -4,65 +4,73 @@ using UnityEngine;
 
 public class RangedSlash : Skill
 {
-    private Collider _slashArea;
-    private List<Collider> _colls;
+    public SOSkill rangedSlash;
+    public GameObject slashPrefab;
+    private Player _player;
+    private Transform rangedSlashPivot;
+
     private AnimationEventEffects _eventEffects;
     private AnimationEventEffects.EffectInfo _effect;
-    private Transform _startPositionRotation;
-    private Player _player;
+    //===========================
+    //스킬 업에 필요한 변수
+    private float damagePercent;
+    private bool isSpecialUpgraged;
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R)) SpecialUpgrade();
+    }
 
     public override void UseSkill()
     {
         _eventEffects.SetEffects(_effect);
-        StartCoroutine(UseSlash());
     }
 
-    private IEnumerator UseSlash()
+    public void UseRangedSkill(float damage)
     {
-        yield return new WaitForSeconds(0.1f);
-        _slashArea.enabled = true;
-        yield return new WaitForSeconds(0.3f);
-        _slashArea.enabled = false;
-        _colls.Clear();
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.TryGetComponent<IDamageable>(out IDamageable damageable))
+        if (isSpecialUpgraged)
         {
-            _colls.Add(other);
-            foreach (Collider coll in _colls)
-            {
-                if (_colls.Contains(coll))
-                {
-                    continue;
-                }
-            }
-            //damageable.TakeDamage(_player.playerStat.GetFinalDamage(this), false);
+            //파티클 생성
+            //SlashPrefab 생성
+            Quaternion rotationMinus = rangedSlashPivot.rotation * Quaternion.Euler(0, -15, 0);
+            Quaternion rotationPlus = rangedSlashPivot.rotation * Quaternion.Euler(0, 15, 0);
+
+            // -30도 회전 위치에 파티클 생성
+            var effect1 = Instantiate(rangedSlash.skillEffect, -rangedSlashPivot.right + rangedSlashPivot.transform.position, rotationMinus);
+            var slashInstance1 = Instantiate(slashPrefab, -rangedSlashPivot.right + rangedSlashPivot.transform.position, rotationMinus);
+            Destroy(effect1, rangedSlash.destroyAfter);
+
+            // +30도 회전 위치에 파티클 생성
+            var effect2 = Instantiate(rangedSlash.skillEffect, rangedSlashPivot.right + rangedSlashPivot.transform.position, rotationPlus);
+            var slashInstance2 = Instantiate(slashPrefab, rangedSlashPivot.right + rangedSlashPivot.transform.position, rotationPlus);
+            Destroy(effect2, rangedSlash.destroyAfter);
         }
+        GameObject slashInstance = Instantiate(slashPrefab, rangedSlashPivot.position, rangedSlashPivot.rotation);
+        SlashProjectile slashProjectile = slashInstance.GetComponent<SlashProjectile>();
+        slashProjectile.Init(_player, rangedSlash.startPositionRotation);
+        slashProjectile.SetDamage(damage);
+    }
+
+    public override void DamageUpgrade()
+    {
+        damagePercent += 0.3f;
+        _effect.damage *= damagePercent;
+    }
+
+    public override void SpecialUpgrade()
+    {
+        isSpecialUpgraged = true;
     }
 
     public override void Init(Player player)
     {
         _player = player;
-        _slashArea = GetComponent<Collider>();
-        _colls = new List<Collider>();
         _eventEffects = player.GetComponent<AnimationEventEffects>();
-        _startPositionRotation = _eventEffects.transform;
+        rangedSlashPivot = GameObject.Find("RangedSlashPivot").GetComponent<Transform>();
+        rangedSlash.startPositionRotation = rangedSlashPivot;
 
+        _effect = new AnimationEventEffects.EffectInfo(rangedSlash, UseRangedSkill);
 
-        //damage = skillData.damage;
-
-        //_effect = new AnimationEventEffects.EffectInfo(skillData, _startPositionRotation);
-    }
-
-    public override void DamageUpgrade()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void SpecialUpgrade()
-    {
-        throw new System.NotImplementedException();
+        damagePercent = rangedSlash.damagePercent;
     }
 }
