@@ -26,13 +26,21 @@ public class TeleportSlash : Skill
     public override void Init(Player player)
     {
         _teleportSlashArea = GameObject.Find("TeleportSlashCollider").GetComponent<Collider>();
-        damage = skillData.damage;
-        _teleportSlashArea.GetComponent<TriggerTakeDamage>().damage = damage;
+        //damage = skillData.damage;
+        //_teleportSlashArea.GetComponent<TriggerTakeDamage>().damage = damage;
         _startPositionRotation = _teleportSlashArea.transform;
 
         _eventEffects = player.GetComponent<AnimationEventEffects>();
-        _effect = new AnimationEventEffects.EffectInfo(skillData, _startPositionRotation);
+        //_effect = new AnimationEventEffects.EffectInfo(skillData, _startPositionRotation);
+    }
 
-        actionType = skillData.ActionType;
+    public override void DamageUpgrade()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void SpecialUpgrade()
+    {
+        throw new System.NotImplementedException();
     }
 }

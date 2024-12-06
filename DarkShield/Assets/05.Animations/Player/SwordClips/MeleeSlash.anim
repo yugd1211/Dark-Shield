@@ -77446,6 +77446,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0.8333333
+    functionName: TargetScan
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.8666667
     functionName: ComboTrigger
     data: 
@@ -77453,7 +77460,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 2.3333333
+  - time: 2.3666666
     functionName: EndSkill
     data: 
     objectReferenceParameter: {fileID: 0}

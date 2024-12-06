@@ -24,7 +24,6 @@ public class RangedSlash : Skill
         yield return new WaitForSeconds(0.3f);
         _slashArea.enabled = false;
         _colls.Clear();
-
     }
 
     private void OnTriggerEnter(Collider other)
@@ -39,7 +38,7 @@ public class RangedSlash : Skill
                     continue;
                 }
             }
-            damageable.TakeDamage(_player.playerStat.GetFinalDamage(this), false);
+            //damageable.TakeDamage(_player.playerStat.GetFinalDamage(this), false);
         }
     }
 
@@ -52,9 +51,18 @@ public class RangedSlash : Skill
         _startPositionRotation = _eventEffects.transform;
 
 
-        damage = skillData.damage;
-        actionType = skillData.ActionType;
+        //damage = skillData.damage;
 
-        _effect = new AnimationEventEffects.EffectInfo(skillData, _startPositionRotation);
+        //_effect = new AnimationEventEffects.EffectInfo(skillData, _startPositionRotation);
+    }
+
+    public override void DamageUpgrade()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void SpecialUpgrade()
+    {
+        throw new System.NotImplementedException();
     }
 }

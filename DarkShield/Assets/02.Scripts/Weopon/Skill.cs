@@ -2,13 +2,16 @@ using UnityEngine;
 
 public abstract class Skill : MonoBehaviour
 {
-    [HideInInspector] public ActionType actionType;
-    public SOSkill skillData;
-    public float damage;
+    public ActionType actionType;
+    public bool isSkillAimingAtMouse;
 
     public abstract void UseSkill();
 
     public abstract void Init(Player player);
+
+    public abstract void DamageUpgrade();
+
+    public abstract void SpecialUpgrade();
 }
 
 public enum ActionType
