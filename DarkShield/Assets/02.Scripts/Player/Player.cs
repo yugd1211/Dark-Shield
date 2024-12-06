@@ -89,4 +89,9 @@ public class Player : Unit
     {
         playerMovement.Move(dir * MoveSpeed);
     }
+    
+    public void DashUpgrade()
+    {
+        playerDash.maxDashCount++;
+    }
 }
