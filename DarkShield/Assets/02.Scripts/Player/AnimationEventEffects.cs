@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AnimationEventEffects : MonoBehaviour
 {
@@ -13,13 +14,19 @@ public class AnimationEventEffects : MonoBehaviour
         public Transform StartPositionRotation;
         public float DestroyAfter = 10;
         public bool UseLocalPosition = true;
+        public UnityAction<float> targetScan;
+        public float damage;
+        public float damagePercent;
 
-        public EffectInfo(SOSkill skillData, Transform trasform)
+        public EffectInfo(SOSkill skillData, UnityAction<float> action)
         {
             Effect = skillData.skillEffect;
-            StartPositionRotation = trasform;
+            StartPositionRotation = skillData.startPositionRotation;
             DestroyAfter = skillData.destroyAfter;
             UseLocalPosition = skillData.useLocalPosition;
+            targetScan = action;
+            damage = skillData.damage;
+            damagePercent = skillData.damagePercent;
         }
     }
 
@@ -44,6 +51,11 @@ public class AnimationEventEffects : MonoBehaviour
             instance.transform.localRotation = new Quaternion();
         }
         Destroy(instance, effects[EffectNumber].DestroyAfter);
+    }
+
+    public void TargetScan(int ActionNumber)
+    {
+        effects[ActionNumber].targetScan?.Invoke(effects[ActionNumber].damage);
     }
 
     public void EndEffect()

@@ -82,4 +82,13 @@ public class Dash : Skill
         //_effect = new AnimationEventEffects.EffectInfo(skillData, transform);
     }
 
+    public override void DamageUpgrade()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void SpecialUpgrade()
+    {
+        throw new System.NotImplementedException();
+    }
 }
