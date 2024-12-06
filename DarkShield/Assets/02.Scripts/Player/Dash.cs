@@ -89,6 +89,6 @@ public class Dash : Skill
 
     public override void SpecialUpgrade()
     {
-        throw new System.NotImplementedException();
+        maxDashCount++;
     }
 }
