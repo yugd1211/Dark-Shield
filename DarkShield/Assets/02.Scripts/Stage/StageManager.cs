@@ -14,7 +14,7 @@ public class StageManager : MonoBehaviour
     public GameObject startStagePrefab;
     public Stage currStage;
 
-    public int currentStageIndex = 0;
+    public int stageCount = 0;
     
     public void Init()
     {
@@ -49,18 +49,18 @@ public class StageManager : MonoBehaviour
     {
         int ran = Random.Range(0, 100);
         GameObject newStage;
-        if (currentStageIndex == 0)
+        if (stageCount == 0)
             newStage = CreateStartStage();
         else if (ran <= 10)
             newStage = CreateShopStage();
         else 
             newStage = CreateBattleStage();
-        newStage.transform.position = new Vector3(0, 0, currentStageIndex * 100);
+        newStage.transform.position = new Vector3(0, 0, stageCount * 100);
         newStage.transform.SetParent(transform);
         
         Stage stage = newStage.GetComponent<Stage>();
         stages.Add(stage);
-        currentStageIndex++;
+        stageCount++;
         stage.Init(this);
         return stage;
     }
@@ -68,9 +68,9 @@ public class StageManager : MonoBehaviour
     public void ChangeStage(Stage stage)
     {
         currStage = stage;
-        currStage.StartStage();
+        currStage.GoToStage();
         if (currStage is BattleStage battle)
-            battle.StartBattle();
+            battle.BattleStart();
         
         for (int i = 0; i < currStage.portalPoints.Count; i++)
             currStage.CreateNextPortal();

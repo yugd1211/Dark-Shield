@@ -9,7 +9,7 @@ public class BattleStage : Stage
 		base.Init(stageManager);
 	}
 	
-	public void StartBattle()
+	public void BattleStart()
 	{
 		EnemyManager enemyManager = GameManager.Instance.enemyManager;
 		enemyManager.Init(enemySpawnData);

@@ -10,6 +10,7 @@ public class EnemySpawner : MonoBehaviour
 	private int _currentWave = 0;
 	private bool _isSpawning = false;
 	private Transform[] _enemySpawnPoint;
+	
 	public void Init(EnemyManager enemyManager, EnemySpawnData enemySpawnData)
 	{
 		_enemyManager = enemyManager;

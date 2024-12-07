@@ -4,10 +4,9 @@ using UnityEngine;
 public partial class GameManager : MonoBehaviour
 {
 	// Managers
-	[HideInInspector] public EnemyManager enemyManager;
-	[HideInInspector] public DialogueManager dialogueManager;
-	[HideInInspector] public CoinManager coinManager;
-	[HideInInspector] public UpgradeManager upgradeManager;
+	public EnemyManager enemyManager;
+	public DialogueManager dialogueManager;
+	public UpgradeManager upgradeManager;
 	
 	[SerializeField] private List<EnemySpawnData> enemySpawnDatas;
 	
