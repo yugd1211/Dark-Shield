@@ -21,6 +21,7 @@ public class StatButton : MonoBehaviour
 	{
 		if (GameManager.Instance.gold.Amount < _cost) return;
 
+		GameManager.Instance.gold.SubGold(_cost);
 		AddCost();
 		StatUpgrade();
 	}
