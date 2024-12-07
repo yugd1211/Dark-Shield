@@ -12,10 +12,7 @@ public class EnemyManager : MonoBehaviour
 	public void Init(EnemySpawnData enemySpawnData)
 	{
 		if (enemySpawner)
-		{
-			print("Destroy EnemySpawner");
 			Destroy(enemySpawner);
-		}
 		enemySpawner = gameObject.AddComponent<EnemySpawner>();
 		enemySpawner.Init(this, enemySpawnData);
 	}

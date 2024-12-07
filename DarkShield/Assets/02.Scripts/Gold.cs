@@ -11,7 +11,7 @@ public class Gold
 	public void AddGold(int amount)
 	{
 		Amount += amount;
-		Debug.Log(Amount);
+		// Debug.Log(Amount);
 	}
 	
 	public void SubGold(int amount)
