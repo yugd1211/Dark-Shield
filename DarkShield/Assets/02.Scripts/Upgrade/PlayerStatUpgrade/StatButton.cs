@@ -6,14 +6,15 @@ using UnityEngine.UI;
 public class StatButton : MonoBehaviour
 {
 	public Stat statType;
-	[SerializeField] private int cost;
+	[SerializeField] private int _cost;
+	[SerializeField] private int _value;
 
 	private PlayerStatUpgrade _statUpgrade;
 	private Button _button;
 
 	private void CanStatUpgrade()
 	{
-		if (GameManager.Instance.gold.Amount < cost) return;
+		if (GameManager.Instance.gold.Amount < _cost) return;
 
 		AddCost();
 		StatUpgrade();
@@ -21,12 +22,12 @@ public class StatButton : MonoBehaviour
 
 	private void StatUpgrade()
 	{
-		_statUpgrade.StatUpgrade(statType);
+		_statUpgrade.StatUpgrade(statType, _value);
 	}
 
 	private void AddCost()
 	{
-		cost += 10;
+		_cost += 10;
 	}
 
 	public void Init(PlayerStatUpgrade statUpgrade)
@@ -35,6 +36,6 @@ public class StatButton : MonoBehaviour
 		_button = GetComponent<Button>();
 
 		_button.onClick.AddListener(CanStatUpgrade);
-		cost = 50;
+		_cost = 50;
 	}
 }

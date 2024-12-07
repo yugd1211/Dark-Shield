@@ -13,26 +13,37 @@ public enum Stat
 
 public class PlayerStatUpgrade : MonoBehaviour
 {
-	private void Awake()
+	private Player _player;
+
+	private void Start()
 	{
 		ChildStatButtonInit();
+		_player = FindObjectOfType<Player>();
 	}
 
-	public void StatUpgrade(Stat statType)
+	public void StatUpgrade(Stat statType, int value)
 	{
 		switch (statType)
 		{
 			case Stat.Health:
+				_player.playerHealth.maxHealth += value;
+				print($"최대 체력 : {_player.playerHealth.maxHealth}");
 				break;
 			case Stat.CharacterDamage:
+				_player.playerStat.playerDamage += value;
+				print($"플레이어 공격력 : {_player.playerStat.playerDamage}");
 				break;
 			case Stat.WeaponDamage:
+				_player.curWeopon.damage += value;
+				print($"무기 공격력 : {_player.curWeopon.damage}");
 				break;
 			case Stat.CriticalChance:
+				_player.playerStat.criticalChance += value;
+				print($"크리티컬 확률 : {_player.playerStat.criticalChance}");
 				break;
 			case Stat.CriticalDamage:
-				break;
-			default:
+				_player.playerStat.criticalDamage += value;
+				print($"크리티컬 데미지 : {_player.playerStat.CriticalDamage}");
 				break;
 		}
 	}

@@ -8,9 +8,16 @@ public class PlayerStat : MonoBehaviour
 	[SerializeField] private SOPlayerData _playerData;
 
 	//PlayerData
-	private float playerDamage;
-	private float criticalChance;
-	private float criticalDamage;
+	public float playerDamage;
+	public float criticalChance;
+	public float criticalDamage { get; set; }
+	public float CriticalDamage
+	{
+		get
+		{
+			return criticalDamage / 100f;
+		}
+	}
 
 	//WeaponData
 	private float weaponDamage => _player.curWeopon.damage;
@@ -32,17 +39,12 @@ public class PlayerStat : MonoBehaviour
 		float _finalDamage;
 		float random = Random.Range(0f, 100f);
 		if (criticalChance >= random)
-			_finalDamage = damage * (1 + criticalDamage);
+			_finalDamage = damage * (1 + CriticalDamage);
 		else
 			_finalDamage = damage;
 		return _finalDamage;
 	}
 
-	//크리티컬 데미지 세팅(업그레이드 할 때 사용 할 연산)
-	public void SetCriticalDamage(float damage)
-	{
-		criticalDamage += damage / 100;
-	}
 	#region Init
 	private void Init()
 	{
@@ -54,7 +56,7 @@ public class PlayerStat : MonoBehaviour
 	{
 		playerDamage = _playerData.damage;
 		criticalChance = _playerData.criticalChance;
-		criticalDamage = _playerData.criticalDamage / 100;
+		criticalDamage = _playerData.criticalDamage;
 	}
 	#endregion
 }
