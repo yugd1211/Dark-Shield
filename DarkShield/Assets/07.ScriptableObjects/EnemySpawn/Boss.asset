@@ -9,10 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38e4a75d0a6773d4a8b58b9cf68322c3, type: 3}
-  m_Name: SwordPlayer
+  m_Script: {fileID: 11500000, guid: 2b6650438ef181e4daa7f529fd398c75, type: 3}
+  m_Name: Boss
   m_EditorClassIdentifier: 
-  health: 200
-  damage: 10
-  criticalChance: 20
-  criticalDamage: 10
+  waves:
+  - enemies:
+    - enemyName: Boss
+      enemyPrefab: {fileID: 1879308459670739748, guid: 4580bf384f068594391683092ae70ff9, type: 3}
+      count: 1
+    spawnFrequency: 1

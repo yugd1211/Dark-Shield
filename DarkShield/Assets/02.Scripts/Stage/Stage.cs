@@ -16,7 +16,7 @@ public class Stage : MonoBehaviour
 		this.stageManager = stageManager;
 		player = stageManager.player;
 	}
-	public virtual void StartStage()
+	public void GoToStage()
 	{
 		if (!player)
 			player = stageManager.player;
