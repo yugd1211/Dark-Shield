@@ -51,9 +51,11 @@ public class SkillUpgradeButton : MonoBehaviour
 				GameManager.Instance.player.curWeopon.skills[actionType].SpecialUpgrade();
 				foreach (SkillUpgradeButton button in upgradeUI.buttonPrefabs)
 				{
-					if (button != this) 
-						continue;
-					upgradeUI.buttonPrefabs.Remove(button);
+					if (button == this)
+					{
+						upgradeUI.buttonPrefabs.Remove(button);
+						break;
+					}
 				}
 				break;
 			case SkillUpgradeType.None:

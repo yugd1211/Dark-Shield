@@ -11,13 +11,9 @@ public class DialogueManager : MonoBehaviour
     private PlayerInput _playerInput;
     public Action dialogueEndAction;
 
-    private void Awake()
+    public void Init()
     {
         _sentences = new Queue<string>();
-    }
-
-    private void Start()
-    {
         dialogueUI = FindObjectOfType<DialogueUI>();
         _playerInput = FindObjectOfType<PlayerInput>();
     }
@@ -31,6 +27,9 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue(Dialogue dialogue)
     {
         _sentences.Clear();
+        print(_playerInput);
+        print(_playerInput.actions);
+        print(_playerInput.actions["UI/Interact"]);
         _playerInput.actions["UI/Interact"].performed += OnInteract;
 
         foreach (string sentence in dialogue.sentences)
