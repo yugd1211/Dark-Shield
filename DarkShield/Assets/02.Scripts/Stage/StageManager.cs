@@ -15,14 +15,13 @@ public class StageManager : MonoBehaviour
     public Stage currStage;
 
     public int stageCount = 0;
+    public int currentStageIndex = 0;
     
     public void Init()
     {
         player = FindObjectOfType<Player>();
         
         currStage = CreateStage();
-        while (currStage.portalPoints.Count > Random.Range(0, 3))
-            currStage.CreateNextPortal();
     }
 
     private GameObject CreateBattleStage()
@@ -51,6 +50,8 @@ public class StageManager : MonoBehaviour
         GameObject newStage;
         if (stageCount == 0)
             newStage = CreateStartStage();
+        else if (currentStageIndex >= GameManager.Instance.bossStageIndex)
+            newStage = CreateBossStage();
         else if (ran <= 10)
             newStage = CreateShopStage();
         else 
@@ -69,10 +70,23 @@ public class StageManager : MonoBehaviour
     {
         currStage = stage;
         currStage.GoToStage();
+        currentStageIndex++;
         if (currStage is BattleStage battle)
             battle.BattleStart();
+        else if (currStage is BossStage boss)
+        {
+            boss.BattleStart();
+            return;
+        }
         
-        for (int i = 0; i < currStage.portalPoints.Count; i++)
-            currStage.CreateNextPortal();
+        if (currentStageIndex >= GameManager.Instance.bossStageIndex)
+        {
+            currStage.CreateNextPortal();   
+        }
+        else
+        {
+            for (int i = 0; i < currStage.portalPoints.Count; i++)
+                currStage.CreateNextPortal();
+        }
     }
 }

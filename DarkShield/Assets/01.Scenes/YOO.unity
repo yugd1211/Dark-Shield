@@ -869,6 +869,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1734cb1ec4ae85f419fadb41c3b95ad9, type: 2}
   - {fileID: 11400000, guid: 0331c1343e56c034a8eb0ba2f5928e28, type: 2}
   - {fileID: 11400000, guid: 91adfb0b704de7b47a378fbd10dfcb20, type: 2}
+  bossSpawnData: {fileID: 11400000, guid: d748258db71b4254b885efde99b1a4f2, type: 2}
+  bossStageIndex: 3
   stageManager: {fileID: 0}
   playerPrefab: {fileID: 7509375128569891226, guid: 238d8185dddf6244fa30dd3dd741b7f9, type: 3}
   player: {fileID: 0}
@@ -1239,13 +1241,13 @@ MonoBehaviour:
   player: {fileID: 0}
   stages: []
   battleStagePrefabs:
-  - {fileID: 3314756218244737361, guid: 8ade9da1a323cdd45bb1156dc84aa3b8, type: 3}
   - {fileID: 1653225880045531861, guid: 0c538a63f009aa145b49c0cf4201aa5c, type: 3}
   shopStagePrefab: {fileID: 370360336871808685, guid: 47c599e90e453484c83165e5d98ddaea, type: 3}
-  bossStagePrefab: {fileID: 0}
+  bossStagePrefab: {fileID: 1653225880045531861, guid: f1ea88ca08e638b429ec7cfe18c166af, type: 3}
   startStagePrefab: {fileID: 370360336871808685, guid: 15fc19ebf4f8382469a8a92ed91a292c, type: 3}
   currStage: {fileID: 0}
   stageCount: 0
+  currentStageIndex: 0
 --- !u!1 &1373705206
 GameObject:
   m_ObjectHideFlags: 0
