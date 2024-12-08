@@ -25,8 +25,6 @@ public partial class GameManager : MonoBehaviour
 		newEnemyManager.transform.SetParent(transform);
 		enemyManager = newEnemyManager;
 		
-
-		
 		stageManager = FindObjectOfType<StageManager>();
 		stageManager.Init();
 

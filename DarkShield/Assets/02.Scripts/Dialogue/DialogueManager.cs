@@ -27,9 +27,6 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue(Dialogue dialogue)
     {
         _sentences.Clear();
-        print(_playerInput);
-        print(_playerInput.actions);
-        print(_playerInput.actions["UI/Interact"]);
         _playerInput.actions["UI/Interact"].performed += OnInteract;
 
         foreach (string sentence in dialogue.sentences)
