@@ -10,15 +10,18 @@ using static UnityEngine.ParticleSystem;
 public class MeleeSlash : Skill
 {
 	public SOSkill meleeSlash1;
+	public SOSkill meleeSlash2;
 	public SOSkill meleeSlash3;
 
 	private AnimationEventEffects _eventEffects;
 	private AnimationEventEffects.EffectInfo _effect;
+	private AnimationEventEffects.EffectInfo _effect2;
 	private AnimationEventEffects.EffectInfo _effect3;
 	private Transform _meleeSlashPivot;
 
 	//스킬 업에 필요한 변수
 	private float damagePercent;
+	private float damagePercent2;
 	private float damagePercent3;
 	private GameObject meleeSlash3Fx;
 
@@ -34,11 +37,18 @@ public class MeleeSlash : Skill
 	private Vector3 _sphereCenter;
 	private Transform _boxCenterPivot; // 박스 중심을 기준으로 할 피벗 Transform
 	private Player _player;
+	//=========box2 temp
+	public Vector3 boxSize2 = new Vector3(2, 2, 2);
+	public Vector3 boxOffset2 = new Vector3(0, 0, 2);
+	private Vector3 _boxCenter2;
+
 	void Update()
 	{
 		if (Input.GetKeyDown(KeyCode.R)) SpecialUpgrade();
 		_boxCenter = _boxCenterPivot.TransformPoint(boxOffset);
 		_sphereCenter = _player.transform.position;
+
+		_boxCenter2 = _boxCenterPivot.TransformPoint(boxOffset2);
 	}
 
 	// 기즈모로 박스 표시
@@ -58,6 +68,18 @@ public class MeleeSlash : Skill
 		// 행렬 초기화
 		Gizmos.matrix = Matrix4x4.identity;
 
+		// 박스2 기즈모
+		Gizmos.color = Color.blue;
+
+		_boxCenter2 = _boxCenterPivot.TransformPoint(boxOffset2);
+		Gizmos.matrix = Matrix4x4.TRS(_boxCenter2, _boxCenterPivot.rotation, Vector3.one);
+		Gizmos.DrawWireCube(Vector3.zero, boxSize2);
+		Gizmos.color = new Color(0, 0, 1, 0.3f);
+		Gizmos.DrawCube(Vector3.zero, boxSize2);
+
+		// 행렬 초기화
+		Gizmos.matrix = Matrix4x4.identity;
+
 		// 구체 기즈모
 		_sphereCenter = _player.transform.position; // 실시간 갱신
 		Gizmos.color = Color.red;
@@ -73,8 +95,26 @@ public class MeleeSlash : Skill
 		{
 			//print("이펙트 세팅");
 			_eventEffects.SetEffects(_effect);
+			_eventEffects.SetEffects(_effect2);
 			_eventEffects.SetEffects(_effect3);
 		}
+	}
+
+	public override void ChangeEffect(ElementChange element)
+	{
+		//Change Effects
+		_effect.Effect = element.skillData[0].skillEffect;
+		_effect2.Effect = element.skillData[1].skillEffect;
+		_effect3.Effect = element.skillData[2].skillEffect;
+		//Change Position&Rotation
+		Transform[] childTransform = _meleeSlashPivot.GetComponentsInChildren<Transform>();
+		_effect.StartPositionRotation = childTransform[1];
+		_effect2.StartPositionRotation = childTransform[2];
+		_effect3.StartPositionRotation = childTransform[3];
+		//Add Element Damage
+		_effect.damage += element.skillData[0].damage;
+		_effect2.damage += element.skillData[1].damage;
+		_effect3.damage += element.skillData[2].damage;
 	}
 
 	public void SkillBoxRange(float damage)
@@ -104,8 +144,10 @@ public class MeleeSlash : Skill
 	public override void DamageUpgrade()
 	{
 		damagePercent += 0.3f;
+		damagePercent2 += 0.3f;
 		damagePercent3 += 0.5f;
 		_effect.damage *= damagePercent;
+		_effect2.damage *= damagePercent2;
 		_effect3.damage *= damagePercent3;
 	}
 
@@ -134,11 +176,13 @@ public class MeleeSlash : Skill
 		meleeSlash1.startPositionRotation = _meleeSlashPivot;
 		meleeSlash3.startPositionRotation = player.transform;
 		_effect = new AnimationEventEffects.EffectInfo(meleeSlash1, SkillBoxRange);
+		_effect2 = new AnimationEventEffects.EffectInfo(meleeSlash1, SkillBoxRange);
 		_effect3 = new AnimationEventEffects.EffectInfo(meleeSlash3, SkillSphereRange);
 
 		_boxCenterPivot = _meleeSlashPivot;
 
 		damagePercent = meleeSlash1.damagePercent;
+		damagePercent2 = meleeSlash2.damagePercent;
 		damagePercent3 = meleeSlash1.damagePercent;
 		meleeSlash3Fx = Instantiate(meleeSlash3.skillEffect, _player.transform.position, Quaternion.identity);
 	}
