@@ -25,10 +25,6 @@ public partial class GameManager : MonoBehaviour
 		newEnemyManager.transform.SetParent(transform);
 		enemyManager = newEnemyManager;
 		
-		DialogueManager newDialogueManager = new GameObject("DialogueManager").AddComponent<DialogueManager>();
-		newDialogueManager.transform.SetParent(transform);
-		dialogueManager = newDialogueManager;
-		
 		stageManager = FindObjectOfType<StageManager>();
 		stageManager.Init();
 
@@ -37,6 +33,11 @@ public partial class GameManager : MonoBehaviour
 		
 		stageManager.player = player;
 		stageManager.ChangeStage(stageManager.currStage);
+		
+		DialogueManager newDialogueManager = new GameObject("DialogueManager").AddComponent<DialogueManager>();
+		newDialogueManager.transform.SetParent(transform);
+		dialogueManager = newDialogueManager;
+		dialogueManager.Init();
 	}
 }
 

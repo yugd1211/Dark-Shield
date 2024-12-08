@@ -11,13 +11,9 @@ public class DialogueManager : MonoBehaviour
     private PlayerInput _playerInput;
     public Action dialogueEndAction;
 
-    private void Awake()
+    public void Init()
     {
         _sentences = new Queue<string>();
-    }
-
-    private void Start()
-    {
         dialogueUI = FindObjectOfType<DialogueUI>();
         _playerInput = FindObjectOfType<PlayerInput>();
     }
