@@ -6660,7 +6660,6 @@ MonoBehaviour:
   playerStat: {fileID: 0}
   playerAnimationEventEffects: {fileID: 0}
   rightHand: {fileID: 5869150831064480869}
-  swordPrefab: {fileID: 3994626178766799071, guid: bf59326c3262b4d41bd4612d47a6b2e8, type: 3}
   isEquiped: 0
   moveDistance: 8
   isDamaged: 0
@@ -6689,8 +6688,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00f314e8a77b3c5439560833537d8bf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  health: 0
   _playerData: {fileID: 11400000, guid: 2906d60c01ffc7845a93a9a858ec8b07, type: 2}
 --- !u!114 &5677061061668729711
 MonoBehaviour:
@@ -6773,6 +6770,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerData: {fileID: 11400000, guid: 2906d60c01ffc7845a93a9a858ec8b07, type: 2}
+  playerDamage: 0
+  criticalChance: 0
 --- !u!1 &7655688472642754298
 GameObject:
   m_ObjectHideFlags: 0

@@ -38,16 +38,22 @@ public class RangedSlash : Skill
 			// -30도 회전 위치에 파티클 생성
 			var effect1 = Instantiate(rangedSlash.skillEffect, -rangedSlashPivot.right + rangedSlashPivot.transform.position, rotationMinus);
 			var slashInstance1 = Instantiate(slashPrefab, -rangedSlashPivot.right + rangedSlashPivot.transform.position, rotationMinus);
+			SlashProjectile slashProjectile1 = slashInstance1.GetComponent<SlashProjectile>();
+			slashProjectile1.Init(_player);
+			slashProjectile1.SetDamage(damage);
 			Destroy(effect1, rangedSlash.destroyAfter);
 
 			// +30도 회전 위치에 파티클 생성
 			var effect2 = Instantiate(rangedSlash.skillEffect, rangedSlashPivot.right + rangedSlashPivot.transform.position, rotationPlus);
 			var slashInstance2 = Instantiate(slashPrefab, rangedSlashPivot.right + rangedSlashPivot.transform.position, rotationPlus);
+			SlashProjectile slashProjectile2 = slashInstance2.GetComponent<SlashProjectile>();
+			slashProjectile2.Init(_player);
+			slashProjectile2.SetDamage(damage);
 			Destroy(effect2, rangedSlash.destroyAfter);
 		}
 		GameObject slashInstance = Instantiate(slashPrefab, rangedSlashPivot.position, rangedSlashPivot.rotation);
 		SlashProjectile slashProjectile = slashInstance.GetComponent<SlashProjectile>();
-		slashProjectile.Init(_player, rangedSlash.startPositionRotation);
+		slashProjectile.Init(_player);
 		slashProjectile.SetDamage(damage);
 	}
 
