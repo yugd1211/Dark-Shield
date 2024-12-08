@@ -52,7 +52,7 @@ public class StageManager : MonoBehaviour
             newStage = CreateStartStage();
         else if (currentStageIndex >= GameManager.Instance.bossStageIndex)
             newStage = CreateBossStage();
-        else if (ran <= 10)
+        else if (ran <= 30)
             newStage = CreateShopStage();
         else 
             newStage = CreateBattleStage();

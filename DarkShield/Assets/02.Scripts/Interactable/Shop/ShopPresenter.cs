@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class ShopPresenter : MonoBehaviour
@@ -23,7 +22,7 @@ public class ShopPresenter : MonoBehaviour
         _dialogueTrigger.dialogueEndAction = _shopUI.ShowShop;
         _dialogueTrigger.TriggerDialogue();
     }
-
+ 
     public void CloseShop()
     {
         _shopUI.HideShop();
