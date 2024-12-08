@@ -8,12 +8,12 @@ public class Portal : AInteractableObeject
 		Battle,
 		Shop,
 		Boss,
-		
 	}
 	
 	public Stage nextStage;
 	public event Func<bool> OnCanInteract;
 	public GameObject[] portalEffect;
+	public StageType nextStageType;
 	
 	private StageManager _stageManager;
 
@@ -22,11 +22,12 @@ public class Portal : AInteractableObeject
 		_stageManager = GameManager.Instance.stageManager;
 		nextStage = _stageManager.CreateStage();
 		if (nextStage is BattleStage)
-			portalEffect[0].SetActive(true);
+			nextStageType = StageType.Battle;
 		else if (nextStage is ShopStage)
-			portalEffect[1].SetActive(true);
+			nextStageType = StageType.Shop;
 		else if (nextStage is BossStage)
-			portalEffect[2].SetActive(true);
+			nextStageType = StageType.Boss;
+		portalEffect[(int)nextStageType].SetActive(true);
 	}
 
 	private void Update()
@@ -42,12 +43,7 @@ public class Portal : AInteractableObeject
 		if (CanInteract())
 		{
 			_stageManager.currStage.MoveNextStage(nextStage);
-			if (nextStage is BattleStage)
-				portalEffect[0].SetActive(false);
-			else if (nextStage is ShopStage)
-				portalEffect[1].SetActive(false);
-			else if (nextStage is BossStage)
-				portalEffect[2].SetActive(false);
+			portalEffect[(int)nextStageType].SetActive(false);
 		}
 	}
 

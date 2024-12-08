@@ -15,7 +15,5 @@ public class BattleStage : Stage
 		enemySpawnData = GameManager.Instance.enemySpawnDatas[GameManager.Instance.stageManager.currentStageIndex];
 		enemyManager.Init(enemySpawnData);
 		enemyManager.enemySpawner.StartSpawning(enemySpawnPoint);
-		// EnemySpawner 객체 생성하고 Init과 Spawn 스케줄 관리
-		// EnemySpawner StartSpawning
 	}
 }

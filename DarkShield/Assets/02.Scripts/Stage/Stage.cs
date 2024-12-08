@@ -37,7 +37,6 @@ public class Stage : MonoBehaviour
 			newPortal.OnCanInteract += () => true;
 		portals.Add(newPortal);
 		portalPoints.RemoveAt(0);
-		// newPortal.nextStage = stageManager.CreateStage();
 	}
 
 	public void MoveNextStage(Stage moveStage)
