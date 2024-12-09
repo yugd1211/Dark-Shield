@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Player : Unit
@@ -98,5 +99,16 @@ public class Player : Unit
 	public void DashUpgrade()
 	{
 		playerDash.maxDashCount++;
+	}
+
+	public void Die()
+	{
+		StartCoroutine(Restart());
+	}
+	
+	private IEnumerator Restart()
+	{
+		yield return new WaitForSeconds(5f);
+		GameManager.Instance.Restart();
 	}
 }
