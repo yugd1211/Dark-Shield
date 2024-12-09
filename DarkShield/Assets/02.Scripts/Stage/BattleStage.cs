@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+
 public class BattleStage : Stage
 {
 	public EnemySpawnData enemySpawnData;
