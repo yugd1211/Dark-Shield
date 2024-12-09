@@ -18,9 +18,13 @@ public partial class GameManager : MonoBehaviour
 	public GameObject playerPrefab;
 	public Player player;
 	public Gold gold = new Gold(0);
+	
+	public GameObject elementalPrefab;
+	public bool isElemental;
 
 	private void Init()
 	{
+		isElemental = false;
 		EnemyManager newEnemyManager = new GameObject("EnemyManager").AddComponent<EnemyManager>();
 		newEnemyManager.transform.SetParent(transform);
 		enemyManager = newEnemyManager;

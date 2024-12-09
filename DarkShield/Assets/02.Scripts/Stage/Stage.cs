@@ -8,8 +8,6 @@ public class Stage : MonoBehaviour
 	public List<Portal> portals = new List<Portal>();
 	public List<Transform> portalPoints = new List<Transform>();
 	public GameObject portalPrefab;
-	
-	
 	protected bool isStageCleared;
 	
 	// Init을 위에서 할당하다보니 인스펙터에서 할당해야함
@@ -20,6 +18,7 @@ public class Stage : MonoBehaviour
 		player = stageManager.player;
 		isStageCleared = true;
 	}
+	
 	public void GoToStage()
 	{
 		if (!player)

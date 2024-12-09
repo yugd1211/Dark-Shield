@@ -1237,6 +1237,8 @@ MonoBehaviour:
   stageManager: {fileID: 0}
   playerPrefab: {fileID: 7509375128569891226, guid: 238d8185dddf6244fa30dd3dd741b7f9, type: 3}
   player: {fileID: 0}
+  elementalPrefab: {fileID: 3117908878903010400, guid: 52717ff581adb084ebfce78d506795a7, type: 3}
+  isElemental: 0
 --- !u!1001 &960204530
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -8,6 +8,8 @@ public class BattleStage : Stage
 	public GameObject upgradeObjectPrefab;
 	public GameObject upgradeObjectSpawnPoint;
 	
+	public Transform elementalSpawnPoint;
+	
 	public override void Init(StageManager stageManager)
 	{
 		base.Init(stageManager);
@@ -28,6 +30,12 @@ public class BattleStage : Stage
 		yield return new WaitUntil(() => GameManager.Instance.enemyManager.enemySpawner.isAllWavesCompleted);
 		GameObject go = Instantiate(upgradeObjectPrefab, upgradeObjectSpawnPoint.transform.position, Quaternion.identity);
 		yield return new WaitUntil(() => go == null);
+		if (!GameManager.Instance.isElemental && GameManager.Instance.stageManager.currentStageIndex > GameManager.Instance.bossStageIndex / 2)
+		{
+			GameObject element = Instantiate(GameManager.Instance.elementalPrefab, elementalSpawnPoint.position, Quaternion.identity);
+			GameManager.Instance.isElemental = true;
+			yield return new WaitUntil(() => element == null);
+		}
 		BattleEnd();
 	}
 
@@ -35,4 +43,5 @@ public class BattleStage : Stage
 	{
 		isStageCleared = true;
 	}
+	
 }
