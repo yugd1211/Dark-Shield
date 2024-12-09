@@ -51,13 +51,6 @@ public class MeleeSlash : Skill
 		_boxCenter2 = _boxCenterPivot.TransformPoint(boxOffset2);
 
         Collider[] hitColliders = Physics.OverlapBox(_boxCenter2, boxSize2 / 2, _boxCenterPivot.rotation, layerMask);
-
-        foreach (Collider hitCollider in hitColliders)
-        {
-			Debug.Log("감지된 이름 " + hitCollider.name);
-			//print("가한 데미지 : " + damage);
-			//hitCollider.GetComponent<IDamageable>().TakeDamage(_player.playerStat.GetFinalDamage(damage), false);
-        }
     }
 
 	// 기즈모로 박스 표시
