@@ -10,7 +10,7 @@ public class RangedEnemy : Enemy
 
     private Animator _animator;
     private void Awake()
-    {
+    { 
         _animator = GetComponent<Animator>();
     }
 
@@ -40,7 +40,6 @@ public class RangedEnemy : Enemy
             projectile.transform.position = firePoint.position;
             projectile.transform.rotation = firePoint.rotation;
 
-
             Projectile fire = projectile.GetComponent<Projectile>();
             fire.target = "Player";
             fire.Launch(player.position);
@@ -59,6 +58,7 @@ public class RangedEnemy : Enemy
     {
         yield return new WaitForSeconds(delay);
         objectPool.ReturnObject(projectile);
+        
     }
 
 

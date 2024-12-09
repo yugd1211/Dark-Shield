@@ -28,20 +28,21 @@ public class Player : Unit
 		playerStateMachine.OnUpdate();
 	}
 
-	public void Init()
-	{
-		playerStateMachine = new StateMachine(this);
-		playerMovement = GetComponent<PlayerMovement>();
-		playerInputManager = GetComponent<PlayerInputManager>();
-		playerHealth = GetComponent<PlayerHealth>();
-		playerAnimator = GetComponent<Animator>();
-		mouseLookDir = GetComponent<MouseLook>();
-		playerDash = GetComponent<Dash>();
-		playerStat = GetComponent<PlayerStat>();
-		playerAnimationEventEffects = GetComponent<AnimationEventEffects>();
-		playerStateMachine.Init(playerStateMachine.idleState);
-		MoveSpeed = 5;
-	}
+    public void Init()
+    {
+        playerStateMachine = new StateMachine(this);
+        playerMovement = GetComponent<PlayerMovement>();
+        playerInputManager = GetComponent<PlayerInputManager>();
+        playerHealth = GetComponent<PlayerHealth>();
+        playerAnimator = GetComponent<Animator>();
+        mouseLookDir = GetComponent<MouseLook>();
+        playerDash = GetComponent<Dash>();
+        playerStat = GetComponent<PlayerStat>();
+        playerAnimationEventEffects = GetComponent<AnimationEventEffects>();
+        playerStateMachine.Init(playerStateMachine.idleState);
+        MoveSpeed = 5;
+        isDamaged = true;
+    }
 
 	public void ChangeWeapon(WeaponChange weapon)
 	{
