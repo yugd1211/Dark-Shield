@@ -16,7 +16,7 @@ public abstract class Enemy : Unit
     public float AttackPower = 20f;//공격력
 
     public float maxHP = 200f;
-    public RectTransform hpBarForeground; // 초록색 HP 
+    //public RectTransform hpBarForeground; // 초록색 HP
 
     private IState _currentState;
     public Animator animotor;
@@ -28,6 +28,14 @@ public abstract class Enemy : Unit
     public float DestroyTime = 8;
 
     public int coin;
+
+    public float HpAmount
+    {
+        get
+        {
+            return health / maxHP;
+        }
+    }
 
     protected virtual void Start()
     {
@@ -45,6 +53,8 @@ public abstract class Enemy : Unit
 
     public void SetState(IState newState) //상태변경
     {
+        if (_currentState is DeadState)
+            return;
         _currentState?.OnExit();
         _currentState = newState;
         _currentState.OnEnter();
@@ -60,13 +70,13 @@ public abstract class Enemy : Unit
 
     public override void TakeDamage(float damage, bool isHit)
     {
-        if (_currentState.GetType() == typeof(DeadState))
-            return ;
+        if (_currentState.GetType() == typeof(DeadState) || health <= 0)
+            return;
         animotor.SetTrigger("Hit");
         health -= damage;
         health = Mathf.Clamp(health, 0, maxHP);
-        float hpPercent = health / maxHP;
-        hpBarForeground.localScale = new Vector3(hpPercent, 1, 1); // 너비만 조정
+        //float hpPercent = health / maxHP;
+        //hpBarForeground.localScale = new Vector3(hpPercent, 1, 1); // 너비만 조정
         if (health <= 0)
         {
             SetState(new DeadState(this));
@@ -80,7 +90,7 @@ public abstract class Enemy : Unit
     }
     public void DropCoin()
     {
-        if(coinpool != null)
+        if (coinpool != null)
         {
             GameObject CoinPick = coinpool.GetObject();
             CoinPick.GetComponent<CoinPick>().coinValue = coin;

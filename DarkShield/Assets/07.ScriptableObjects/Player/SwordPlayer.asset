@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38e4a75d0a6773d4a8b58b9cf68322c3, type: 3}
   m_Name: SwordPlayer
   m_EditorClassIdentifier: 
-  health: 200
+  health: 1000
   damage: 10
   criticalChance: 20
   criticalDamage: 10

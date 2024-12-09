@@ -12,7 +12,7 @@ public class EnemyIdleState : IState
     public void OnEnter()
     {
         enemy.agent.isStopped = true;
-        enemy.animotor.SetBool("IsMoving", false);         
+        enemy.animotor.SetBool("IsMoving", false);
     }
 
     public void OnUpdate()

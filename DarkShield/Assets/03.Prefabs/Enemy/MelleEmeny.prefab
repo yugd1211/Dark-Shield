@@ -149,7 +149,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 9ed08f68c9f0bde43a6bc1414ab8b973, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -180,9 +180,9 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!136 &6842637209051451838
 CapsuleCollider:
@@ -250,12 +250,13 @@ MonoBehaviour:
   health: 200
   AttackPower: 20
   maxHP: 200
-  hpBarForeground: {fileID: 858606083624190654}
   animotor: {fileID: 0}
   coinPrefab: {fileID: 1151114758848143735, guid: 877220dd96143ed48b9fd03a949f8781, type: 3}
   coinpool: {fileID: 8128104576699582198, guid: 97f6abeccc868ec41bcb3192152b3b83, type: 3}
   DestroyTime: 8
   coin: 100
+  attackInterval: 1.2
+  hpBarForeground: {fileID: 858606083624190654}
 --- !u!1 &1232305957626875765
 GameObject:
   m_ObjectHideFlags: 0

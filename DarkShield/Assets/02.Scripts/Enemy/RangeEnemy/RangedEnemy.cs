@@ -8,10 +8,20 @@ public class RangedEnemy : Enemy
     public GameObject projectilePrefab; // 원거리 투사체
     public Transform firePoint; // 투사체 발사 위치
 
+    public float attackInterval;
+
     private Animator _animator;
     private void Awake()
-    { 
+    {
         _animator = GetComponent<Animator>();
+    }
+
+    public RectTransform hpBarForeground;
+
+    protected override void Update()
+    {
+        base.Update();
+        hpBarForeground.localScale = new Vector3(HpAmount, 1, 1);
     }
 
     public override void Attack()
@@ -19,15 +29,14 @@ public class RangedEnemy : Enemy
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
         if (distanceToPlayer <= attackRange && Time.time >= lastAttackTime + attackCooldown)
         {
-            _animator.SetBool("IsRangeAttack", true);
-            RangedAttack();
+            _animator.SetTrigger("IsRangeAttack");
+            StartCoroutine(RangedAttack());
             lastAttackTime = Time.time;
-            StartCoroutine(ResetAttackAnimation());
         }
 
     }
 
-    private void RangedAttack()
+    private IEnumerator RangedAttack()
     {
         if (Time.time >= lastAttackTime + attackCooldown)
         {
@@ -36,6 +45,7 @@ public class RangedEnemy : Enemy
             Quaternion lookRotation = Quaternion.LookRotation(new Vector3(directionToPlayer.x, 0, directionToPlayer.z)); // y축은 고정
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 360f); // 부드럽게 회전
 
+            yield return new WaitForSeconds(attackInterval);
             GameObject projectile = objectPool.GetObject();
             projectile.transform.position = firePoint.position;
             projectile.transform.rotation = firePoint.rotation;
@@ -58,17 +68,5 @@ public class RangedEnemy : Enemy
     {
         yield return new WaitForSeconds(delay);
         objectPool.ReturnObject(projectile);
-        
     }
-
-
-    private IEnumerator ResetAttackAnimation()
-    {
-       
-        yield return new WaitForSeconds(1.0f);
-
-        _animator.SetBool("IsRangeAttack", false);
-    }
-
-
 }
