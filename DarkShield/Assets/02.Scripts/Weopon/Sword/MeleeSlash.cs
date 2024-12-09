@@ -49,7 +49,16 @@ public class MeleeSlash : Skill
 		_sphereCenter = _player.transform.position;
 
 		_boxCenter2 = _boxCenterPivot.TransformPoint(boxOffset2);
-	}
+
+        Collider[] hitColliders = Physics.OverlapBox(_boxCenter2, boxSize2 / 2, _boxCenterPivot.rotation, layerMask);
+
+        foreach (Collider hitCollider in hitColliders)
+        {
+			Debug.Log("감지된 이름 " + hitCollider.name);
+			//print("가한 데미지 : " + damage);
+			//hitCollider.GetComponent<IDamageable>().TakeDamage(_player.playerStat.GetFinalDamage(damage), false);
+        }
+    }
 
 	// 기즈모로 박스 표시
 	void OnDrawGizmos()
@@ -115,6 +124,9 @@ public class MeleeSlash : Skill
 		_effect.damage += element.skillData[0].damage;
 		_effect2.damage += element.skillData[1].damage;
 		_effect3.damage += element.skillData[2].damage;
+		//3번째 마지막 공격 판정 범위 바꾸기(구현해야함)
+		//1,2 번째 공격 판정 범위 바꾸기
+
 	}
 
 	public void SkillBoxRange(float damage)

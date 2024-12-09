@@ -6758,7 +6758,7 @@ MonoBehaviour:
   rightHand: {fileID: 5869150831064480869}
   isEquiped: 0
   moveDistance: 8
-  isDamaged: 0
+  isDamaged: 1
 --- !u!114 &4435017900139555850
 MonoBehaviour:
   m_ObjectHideFlags: 0
