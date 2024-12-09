@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - enemies:
-    - enemyName: meleeEnemy
-      enemyPrefab: {fileID: 4502777388522414491, guid: aec6dccac925c514fb07577bc269b61f, type: 3}
-      count: 3
-    spawnFrequency: 1
+    - enemyName: Melee
+      enemyPrefab: {fileID: 4064885816787712655, guid: 14609cd2d42166c4294031ad0b01f4ed, type: 3}
+      count: 2
+    - enemyName: Range
+      enemyPrefab: {fileID: 860655475421589709, guid: f0739ceb6a2111646a9c0e49ec263355, type: 3}
+      count: 1
+    spawnFrequency: 2

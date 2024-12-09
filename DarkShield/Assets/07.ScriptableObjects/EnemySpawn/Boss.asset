@@ -15,6 +15,6 @@ MonoBehaviour:
   waves:
   - enemies:
     - enemyName: Boss
-      enemyPrefab: {fileID: 5770905129104103656, guid: 1f83c7cdcf4fc0c4a91d2355a94a7805, type: 3}
+      enemyPrefab: {fileID: 1445069205785629025, guid: 4580bf384f068594391683092ae70ff9, type: 3}
       count: 1
     spawnFrequency: 1
