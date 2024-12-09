@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public partial class GameManager : MonoBehaviour
 {
 	// Managers
 	public EnemyManager enemyManager;
 	public DialogueManager dialogueManager;
-	public UpgradeManager upgradeManager;
 	
 	public List<EnemySpawnData> enemySpawnDatas;
 	[SerializeField] private EnemySpawnData bossSpawnData;
@@ -39,6 +39,11 @@ public partial class GameManager : MonoBehaviour
 		dialogueManager = newDialogueManager;
 		dialogueManager.Init();
 	}
+	
+	public void Restart()
+	{
+		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+	}
 }
 
 
@@ -69,7 +74,6 @@ public partial class GameManager
 			return;
 		}
 		_instance = this;
-		DontDestroyOnLoad(gameObject);
 		Init();
 	}
 }

@@ -14,7 +14,9 @@ public class DieState : IState
     public void OnEnter()
     {
         _player.playerAnimator.SetTrigger("Die");
+        _player.Die();
     }
+
 
     public void OnUpdate()
     {
