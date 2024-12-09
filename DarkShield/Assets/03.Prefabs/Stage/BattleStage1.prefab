@@ -142,7 +142,7 @@ GameObject:
   - component: {fileID: 4168078235153005999}
   - component: {fileID: 7453497014226533781}
   m_Layer: 0
-  m_Name: BattleStage
+  m_Name: BattleStage1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -184,9 +184,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   stageManager: {fileID: 0}
-  nextStage: {fileID: 0}
+  portals: []
+  portalPoints: []
+  portalPrefab: {fileID: 0}
   playerStartPos: {fileID: 0}
-  portal: {fileID: 0}
   enemySpawnData: {fileID: 11400000, guid: 433c218e38a7544408a8fa2623ff8ab8, type: 2}
   enemySpawnPoint:
   - {fileID: 8556176358275333774}
@@ -685,7 +686,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.13333334
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: c0ab462151908a446a79ce08eceabc8a, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: a5771f03a99f7194f962c7735e68e0b6, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &5847359692457302919
 GameObject:
@@ -989,6 +990,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c140d64a582e10b4187e4f583f71f4ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextStage: {fileID: 0}
 --- !u!208 &6214715745318908438
 NavMeshObstacle:
   m_ObjectHideFlags: 0
