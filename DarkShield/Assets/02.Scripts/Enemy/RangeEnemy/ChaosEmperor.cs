@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ChaosEmperor : Boss
 {
@@ -8,6 +9,32 @@ public class ChaosEmperor : Boss
     public float dashDuration = 0.5f; // 돌진 지속 시간
     private bool isDashing = false; // 돌진 상태 플래그
     private Vector3 dashDirection; // 돌진 방향
+
+    [SerializeField] private GameObject _bossHpBarPrefab;
+    private GameObject _canvas;
+    [SerializeField] private Slider _bossHpBar;
+
+    private float HpAmount
+    {
+        get
+        {
+            return health / maxHP;
+        }
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+        _canvas = GameObject.Find("Canvas");
+        _bossHpBar = Instantiate(_bossHpBarPrefab, _canvas.transform).GetComponent<Slider>();
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+        _bossHpBar.value = HpAmount;
+    }
+
     public override void Attack()
     {
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);

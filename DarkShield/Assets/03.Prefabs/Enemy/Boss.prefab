@@ -11757,6 +11757,8 @@ MonoBehaviour:
   rangedAttackRange: 10
   dashSpeed: 20
   dashDuration: 0.5
+  _bossHpBarPrefab: {fileID: 8839229723222266077, guid: 54f3c73b623b19941b9570fb96833426, type: 3}
+  _bossHpBar: {fileID: 0}
 --- !u!54 &519621339462657648
 Rigidbody:
   m_ObjectHideFlags: 0
