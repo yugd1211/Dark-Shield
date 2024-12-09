@@ -38,6 +38,7 @@ public class PlayerHealth : MonoBehaviour
 	{
 		maxHealth = _playerData.health;
 		_health = maxHealth;
+		_playerHpbar = GameObject.Find("PlayerHpBar").GetComponent<Slider>();
 	}
 
 	private void Update()
@@ -57,9 +58,14 @@ public class PlayerHealth : MonoBehaviour
 		}
 	}
 
+	public void AddHealth(float value)
+	{
+		_health += value;
+		if (_health >= maxHealth) _health = maxHealth;
+	}
+
 	private void Init()
 	{
 		_player = GetComponent<Player>();
-		_playerHpbar = GameObject.Find("PlayerHpBar").GetComponent<Slider>();
 	}
 }
