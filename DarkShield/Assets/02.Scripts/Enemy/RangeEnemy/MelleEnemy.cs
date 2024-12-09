@@ -4,6 +4,14 @@ using UnityEngine;
 public class MelleEnemy : Enemy
 {
     public float attackInterval;
+    public RectTransform hpBarForeground;
+
+    protected override void Update()
+    {
+        base.Update();
+        hpBarForeground.localScale = new Vector3(HpAmount, 1, 1);
+    }
+
     public override void Attack()
     {
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);

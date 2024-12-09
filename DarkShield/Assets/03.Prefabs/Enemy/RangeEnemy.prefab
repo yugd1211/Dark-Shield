@@ -1101,7 +1101,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: a0a6a21bf5c74c441a5957e052efb48e, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -1202,7 +1202,6 @@ MonoBehaviour:
   health: 200
   AttackPower: 20
   maxHP: 200
-  hpBarForeground: {fileID: 4782855407661813460}
   animotor: {fileID: 0}
   coinPrefab: {fileID: 1151114758848143735, guid: 877220dd96143ed48b9fd03a949f8781, type: 3}
   coinpool: {fileID: 8128104576699582198, guid: 97f6abeccc868ec41bcb3192152b3b83, type: 3}
@@ -1212,6 +1211,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 1029503652214038219, guid: e2b1ce82f800009458d87be38ad563f0, type: 3}
   firePoint: {fileID: 336670227318231265}
   attackInterval: 0.4
+  hpBarForeground: {fileID: 4782855407661813460}
 --- !u!1 &2439001903434697294
 GameObject:
   m_ObjectHideFlags: 0

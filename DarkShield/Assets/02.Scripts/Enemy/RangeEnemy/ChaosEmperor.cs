@@ -14,14 +14,6 @@ public class ChaosEmperor : Boss
     private GameObject _canvas;
     [SerializeField] private Slider _bossHpBar;
 
-    private float HpAmount
-    {
-        get
-        {
-            return health / maxHP;
-        }
-    }
-
     protected override void Start()
     {
         base.Start();

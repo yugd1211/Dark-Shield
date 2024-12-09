@@ -6,15 +6,15 @@ using UnityEngine.InputSystem;
 public class UpgradeUI : MonoBehaviour
 {
     public List<SkillUpgradeButton> buttonPrefabs;
-    
+
     private PlayerInput _playerInput;
-    
+
     private void Start()
     {
         _playerInput = FindObjectOfType<PlayerInput>();
         HideShop();
     }
-    
+
     private List<int> RandomNumbers(int count, int maxValue)
     {
         HashSet<int> uniqueNumbers = new HashSet<int>();
@@ -25,7 +25,7 @@ public class UpgradeUI : MonoBehaviour
         }
         return uniqueNumbers.ToList();
     }
-    
+
     private void CreateButtons()
     {
         List<int> ran = RandomNumbers(3, buttonPrefabs.Count);
