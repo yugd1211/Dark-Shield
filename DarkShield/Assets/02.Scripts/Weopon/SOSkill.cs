@@ -11,4 +11,11 @@ public class SOSkill : ScriptableObject
     public float destroyAfter = 10f;
     public bool useLocalPosition = false;
     public Transform startPositionRotation;
+
+    [Header("스킬 판정 범위")]
+    [Header("박스 판정 범위")]
+    public Vector3 boxSize;
+    public Vector3 boxOffset;
+    [Header("구 판정 범위")]
+    public float radius;
 }

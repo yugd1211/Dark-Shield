@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c2ba72d66c82f7408b71a5e805e3e31, type: 3}
-  m_Name: MeleeSlash3
+  m_Name: FireMeleeSlash
   m_EditorClassIdentifier: 
-  damage: 30
-  damagePercent: 1
-  skillEffect: {fileID: 1648509489993130, guid: e786a57ac73e5484998930b8be7a82e8, type: 3}
+  damage: 5
+  damagePercent: 0
+  skillEffect: {fileID: 1935082409722074, guid: 79cf1709378285e479f3512b8c1d7188, type: 3}
   destroyAfter: 3
   useLocalPosition: 0
   startPositionRotation: {fileID: 0}
-  boxSize: {x: 0, y: 0, z: 0}
-  boxOffset: {x: 0, y: 0, z: 0}
-  radius: 1.4
+  boxSize: {x: 1.42, y: 2, z: 1.5}
+  boxOffset: {x: 0, y: 0, z: 0.46}
+  radius: 0

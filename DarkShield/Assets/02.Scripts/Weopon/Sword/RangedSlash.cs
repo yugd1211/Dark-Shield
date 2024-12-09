@@ -79,4 +79,9 @@ public class RangedSlash : Skill
 
 		damagePercent = rangedSlash.damagePercent;
 	}
+
+	public override void ChangeEffect(ElementChange element)
+	{
+		throw new System.NotImplementedException();
+	}
 }
