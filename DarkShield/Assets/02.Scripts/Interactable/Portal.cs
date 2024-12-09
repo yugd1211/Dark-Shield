@@ -8,6 +8,7 @@ public class Portal : AInteractableObeject
 		Battle,
 		Shop,
 		Boss,
+		Mussang
 	}
 	
 	public Stage nextStage;
@@ -27,6 +28,8 @@ public class Portal : AInteractableObeject
 			nextStageType = StageType.Shop;
 		else if (nextStage is BossStage)
 			nextStageType = StageType.Boss;
+		else if (nextStage is MussangStage)
+			nextStageType = StageType.Mussang;
 		portalEffect[(int)nextStageType].SetActive(true);
 	}
 

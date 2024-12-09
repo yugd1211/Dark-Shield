@@ -1220,7 +1220,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyManager: {fileID: 0}
   dialogueManager: {fileID: 0}
-  upgradeManager: {fileID: 0}
   enemySpawnDatas:
   - {fileID: 11400000, guid: b0c1ea438bdd09b48a33683146cadf13, type: 2}
   - {fileID: 11400000, guid: 3c3f19f057b47da48830685a926a0815, type: 2}
@@ -1233,10 +1232,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0331c1343e56c034a8eb0ba2f5928e28, type: 2}
   - {fileID: 11400000, guid: 91adfb0b704de7b47a378fbd10dfcb20, type: 2}
   bossSpawnData: {fileID: 11400000, guid: d748258db71b4254b885efde99b1a4f2, type: 2}
-  bossStageIndex: 2
+  muSSangSpawnData: {fileID: 11400000, guid: c3010957b495a0545a7c0c7cddfe1136, type: 2}
+  bossStageIndex: 10
   stageManager: {fileID: 0}
   playerPrefab: {fileID: 7509375128569891226, guid: 238d8185dddf6244fa30dd3dd741b7f9, type: 3}
   player: {fileID: 0}
+  elementalPrefab: {fileID: 3117908878903010400, guid: 52717ff581adb084ebfce78d506795a7, type: 3}
+  isElemental: 0
+  isMussang: 0
 --- !u!1001 &960204530
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1559,7 +1562,8 @@ MonoBehaviour:
   - {fileID: 5969469333472819696, guid: e0930b6ebf8b2d04a84c4317db51e98e, type: 3}
   shopStagePrefab: {fileID: 8252173068986518781, guid: 8c86738cf3e49104285283eecaa0cd39, type: 3}
   bossStagePrefab: {fileID: 1653225880045531861, guid: f1ea88ca08e638b429ec7cfe18c166af, type: 3}
-  startStagePrefab: {fileID: 370360336871808685, guid: 1536a8be00074384a8a4a34632b63351, type: 3}
+  startStagePrefab: {fileID: 8252173068986518781, guid: 78d091700c2952a45ac36a6b65f685ce, type: 3}
+  mussangStagePrefab: {fileID: 5969469333472819696, guid: 9a350824acc06ce48bf5ffb289b2506c, type: 3}
   currStage: {fileID: 0}
   stageCount: 0
   currentStageIndex: 0

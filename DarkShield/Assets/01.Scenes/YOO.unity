@@ -1233,6 +1233,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0331c1343e56c034a8eb0ba2f5928e28, type: 2}
   - {fileID: 11400000, guid: 91adfb0b704de7b47a378fbd10dfcb20, type: 2}
   bossSpawnData: {fileID: 11400000, guid: d748258db71b4254b885efde99b1a4f2, type: 2}
+  muSSangSpawnData: {fileID: 11400000, guid: c3010957b495a0545a7c0c7cddfe1136, type: 2}
   bossStageIndex: 5
   stageManager: {fileID: 0}
   playerPrefab: {fileID: 7509375128569891226, guid: 238d8185dddf6244fa30dd3dd741b7f9, type: 3}
