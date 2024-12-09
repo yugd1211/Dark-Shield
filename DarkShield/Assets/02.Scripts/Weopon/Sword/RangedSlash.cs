@@ -16,6 +16,8 @@ public class RangedSlash : Skill
 	private float damagePercent;
 	private bool isSpecialUpgraged;
 
+	private GameObject _slashFx;
+
 	private void Update()
 	{
 		if (Input.GetKeyDown(KeyCode.T)) SpecialUpgrade();
@@ -36,7 +38,7 @@ public class RangedSlash : Skill
 			Quaternion rotationPlus = rangedSlashPivot.rotation * Quaternion.Euler(0, 15, 0);
 
 			// -30도 회전 위치에 파티클 생성
-			var effect1 = Instantiate(rangedSlash.skillEffect, -rangedSlashPivot.right + rangedSlashPivot.transform.position, rotationMinus);
+			var effect1 = Instantiate(_slashFx, -rangedSlashPivot.right + rangedSlashPivot.transform.position, rotationMinus);
 			var slashInstance1 = Instantiate(slashPrefab, -rangedSlashPivot.right + rangedSlashPivot.transform.position, rotationMinus);
 			SlashProjectile slashProjectile1 = slashInstance1.GetComponent<SlashProjectile>();
 			slashProjectile1.Init(_player);
@@ -44,7 +46,7 @@ public class RangedSlash : Skill
 			Destroy(effect1, rangedSlash.destroyAfter);
 
 			// +30도 회전 위치에 파티클 생성
-			var effect2 = Instantiate(rangedSlash.skillEffect, rangedSlashPivot.right + rangedSlashPivot.transform.position, rotationPlus);
+			var effect2 = Instantiate(_slashFx, rangedSlashPivot.right + rangedSlashPivot.transform.position, rotationPlus);
 			var slashInstance2 = Instantiate(slashPrefab, rangedSlashPivot.right + rangedSlashPivot.transform.position, rotationPlus);
 			SlashProjectile slashProjectile2 = slashInstance2.GetComponent<SlashProjectile>();
 			slashProjectile2.Init(_player);
@@ -76,12 +78,15 @@ public class RangedSlash : Skill
 		rangedSlash.startPositionRotation = rangedSlashPivot;
 
 		_effect = new AnimationEventEffects.EffectInfo(rangedSlash, UseRangedSkill);
-
+		_slashFx = rangedSlash.skillEffect;
 		damagePercent = rangedSlash.damagePercent;
 	}
 
 	public override void ChangeEffect(ElementChange element)
 	{
-		throw new System.NotImplementedException();
+		_effect.Effect = element.skillData[3].skillEffect;
+		_effect.damage = element.skillData[3].damage;
+
+		_slashFx = element.skillData[3].skillEffect;
 	}
 }

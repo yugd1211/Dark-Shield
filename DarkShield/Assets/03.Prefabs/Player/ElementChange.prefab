@@ -122,4 +122,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b16e6dbf940c94d48b6758d7a0c1a97d, type: 2}
   - {fileID: 11400000, guid: c4788a979702df84c9f6cb35e2ef73e2, type: 2}
   - {fileID: 11400000, guid: 1d208cea28e75fc41ac7080c10ad9e6c, type: 2}
-  actionType: 1
+  - {fileID: 11400000, guid: 5bdf004305e77404ba6f3476f9bf958a, type: 2}
+  actionType: 0100000002000000
