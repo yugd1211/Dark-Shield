@@ -1211,6 +1211,7 @@ MonoBehaviour:
   objectPool: {fileID: 387995671944015093, guid: 6c937bc182161c146a9c9983aed75c36, type: 3}
   projectilePrefab: {fileID: 1029503652214038219, guid: e2b1ce82f800009458d87be38ad563f0, type: 3}
   firePoint: {fileID: 336670227318231265}
+  attackInterval: 0.4
 --- !u!1 &2439001903434697294
 GameObject:
   m_ObjectHideFlags: 0

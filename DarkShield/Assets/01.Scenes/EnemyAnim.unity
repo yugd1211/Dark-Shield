@@ -1439,10 +1439,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerHpBar
       objectReference: {fileID: 0}
-    - target: {fileID: 4790055707684405370, guid: aef20762bcf8ec943bf34d889ebdd515, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5768785737480812242, guid: aef20762bcf8ec943bf34d889ebdd515, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
