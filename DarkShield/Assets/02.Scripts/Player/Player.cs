@@ -52,6 +52,11 @@ public class Player : Unit
 		isEquiped = true;
 	}
 
+	public void ChangeElement(ElementChange element)
+	{
+		curWeopon.ChangeElement(element);
+	}
+
 	public float moveDistance;
 
 	public void CustomTeleport()
