@@ -245,9 +245,9 @@ MonoBehaviour:
   meleeSlash3: {fileID: 11400000, guid: 39070e8d6d52598469da8b17916292fd, type: 2}
   boxSize: {x: 0, y: 0, z: 0}
   boxOffset: {x: 0, y: 0, z: 0}
-  radius: 0
   layerMask:
     serializedVersion: 2
     m_Bits: 128
-  boxSize2: {x: 0.97, y: 2, z: 7.31}
-  boxOffset2: {x: 0, y: 0, z: 3.5}
+  radius: 0
+  boxSize2: {x: 0, y: 0, z: 0}
+  boxOffset2: {x: 0, y: 0, z: 0}
