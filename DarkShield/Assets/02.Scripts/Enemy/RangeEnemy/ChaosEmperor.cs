@@ -8,12 +8,6 @@ public class ChaosEmperor : Boss
     public float dashDuration = 0.5f; // 돌진 지속 시간
     private bool isDashing = false; // 돌진 상태 플래그
     private Vector3 dashDirection; // 돌진 방향
-
-    // 원거리 공격 관련 변수
-    public GameObject projectilePrefab; // 원거리 투사체
-    public Transform firePoint; // 투사체 발사 위치
-
-    public ObjectPool objectPool;
     public override void Attack()
     {
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
@@ -39,6 +33,7 @@ public class ChaosEmperor : Boss
 
     IEnumerator DashAttack() //대쉬 공격 메서드
     {
+        yield return new WaitForSeconds(2.0f);
         animotor.SetTrigger("Dash");
         isDashing = true;
         dashDirection = (player.position - transform.position).normalized;
@@ -51,6 +46,7 @@ public class ChaosEmperor : Boss
         }
         print("원거리 대쉬 공격 실행");
         this.AttackPower = 40;
+        player.GetComponent<PlayerHealth>().TakeDamage(AttackPower, true);
         isDashing = false;
     }
 
@@ -65,24 +61,10 @@ public class ChaosEmperor : Boss
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(directionToPlayer.x, 0, directionToPlayer.z)); // y축은 고정
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 10f); // 부드럽게 회전
 
-        GameObject projectile = objectPool.GetObject();
-        projectile.transform.position = firePoint.position;
-        projectile.transform.rotation = firePoint.rotation;
-
-        Projectile fire = projectile.GetComponent<Projectile>();
-        fire.target = "Player";
-        fire.Launch(player.position);
-        this.AttackPower = fire.damage;
-
-        StartCoroutine(ReturnProjectileToPool(projectile, 5f));
+        player.GetComponent<PlayerHealth>().TakeDamage(AttackPower, true);
+        SetState(new EnemyIdleState(this));
     }
 
-
-    private IEnumerator ReturnProjectileToPool(GameObject projectile, float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        objectPool.ReturnObject(projectile);
-    }
 
     private void OnCollisionEnter(Collision collision)
     {

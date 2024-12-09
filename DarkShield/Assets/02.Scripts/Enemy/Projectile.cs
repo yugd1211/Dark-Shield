@@ -11,6 +11,7 @@ public class Projectile : MonoBehaviour
     private Vector3 direction;
     private bool isLaunched = false;
     public float Speed = 10f;
+
     private void Awake()
     {
         ProjectilePool = FindObjectOfType<ObjectPool>();
@@ -20,6 +21,7 @@ public class Projectile : MonoBehaviour
     {
         direction = (targetPosition - transform.position).normalized; // 방향 계산
         isLaunched = true; // 발사 상태 활성화
+
     }
 
     private void Update()
@@ -33,6 +35,7 @@ public class Projectile : MonoBehaviour
     private void OnEnable()
     {
         Invoke("Deactivate", 5f); // 일정 시간이 지나면 비활성화
+
     }
 
     public string target;
@@ -40,12 +43,10 @@ public class Projectile : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer(target))
         {
-            //Debug.Log("플레이어가 원거리 공격에 맞음!");
-
             other.GetComponent<Unit>().TakeDamage(damage, true);// 투사체 제거
+            Deactivate();
         }
 
-        Deactivate();
     }
 
   

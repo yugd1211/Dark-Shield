@@ -42,6 +42,7 @@ public class Player : Unit
         playerAnimationEventEffects = GetComponent<AnimationEventEffects>();
         playerStateMachine.Init(playerStateMachine.idleState);
         MoveSpeed = 5;
+        isDamaged = true;
     }
 
     public void ChangeWeapon(WeaponChange weapon)
