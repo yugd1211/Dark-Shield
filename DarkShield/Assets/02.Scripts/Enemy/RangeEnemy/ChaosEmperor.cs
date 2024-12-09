@@ -6,8 +6,10 @@ public class ChaosEmperor : Boss
 {
     public float dashSpeed = 20f; // 돌진 속도
     public float dashDuration = 0.5f; // 돌진 지속 시간
+    
     private bool isDashing = false; // 돌진 상태 플래그
     private Vector3 dashDirection; // 돌진 방향
+    
     public override void Attack()
     {
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
@@ -55,8 +57,6 @@ public class ChaosEmperor : Boss
     {
 
         animotor.SetTrigger("RangeAttack");
-        Debug.Log("원거리 공격 실행!");
-
         Vector3 directionToPlayer = (player.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(directionToPlayer.x, 0, directionToPlayer.z)); // y축은 고정
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 10f); // 부드럽게 회전
