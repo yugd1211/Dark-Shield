@@ -1,19 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
-public class ElementChange : MonoBehaviour
+public class ElementChange : MonoBehaviour, IInteractable
 {
     public SOSkill[] skillData;
     public ActionType actionType;
-
-    private void OnTriggerEnter(Collider other)
+    
+    public void Interact(Interactor player)
     {
-        if (other.TryGetComponent<Player>(out Player player))
-        {
-            player.ChangeElement(this);
-            Destroy(gameObject);
-        }
+        if (player.TryGetComponent(out Player p))
+            p.ChangeElement(this);
+        Destroy(gameObject);
+    }
+    public bool CanInteract()
+    {
+        return true;
     }
 }
