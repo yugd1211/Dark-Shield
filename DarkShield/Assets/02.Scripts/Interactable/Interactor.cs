@@ -5,7 +5,6 @@ using Context = UnityEngine.InputSystem.InputAction.CallbackContext;
 public class Interactor : MonoBehaviour
 {
 	public float detectionRadius = 2f;
-	public GameObject interactableIndicator;
 	private Canvas _canvas;
 	private GameObject _indicator;
 

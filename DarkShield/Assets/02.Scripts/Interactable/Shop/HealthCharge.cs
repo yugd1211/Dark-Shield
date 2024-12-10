@@ -1,23 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class HealthCharge : MonoBehaviour, IInteractable
 {
 	private static int _cost = 50;
 	[SerializeField] private float _recoveryAmount;
-
-	private void HealthRecovery()
-	{
-		GameManager.Instance.player.playerHealth.AddHealth(_recoveryAmount);
-		GameManager.Instance.gold.SubGold(_cost);
-		Destroy(gameObject);
-	}
-
-	private void AddCost()
-	{
-		_cost += 50;
-	}
+	public TextMeshPro priceText;
+	public TextMeshPro recoveryAmountText;
 
 	public bool CanInteract()
 	{
@@ -29,6 +18,37 @@ public class HealthCharge : MonoBehaviour, IInteractable
 	{
 		HealthRecovery();
 		AddCost();
+		HideText();
+	}
+	
+	private void HealthRecovery()
+	{
+		GameManager.Instance.player.playerHealth.AddHealth(
+			(100 / _recoveryAmount) * GameManager.Instance.player.playerHealth.maxHealth);
+		GameManager.Instance.gold.SubGold(_cost);
+		Destroy(gameObject);
 	}
 
+	private void Awake()
+	{
+		TextUpdate();
+	}
+
+	private void TextUpdate()
+	{
+		priceText.text = $"가격 : {_cost}";
+		recoveryAmountText.text = $"회복량 : {_recoveryAmount}%";
+	}
+
+	private void AddCost()
+	{
+		_cost += 50;
+		TextUpdate();
+	}
+
+	private void HideText()
+	{
+		priceText.gameObject.SetActive(false);
+		recoveryAmountText.gameObject.SetActive(false);
+	}
 }
