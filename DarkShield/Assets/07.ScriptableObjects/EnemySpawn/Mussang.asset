@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - enemies:
-    - enemyName: Melee
-      enemyPrefab: {fileID: 4064885816787712655, guid: 14609cd2d42166c4294031ad0b01f4ed, type: 3}
+    - enemyName: Slime
+      enemyPrefab: {fileID: 5939786159676456675, guid: 402b5c6ca7c94e24b90a91014c09cfb3, type: 3}
       count: 10
-    - enemyName: Range
-      enemyPrefab: {fileID: 860655475421589709, guid: f0739ceb6a2111646a9c0e49ec263355, type: 3}
+    - enemyName: Slime
+      enemyPrefab: {fileID: 5939786159676456675, guid: 402b5c6ca7c94e24b90a91014c09cfb3, type: 3}
       count: 10
     spawnFrequency: 1

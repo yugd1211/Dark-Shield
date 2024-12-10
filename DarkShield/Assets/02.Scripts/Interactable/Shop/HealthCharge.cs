@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HealthCharge : MonoBehaviour, IInteractable
 {
-	[SerializeField] private static int _cost = 50;
+	private static int _cost = 50;
 	[SerializeField] private float _recoveryAmount;
 
 	private void HealthRecovery()
