@@ -1231,6 +1231,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1734cb1ec4ae85f419fadb41c3b95ad9, type: 2}
   - {fileID: 11400000, guid: 0331c1343e56c034a8eb0ba2f5928e28, type: 2}
   - {fileID: 11400000, guid: 91adfb0b704de7b47a378fbd10dfcb20, type: 2}
+  - {fileID: 11400000, guid: 119ff0454d316fb48829fbed5e72f20d, type: 2}
+  - {fileID: 11400000, guid: db462686db230fb43aea3b9ff9db6786, type: 2}
   bossSpawnData: {fileID: 11400000, guid: d748258db71b4254b885efde99b1a4f2, type: 2}
   muSSangSpawnData: {fileID: 11400000, guid: c3010957b495a0545a7c0c7cddfe1136, type: 2}
   bossStageIndex: 10
