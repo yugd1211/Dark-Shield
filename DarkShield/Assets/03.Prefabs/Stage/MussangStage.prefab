@@ -1559,18 +1559,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4393956179334968908}
     m_Modifications:
-    - target: {fileID: 1302557718418297952, guid: 184fcf80e4485df4abef805b9cc16990, type: 3}
-      propertyPath: damage
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 2590150098706178346, guid: 184fcf80e4485df4abef805b9cc16990, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 4.9699993
-      objectReference: {fileID: 0}
-    - target: {fileID: 2590150098706178346, guid: 184fcf80e4485df4abef805b9cc16990, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 4.9699993
-      objectReference: {fileID: 0}
     - target: {fileID: 2590150098706178346, guid: 184fcf80e4485df4abef805b9cc16990, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.01
@@ -1610,10 +1598,6 @@ PrefabInstance:
     - target: {fileID: 2590150098706178346, guid: 184fcf80e4485df4abef805b9cc16990, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2590150098706178346, guid: 184fcf80e4485df4abef805b9cc16990, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7191124398782205925, guid: 184fcf80e4485df4abef805b9cc16990, type: 3}
       propertyPath: m_Name
@@ -3550,14 +3534,6 @@ PrefabInstance:
     - target: {fileID: 2268618563438419409, guid: 2195b5ba104e7b0498ffa921c5217885, type: 3}
       propertyPath: m_Name
       value: River
-      objectReference: {fileID: 0}
-    - target: {fileID: 2958734535664284030, guid: 2195b5ba104e7b0498ffa921c5217885, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 4.9699993
-      objectReference: {fileID: 0}
-    - target: {fileID: 2958734535664284030, guid: 2195b5ba104e7b0498ffa921c5217885, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 4.9699993
       objectReference: {fileID: 0}
     - target: {fileID: 2958734535664284030, guid: 2195b5ba104e7b0498ffa921c5217885, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7379,6 +7355,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4640233712604334114, guid: 184fcf80e4485df4abef805b9cc16990, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6042eaad9823b6f488f160b2bce47ac7, type: 2}
     - target: {fileID: 7191124398782205925, guid: 184fcf80e4485df4abef805b9cc16990, type: 3}
       propertyPath: m_Name
       value: Lava (1)
