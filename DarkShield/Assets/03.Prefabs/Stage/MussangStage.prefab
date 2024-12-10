@@ -734,6 +734,7 @@ MonoBehaviour:
   - {fileID: 2756129789359919139}
   - {fileID: 69819871069187705}
   portalPrefab: {fileID: 3621267533501939211, guid: 1bdcacf071f76af4bb1fcb34fe966bf5, type: 3}
+  isStageCleared: 0
   playerStartPos: {fileID: 6561397717725256971}
   enemySpawnData: {fileID: 11400000, guid: c3010957b495a0545a7c0c7cddfe1136, type: 2}
   enemySpawnPoint:

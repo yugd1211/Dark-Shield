@@ -1,6 +1,7 @@
 using System.Linq;
 using UnityEngine;
 using Context = UnityEngine.InputSystem.InputAction.CallbackContext;
+
 public class Interactor : MonoBehaviour
 {
 	public float detectionRadius = 2f;
@@ -11,6 +12,8 @@ public class Interactor : MonoBehaviour
 	private void Start()
 	{
 		_canvas = FindObjectOfType<Canvas>();
+		_indicator = GameObject.Find("InteractableIndicator");
+		_indicator.SetActive(false);
 		if (_canvas == null)
 		{
 			Debug.LogError("Canvas not found in the scene.");
@@ -24,20 +27,25 @@ public class Interactor : MonoBehaviour
 		Collider detectedInteractableCollider = colliders.ToList().Find(collider => collider.TryGetComponent(out interactableObject));
 		if (!detectedInteractableCollider)
 		{
-			Destroy(_indicator);
+			_indicator.SetActive(false);
 			return;
 		}
 		if (!interactableObject.CanInteract())
+		{
+			_indicator.SetActive(false);
 			return;
-		if (_canvas && !_indicator)
-			_indicator = Instantiate(interactableIndicator, _canvas.transform);
+		}
+		// if (_canvas && !_indicator)
+		// 	_indicator = Instantiate(interactableIndicator, _canvas.transform);
 		
 		if (_indicator)
 		{
 			Vector3 worldPosition = detectedInteractableCollider.transform.position;
 			Vector3 screenPosition = Camera.main.WorldToScreenPoint(worldPosition);
 			RectTransformUtility.ScreenPointToLocalPointInRectangle(_canvas.transform as RectTransform, screenPosition, _canvas.worldCamera, out Vector2 localPoint);
-			(_indicator.transform as RectTransform).localPosition = localPoint + new Vector2(0, 100);
+			((RectTransform)_indicator.transform).localPosition = localPoint + new Vector2(0, 100);
+			_indicator.SetActive(true);
+			
 		}
 	}
 
