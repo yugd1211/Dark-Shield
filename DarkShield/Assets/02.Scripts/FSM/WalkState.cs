@@ -1,10 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting.FullSerializer;
-using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
-
 public class WalkState : IState
 {
     public Player _player;

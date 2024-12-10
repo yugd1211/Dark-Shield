@@ -1,9 +1,8 @@
-using UnityEditor.Animations;
 using UnityEngine;
 
 public class WeaponChange : MonoBehaviour, IInteractable
 {
-    public AnimatorController animController;
+    public RuntimeAnimatorController animController;
     public GameObject weaponPrefab;
     public float rotateSpeed;
     public bool CanInteract() => !GameManager.Instance.player.isEquiped;
