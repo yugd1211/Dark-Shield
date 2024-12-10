@@ -53,9 +53,12 @@ public abstract class Weapon : MonoBehaviour
 
 	public void ChangeElement(ElementChange element)
 	{
-		if (skills.TryGetValue(element.actionType, out Skill skill))
+		foreach (ActionType actionType in element.actionType)
 		{
-			skill.ChangeEffect(element);
+			if (skills.TryGetValue(actionType, out Skill skill))
+			{
+				skill.ChangeEffect(element);
+			}
 		}
 	}
 }

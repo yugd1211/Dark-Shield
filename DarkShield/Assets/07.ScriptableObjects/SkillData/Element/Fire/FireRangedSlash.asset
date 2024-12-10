@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c2ba72d66c82f7408b71a5e805e3e31, type: 3}
-  m_Name: FireMeleeSlash 2
+  m_Name: FireRangedSlash
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 10
   damagePercent: 0
-  skillEffect: {fileID: 1935082409722074, guid: 6d7dfdb5c6108ed45932315944eb460f, type: 3}
-  destroyAfter: 3
+  skillEffect: {fileID: 1949624779417528, guid: a4a4f99dcee2c9e4dbad2a6324b31980, type: 3}
+  destroyAfter: 5
   useLocalPosition: 0
   startPositionRotation: {fileID: 0}
   boxSize: {x: 0, y: 0, z: 0}
   boxOffset: {x: 0, y: 0, z: 0}
-  radius: 2.45
+  radius: 0
