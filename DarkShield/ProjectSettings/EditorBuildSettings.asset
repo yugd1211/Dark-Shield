@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/01.Scenes/TitleScene.unity
     guid: 46344b9ece248cb469350d843c1d9aa8
   - enabled: 1
-    path: Assets/01.Scenes/LEE.unity
-    guid: 6102bcb159b906b479331851cc8802b9
+    path: Assets/01.Scenes/BattleScene.unity
+    guid: 7c907246896c9d14c8363269d81f5c42
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9be0c0e0b34fdcd4d8c59f96d91c6abf, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 84842d4fe2e8a34448cc4bbc38e9bd9a, type: 3}
