@@ -43,7 +43,6 @@ public abstract class Enemy : Unit
         animotor = GetComponent<Animator>();
         player = GameManager.Instance.player.transform;
         SetState(new EnemyIdleState(this));
-
     }
 
     protected virtual void Update()
