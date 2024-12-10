@@ -1,33 +1,35 @@
 using System.Collections;
+using UnityEditor;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Player : Unit
 {
-	public StateMachine playerStateMachine;
-	public Weapon curWeopon;
-	public PlayerMovement playerMovement;
-	public PlayerInputManager playerInputManager;
-	public PlayerHealth playerHealth;
-	public Animator playerAnimator;
-	public MouseLook mouseLookDir;
-	public Dash playerDash;
-	public PlayerStat playerStat;
-	public AnimationEventEffects playerAnimationEventEffects;
+    public StateMachine playerStateMachine;
+    public Weapon curWeopon;
+    public PlayerMovement playerMovement;
+    public PlayerInputManager playerInputManager;
+    public PlayerHealth playerHealth;
+    public Animator playerAnimator;
+    public MouseLook mouseLookDir;
+    public Dash playerDash;
+    public PlayerStat playerStat;
+    public AnimationEventEffects playerAnimationEventEffects;
 
-	[SerializeField] private Transform rightHand;
+    [SerializeField] private Transform rightHand;
 
-	//무기 장착
-	public bool isEquiped;
+    //무기 장착
+    public bool isEquiped;
 
-	private void Update()
-	{
-		if (playerStateMachine.CurState == playerStateMachine.walkState)
-		{
-			Move(new Vector3(playerInputManager.InputMoveDir.x, 0, playerInputManager.InputMoveDir.y).normalized);
-			playerMovement.Rotate(playerInputManager.InputMoveDir);
-		}
-		playerStateMachine.OnUpdate();
-	}
+    private void Update()
+    {
+        if (playerStateMachine.CurState == playerStateMachine.walkState)
+        {
+            Move(new Vector3(playerInputManager.InputMoveDir.x, 0, playerInputManager.InputMoveDir.y).normalized);
+            playerMovement.Rotate(playerInputManager.InputMoveDir);
+        }
+        playerStateMachine.OnUpdate();
+    }
 
     public void Init()
     {
@@ -40,75 +42,92 @@ public class Player : Unit
         playerDash = GetComponent<Dash>();
         playerStat = GetComponent<PlayerStat>();
         playerAnimationEventEffects = GetComponent<AnimationEventEffects>();
-        playerStateMachine.Init(playerStateMachine.idleState);
+        StartCoroutine(OnFirstStart());
         MoveSpeed = 5;
         isDamaged = true;
     }
 
-	public void ChangeWeapon(WeaponChange weapon)
-	{
-		playerAnimator.runtimeAnimatorController = weapon.animController;
-		curWeopon = Instantiate(weapon.weaponPrefab, rightHand).GetComponent<Weapon>();
-		curWeopon.Init(this);
-		isEquiped = true;
-	}
+    public IEnumerator OnFirstStart()
+    {
+        while (true)
+        {
+            AnimatorStateInfo stateInfo = playerAnimator.GetCurrentAnimatorStateInfo(0);
+            if (stateInfo.IsName("Standing Up") && stateInfo.normalizedTime <= 0.65f)
+            {
+                yield return null;
+            }
+            else
+            {
+                break;
+            }
+        }
+        playerStateMachine.Init(playerStateMachine.idleState);
+    }
 
-	public void ChangeElement(ElementChange element)
-	{
-		curWeopon.ChangeElement(element);
-	}
+    public void ChangeWeapon(WeaponChange weapon)
+    {
+        playerAnimator.runtimeAnimatorController = weapon.animController;
+        curWeopon = Instantiate(weapon.weaponPrefab, rightHand).GetComponent<Weapon>();
+        curWeopon.Init(this);
+        isEquiped = true;
+    }
 
-	public float moveDistance;
+    public void ChangeElement(ElementChange element)
+    {
+        curWeopon.ChangeElement(element);
+    }
 
-	public void CustomTeleport()
-	{
-		transform.position += transform.forward * moveDistance;
-	}
+    public float moveDistance;
 
-	#region 애니메이션 이벤트 함수 ENDXX
-	public void EndDash()
-	{
-		playerStateMachine.dashState.EndDash();
-	}
+    public void CustomTeleport()
+    {
+        transform.position += transform.forward * moveDistance;
+    }
 
-	public void EndSkill()
-	{
-		playerStateMachine.skillState.EndSkill();
-	}
+    #region 애니메이션 이벤트 함수 ENDXX
+    public void EndDash()
+    {
+        playerStateMachine.dashState.EndDash();
+    }
 
-	public void EndHit()
-	{
-		playerStateMachine.hitState.EndHit();
-	}
+    public void EndSkill()
+    {
+        playerStateMachine.skillState.EndSkill();
+    }
 
-	#endregion
+    public void EndHit()
+    {
+        playerStateMachine.hitState.EndHit();
+    }
 
-	public bool isDamaged = true;
-	public override void TakeDamage(float amount, bool isHit)
-	{
-		if (!isDamaged)
-			return;
-		playerHealth.TakeDamage(amount, isHit);
-	}
+    #endregion
 
-	public override void Move(Vector3 dir)
-	{
-		playerMovement.Move(dir * MoveSpeed);
-	}
+    public bool isDamaged = true;
+    public override void TakeDamage(float amount, bool isHit)
+    {
+        if (!isDamaged)
+            return;
+        playerHealth.TakeDamage(amount, isHit);
+    }
 
-	public void DashUpgrade()
-	{
-		playerDash.maxDashCount++;
-	}
+    public override void Move(Vector3 dir)
+    {
+        playerMovement.Move(dir * MoveSpeed);
+    }
 
-	public void Die()
-	{
-		StartCoroutine(Restart());
-	}
-	
-	private IEnumerator Restart()
-	{
-		yield return new WaitForSeconds(5f);
-		GameManager.Instance.Restart();
-	}
+    public void DashUpgrade()
+    {
+        playerDash.maxDashCount++;
+    }
+
+    public void Die()
+    {
+        StartCoroutine(Restart());
+    }
+
+    private IEnumerator Restart()
+    {
+        yield return new WaitForSeconds(5f);
+        GameManager.Instance.Restart();
+    }
 }

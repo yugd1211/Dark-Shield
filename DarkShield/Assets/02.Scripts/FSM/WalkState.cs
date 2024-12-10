@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 public class WalkState : IState
 {
     public Player _player;
