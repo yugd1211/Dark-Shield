@@ -20,4 +20,12 @@ MonoBehaviour:
     - enemyName: Slime
       enemyPrefab: {fileID: 5939786159676456675, guid: 402b5c6ca7c94e24b90a91014c09cfb3, type: 3}
       count: 10
-    spawnFrequency: 1
+    spawnFrequency: 0
+  - enemies:
+    - enemyName: Slime
+      enemyPrefab: {fileID: 5939786159676456675, guid: 402b5c6ca7c94e24b90a91014c09cfb3, type: 3}
+      count: 20
+    - enemyName: Slime
+      enemyPrefab: {fileID: 5939786159676456675, guid: 402b5c6ca7c94e24b90a91014c09cfb3, type: 3}
+      count: 20
+    spawnFrequency: 0

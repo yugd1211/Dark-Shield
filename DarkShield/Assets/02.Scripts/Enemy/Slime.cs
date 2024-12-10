@@ -58,6 +58,7 @@ public class Slime : Enemy
 		_animator.SetBool("Die", true);
 		yield return new WaitForSeconds(1f);
 		DropCoin();
+		Die();
 		Destroy(gameObject);
 	}
 

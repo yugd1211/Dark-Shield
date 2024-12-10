@@ -10,6 +10,11 @@ public class MussangStage : Stage
 	
 	public Transform elementalSpawnPoint;
 	
+	public override void Init(StageManager stageManager)
+	{
+		base.Init(stageManager);
+	}
+
 	public void BattleStart()
 	{
 		EnemyManager enemyManager = GameManager.Instance.enemyManager;
@@ -24,12 +29,6 @@ public class MussangStage : Stage
 		yield return new WaitUntil(() => GameManager.Instance.enemyManager.enemySpawner.isAllWavesCompleted);
 		GameObject go = Instantiate(upgradeObjectPrefab, upgradeObjectSpawnPoint.transform.position, Quaternion.identity);
 		yield return new WaitUntil(() => go == null);
-		if (!GameManager.Instance.isElemental && GameManager.Instance.stageManager.currentStageIndex > GameManager.Instance.bossStageIndex / 2)
-		{
-			GameObject element = Instantiate(GameManager.Instance.elementalPrefab, elementalSpawnPoint.position, Quaternion.identity);
-			GameManager.Instance.isElemental = true;
-			yield return new WaitUntil(() => element == null);
-		}
 		BattleEnd();
 	}
 
