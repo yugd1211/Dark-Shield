@@ -11,6 +11,16 @@ public class CoinPick : MonoBehaviour
         coinPool = GetComponent<ObjectPool>(); 
     }
 
+    private void Rotation()
+    {
+        transform.Rotate(Vector3.up * 100 * Time.deltaTime); // 코인 회전
+    }
+    
+    private void Update()
+    {
+        Rotation();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player")) // 플레이어와 충돌하면
