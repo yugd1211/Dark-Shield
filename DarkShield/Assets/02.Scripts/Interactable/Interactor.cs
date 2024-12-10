@@ -24,10 +24,11 @@ public class Interactor : MonoBehaviour
 		Collider detectedInteractableCollider = colliders.ToList().Find(collider => collider.TryGetComponent(out interactableObject));
 		if (!detectedInteractableCollider)
 		{
-			
 			Destroy(_indicator);
 			return;
 		}
+		if (!interactableObject.CanInteract())
+			return;
 		if (_canvas && !_indicator)
 			_indicator = Instantiate(interactableIndicator, _canvas.transform);
 		

@@ -11,7 +11,7 @@ public class HealthCharge : MonoBehaviour, IInteractable
 	{
 		GameManager.Instance.player.playerHealth.AddHealth(_recoveryAmount);
 		GameManager.Instance.gold.SubGold(_cost);
-		transform.Find("Potion").gameObject.SetActive(false);
+		Destroy(gameObject);
 	}
 
 	private void AddCost()
