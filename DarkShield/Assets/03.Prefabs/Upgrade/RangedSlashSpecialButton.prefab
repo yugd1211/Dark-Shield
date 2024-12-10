@@ -138,6 +138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionType: 2
   skillUpgradeType: 2
+  upgradeUI: {fileID: 0}
 --- !u!1 &5258928571228991739
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,8 +204,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uD2B9\uC218 \uAC15\uD654 \uC2A4\uD0AC \uC785\uB2C8\uB2E4\n\uAC80\uD48D
-    \uAC2F\uC218 \uC99D\uAC00"
+  m_text: "\uAC80\uD48D \uAC2F\uC218 \uC99D\uAC00 1 <color=green>>> 3</color>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7b40444adc3b9494c8078ed283290572, type: 2}
   m_sharedMaterial: {fileID: -2678759491955542990, guid: 7b40444adc3b9494c8078ed283290572, type: 2}
@@ -413,9 +413,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Special Skill2
-
-'
+  m_text: "\uBC14\uB78C\uC758 \uC0C1\uCC98(\uD2B9\uC218 \uAC15\uD654)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7b40444adc3b9494c8078ed283290572, type: 2}
   m_sharedMaterial: {fileID: -2678759491955542990, guid: 7b40444adc3b9494c8078ed283290572, type: 2}

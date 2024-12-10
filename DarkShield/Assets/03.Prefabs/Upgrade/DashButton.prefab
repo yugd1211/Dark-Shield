@@ -65,11 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Dash
-
-
-
-'
+  m_text: "\uB300\uC26C\n\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7b40444adc3b9494c8078ed283290572, type: 2}
   m_sharedMaterial: {fileID: -2678759491955542990, guid: 7b40444adc3b9494c8078ed283290572, type: 2}
@@ -203,8 +199,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uB300\uC26C \uD69F\uC218 \uC99D\uAC00 \uD558\uB294 \uC2A4\uD0AC \uC785\uB2C8\uB2E4.\n\uB300\uC26C
-    \uD69F\uC218 1\uD68C \uC99D\uAC00\n\n"
+  m_text: "\uB300\uC26C \uD69F\uC218 1\uD68C \uC99D\uAC00"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7b40444adc3b9494c8078ed283290572, type: 2}
   m_sharedMaterial: {fileID: -2678759491955542990, guid: 7b40444adc3b9494c8078ed283290572, type: 2}
@@ -411,6 +406,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionType: 0
   skillUpgradeType: 0
+  upgradeUI: {fileID: 0}
 --- !u!1 &8998201607881841825
 GameObject:
   m_ObjectHideFlags: 0
