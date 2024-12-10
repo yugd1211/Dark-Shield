@@ -12,6 +12,7 @@ public class StageManager : MonoBehaviour
     public GameObject shopStagePrefab;
     public GameObject bossStagePrefab;
     public GameObject startStagePrefab;
+    public GameObject mussangStagePrefab;
     public Stage currStage;
 
     public int stageCount = 0;
@@ -26,34 +27,30 @@ public class StageManager : MonoBehaviour
 
     private GameObject CreateBattleStage()
     {
-        return Instantiate(battleStagePrefabs[Random.Range(0, battleStagePrefabs.Length)]);
+        return CreateStage(battleStagePrefabs[Random.Range(0, battleStagePrefabs.Length)]);
+    }
+    
+    private GameObject CreateStage(GameObject stage)
+    {
+        return Instantiate(stage);
     }
 
-    private GameObject CreateShopStage()
-    {
-        return Instantiate(shopStagePrefab);
-    }
-    
-    private GameObject CreateBossStage()
-    {
-        return Instantiate(bossStagePrefab);
-    }
-    
-    private GameObject CreateStartStage()
-    {
-        return Instantiate(startStagePrefab);
-    }
     
     public Stage CreateStage()
     {
         int ran = Random.Range(0, 100);
         GameObject newStage;
         if (stageCount == 0)
-            newStage = CreateStartStage();
+            newStage = CreateStage(startStagePrefab);
         else if (currentStageIndex >= GameManager.Instance.bossStageIndex)
-            newStage = CreateBossStage();
+            newStage = CreateStage(bossStagePrefab);
+        else if (GameManager.Instance.isElemental && !GameManager.Instance.isMussang)
+        {
+            GameManager.Instance.isMussang = true;
+            newStage = CreateStage(mussangStagePrefab);
+        }
         else if (ran <= 20)
-            newStage = CreateShopStage();
+            newStage = CreateStage(shopStagePrefab);
         else 
             newStage = CreateBattleStage();
         newStage.transform.position = new Vector3(0, 0, stageCount * 100);
@@ -78,6 +75,8 @@ public class StageManager : MonoBehaviour
             boss.BattleStart();
             return;
         }
+        else if (currStage is MussangStage mussang)
+            mussang.BattleStart();
         
         if (currentStageIndex >= GameManager.Instance.bossStageIndex)
         {

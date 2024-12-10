@@ -10,6 +10,7 @@ public partial class GameManager : MonoBehaviour
 	
 	public List<EnemySpawnData> enemySpawnDatas;
 	[SerializeField] private EnemySpawnData bossSpawnData;
+	public EnemySpawnData muSSangSpawnData;
 	public int bossStageIndex;
 	// StageManager는 임시로 생성이 아닌 참조로 할당
 	// Stage랜덤할당이 되면 StageManager도 GameManager가 생성하고, Stage도 구성하게끔 할 예정
@@ -21,10 +22,12 @@ public partial class GameManager : MonoBehaviour
 	
 	public GameObject elementalPrefab;
 	public bool isElemental;
+	public bool isMussang;
 
 	private void Init()
 	{
 		isElemental = false;
+		isMussang = false;
 		EnemyManager newEnemyManager = new GameObject("EnemyManager").AddComponent<EnemyManager>();
 		newEnemyManager.transform.SetParent(transform);
 		enemyManager = newEnemyManager;

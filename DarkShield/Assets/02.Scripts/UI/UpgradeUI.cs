@@ -6,8 +6,8 @@ using UnityEngine.InputSystem;
 public class UpgradeUI : MonoBehaviour
 {
     public List<SkillUpgradeButton> buttonPrefabs;
-
     private PlayerInput _playerInput;
+    private List<GameObject> _buttons = new List<GameObject>();
 
     private void Start()
     {
@@ -33,11 +33,22 @@ public class UpgradeUI : MonoBehaviour
         {
             GameObject button = Instantiate(buttonPrefabs[ran[i]], transform).gameObject;
             button.GetComponent<SkillUpgradeButton>().Init(this);
+            _buttons.Add(button);
         }
+    }
+    
+    private void ClearButtons()
+    {
+        foreach (GameObject button in _buttons)
+        {
+            Destroy(button);
+        }
+        _buttons.Clear();
     }
 
     public void ShowShop()
     {
+        ClearButtons();
         _playerInput.SwitchCurrentActionMap("UI");
         CreateButtons();
         gameObject.SetActive(true);

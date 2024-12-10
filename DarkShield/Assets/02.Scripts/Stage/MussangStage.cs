@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
-
-public class BattleStage : Stage
+public class MussangStage : Stage
 {
 	public EnemySpawnData enemySpawnData;
 	public Transform[] enemySpawnPoint;
@@ -11,15 +10,9 @@ public class BattleStage : Stage
 	
 	public Transform elementalSpawnPoint;
 	
-	public override void Init(StageManager stageManager)
-	{
-		base.Init(stageManager);
-	}
-	
 	public void BattleStart()
 	{
 		EnemyManager enemyManager = GameManager.Instance.enemyManager;
-		enemySpawnData = GameManager.Instance.enemySpawnDatas[GameManager.Instance.stageManager.currentStageIndex];
 		enemyManager.Init(enemySpawnData);
 		enemyManager.enemySpawner.StartSpawning(enemySpawnPoint);
 		isStageCleared = false;
@@ -44,5 +37,4 @@ public class BattleStage : Stage
 	{
 		isStageCleared = true;
 	}
-	
 }
