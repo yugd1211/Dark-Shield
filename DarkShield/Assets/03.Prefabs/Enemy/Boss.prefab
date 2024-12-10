@@ -11748,7 +11748,6 @@ MonoBehaviour:
   health: 200
   AttackPower: 20
   maxHP: 200
-  hpBarForeground: {fileID: 0}
   animotor: {fileID: 0}
   coinPrefab: {fileID: 1151114758848143735, guid: 877220dd96143ed48b9fd03a949f8781, type: 3}
   coinpool: {fileID: 8128104576699582198, guid: 97f6abeccc868ec41bcb3192152b3b83, type: 3}
@@ -11757,8 +11756,9 @@ MonoBehaviour:
   rangedAttackRange: 10
   dashSpeed: 20
   dashDuration: 0.5
-  _bossHpBarPrefab: {fileID: 8839229723222266077, guid: 54f3c73b623b19941b9570fb96833426, type: 3}
+  _bossHpBarPrefab: {fileID: 180060961707475671, guid: 7694998dc9b4b884e947fc1c99eab864, type: 3}
   _bossHpBar: {fileID: 0}
+  _victoryUI: {fileID: 4180896612495407586, guid: 836834d427883624087c63eb9b70e94a, type: 3}
 --- !u!54 &519621339462657648
 Rigidbody:
   m_ObjectHideFlags: 0

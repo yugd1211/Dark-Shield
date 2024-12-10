@@ -84,7 +84,7 @@ public abstract class Enemy : Unit
         }
     }
 
-    public void Die()
+    public virtual void Die()
     {
         FindObjectOfType<EnemyManager>().RemoveEnemy(this);
     }
