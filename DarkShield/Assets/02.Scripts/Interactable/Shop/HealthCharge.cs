@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class HealthCharge : MonoBehaviour, IInteractable
 {
-	[SerializeField] private int _cost;
+	[SerializeField] private static int _cost = 50;
 	[SerializeField] private float _recoveryAmount;
 
 	private void HealthRecovery()
 	{
 		GameManager.Instance.player.playerHealth.AddHealth(_recoveryAmount);
+		GameManager.Instance.gold.SubGold(_cost);
+		transform.Find("Potion").gameObject.SetActive(false);
 	}
 
 	private void AddCost()
