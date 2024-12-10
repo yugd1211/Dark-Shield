@@ -7,18 +7,20 @@ public class ChaosEmperor : Boss
 {
     public float dashSpeed = 20f; // 돌진 속도
     public float dashDuration = 0.5f; // 돌진 지속 시간
-    
+
     private bool isDashing = false; // 돌진 상태 플래그
     private Vector3 dashDirection; // 돌진 방향
     [SerializeField] private GameObject _bossHpBarPrefab;
     private GameObject _canvas;
     [SerializeField] private Slider _bossHpBar;
 
+    [SerializeField] private GameObject _victoryUI;
+
     protected override void Start()
     {
         base.Start();
         _canvas = GameObject.Find("Canvas");
-        _bossHpBar = Instantiate(_bossHpBarPrefab, _canvas.transform).GetComponent<Slider>();
+        _bossHpBar = Instantiate(_bossHpBarPrefab, _canvas.transform).GetComponentInChildren<Slider>();
     }
 
     protected override void Update()
@@ -89,5 +91,11 @@ public class ChaosEmperor : Boss
         {
             print("돌진 공격 성공");
         }
+    }
+
+    public override void Die()
+    {
+        base.Die();
+        Instantiate(_victoryUI, GameObject.Find("Canvas").transform);
     }
 }
