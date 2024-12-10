@@ -744,7 +744,7 @@ MonoBehaviour:
   - {fileID: 307005234601365513}
   - {fileID: 4098520970452867542}
   - {fileID: 4184514515514512629}
-  upgradeObjectPrefab: {fileID: 8615020117342014287, guid: 13f6c6950e0887047957615a794980e9, type: 3}
+  upgradeObjectPrefab: {fileID: 601572877553438913, guid: 5cf5162e69ba9414cb5e9a1d1ffaae87, type: 3}
   upgradeObjectSpawnPoint: {fileID: 1656963513756069952}
   elementalSpawnPoint: {fileID: 3514201229732474123}
 --- !u!1 &6120246745000112303
