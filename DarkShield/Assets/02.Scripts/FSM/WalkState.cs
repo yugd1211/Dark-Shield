@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using Unity.VisualScripting.FullSerializer;
 
 public class WalkState : IState
 {
@@ -45,7 +46,6 @@ public class WalkState : IState
 
 	public void OnExit()
 	{
-		//_player.playerAnimator.SetBool("Walk", false);
 	}
 
 }

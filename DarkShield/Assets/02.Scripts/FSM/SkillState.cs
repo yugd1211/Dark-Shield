@@ -11,6 +11,7 @@ public class SkillState : IState
 
 	public void OnEnter()
 	{
+		_player.playerAnimator.SetBool("IsSkill", true);
 		if (_player.playerInputManager.IsRightMousePressed)
 		{
 			_player.curWeopon.UseSkill(ActionType.Skill2);
@@ -30,12 +31,12 @@ public class SkillState : IState
 		}
 
 
-		AnimatorStateInfo stateInfo = _player.playerAnimator.GetCurrentAnimatorStateInfo(0);
+		//AnimatorStateInfo stateInfo = _player.playerAnimator.GetCurrentAnimatorStateInfo(0);
 
-		if ((stateInfo.IsName("Skill1") || stateInfo.IsName("Combo2") || stateInfo.IsName("Combo3")) && stateInfo.normalizedTime >= 0.9f)
-		{
-			_player.playerAnimator.ResetTrigger("Skill1");
-		}
+		//if ((stateInfo.IsName("Skill1") || stateInfo.IsName("Combo2") || stateInfo.IsName("Combo3")) && stateInfo.normalizedTime >= 0.7f)
+		//{
+		//	_player.playerAnimator.ResetTrigger("Skill1");
+		//}
 		//ComboAttack
 		else if (_player.playerInputManager.ComboContext.performed && !_player.playerInputManager.IsNonCombo
 			&& _player.playerInputManager.ComboContext.control.name == "leftButton" && !_player.playerInputManager.IsComboTrigger)
@@ -64,6 +65,7 @@ public class SkillState : IState
 
 	public void EndSkill()
 	{
+		_player.playerAnimator.SetBool("IsSkill", false);
 		_player.playerStateMachine.TransitionTo(_player.playerStateMachine.idleState);
 	}
 }
