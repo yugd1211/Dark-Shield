@@ -41,6 +41,9 @@ public class Stage : MonoBehaviour
 
 	public void MoveNextStage(Stage moveStage)
 	{
-		stageManager.ChangeStage(moveStage);
+		
+		stageManager.MoveStage(moveStage);
+		// stageManager.ChangeStage(moveStage);
+
 	}
 }

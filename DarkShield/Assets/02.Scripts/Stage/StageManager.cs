@@ -1,12 +1,57 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
+
+public class MultiLinkedListNode<T>
+{
+    public T Value { get; set; }
+    public MultiLinkedListNode<T> Prev { get; set; }
+    public List<MultiLinkedListNode<T>> Next { get; set; }
+
+    public MultiLinkedListNode(T value)
+    {
+        Value = value;
+        Prev = null;
+        Next = new List<MultiLinkedListNode<T>>();
+    }
+}
+public class MultiLinkedList<T>
+{
+    public MultiLinkedListNode<T> Current { get; private set; }
+    
+    public void Add(T value)
+    {
+        MultiLinkedListNode<T> newNode = new MultiLinkedListNode<T>(value);
+        if (Current == null)
+            Current = newNode;
+        else
+        {
+            Current.Next.Add(newNode);
+            newNode.Prev = Current;
+        }
+    }
+
+    public bool Move(T value)
+    {
+        foreach (MultiLinkedListNode<T> node in Current.Next)
+        {
+            if (!node.Value.Equals(value)) 
+                continue;
+            Current = node;
+            return true;
+        }
+        return false;
+    }
+}
+
 
 public class StageManager : MonoBehaviour
 {
     public Player player;
-    
+
     public List<Stage> stages = new List<Stage>();
+    public MultiLinkedList<Stage> stageList = new MultiLinkedList<Stage>();
     
     public GameObject[] battleStagePrefabs;
     public GameObject shopStagePrefab;
@@ -16,13 +61,13 @@ public class StageManager : MonoBehaviour
     public Stage currStage;
 
     public int stageCount = 0;
-    public int currentStageIndex = 0;
+    public int currentStageDepth = 0;
     
     public void Init()
     {
         player = FindObjectOfType<Player>();
-        
         currStage = CreateStage();
+        stageList.Add(currStage);
     }
 
     private GameObject CreateBattleStage()
@@ -34,7 +79,6 @@ public class StageManager : MonoBehaviour
     {
         return Instantiate(stage);
     }
-
     
     public Stage CreateStage()
     {
@@ -42,7 +86,7 @@ public class StageManager : MonoBehaviour
         GameObject newStage;
         if (stageCount == 0)
             newStage = CreateStage(startStagePrefab);
-        else if (currentStageIndex >= GameManager.Instance.bossStageIndex)
+        else if (currentStageDepth >= GameManager.Instance.bossStageIndex)
             newStage = CreateStage(bossStagePrefab);
         else if (GameManager.Instance.isElemental && !GameManager.Instance.isMussang)
         {
@@ -53,11 +97,13 @@ public class StageManager : MonoBehaviour
             newStage = CreateStage(shopStagePrefab);
         else 
             newStage = CreateBattleStage();
+        
         newStage.transform.position = new Vector3(0, 0, stageCount * 100);
         newStage.transform.SetParent(transform);
         
         Stage stage = newStage.GetComponent<Stage>();
         stages.Add(stage);
+        stageList.Add(stage);
         stageCount++;
         stage.Init(this);
         return stage;
@@ -67,25 +113,46 @@ public class StageManager : MonoBehaviour
     {
         currStage = stage;
         currStage.GoToStage();
-        currentStageIndex++;
-        if (currStage is BattleStage battle)
-            battle.BattleStart();
-        else if (currStage is BossStage boss)
-        {
-            boss.BattleStart();
-            return;
-        }
-        else if (currStage is MussangStage mussang)
-            mussang.BattleStart();
+        currentStageDepth++;
         
-        if (currentStageIndex >= GameManager.Instance.bossStageIndex)
+        switch (currStage)
+        {
+            case BattleStage battle:
+                battle.BattleStart();
+                break;
+            case BossStage boss:
+                boss.BattleStart();
+                return;
+            case MussangStage mussang:
+                mussang.BattleStart();
+                break;
+        }
+        
+        if (currentStageDepth >= GameManager.Instance.bossStageIndex)
         {
             currStage.CreateNextPortal();   
         }
         else
         {
-            for (int i = 0; i < currStage.portalPoints.Count; i++)
+            while (currStage.portalPoints.Count > Random.Range(0, 3))
                 currStage.CreateNextPortal();
         }
+    }
+    
+    public void MoveStage(Stage stage)
+    {
+        if (!stageList.Move(stage))
+            return;
+        
+        ChangeStage(stage);
+        
+        foreach (MultiLinkedListNode<Stage> sibling in stageList.Current.Prev.Next)
+        {
+            if (sibling.Value == stage) 
+                continue;
+            Destroy(sibling.Value.gameObject);
+        }
+        
+        Destroy(stageList.Current.Prev.Value.gameObject);
     }
 }
