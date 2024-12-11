@@ -28,6 +28,10 @@ public class Player : Unit
             Move(new Vector3(playerInputManager.InputMoveDir.x, 0, playerInputManager.InputMoveDir.y).normalized);
             playerMovement.Rotate(playerInputManager.InputMoveDir);
         }
+        else
+        {
+            playerAnimator.SetBool("Walk", false);
+        }
         playerStateMachine.OnUpdate();
     }
 
@@ -52,7 +56,7 @@ public class Player : Unit
         while (true)
         {
             AnimatorStateInfo stateInfo = playerAnimator.GetCurrentAnimatorStateInfo(0);
-            if (stateInfo.IsName("Standing Up") && stateInfo.normalizedTime <= 0.65f)
+            if (stateInfo.IsName("Standing Up") && stateInfo.normalizedTime <= 0.6f)
             {
                 yield return null;
             }
@@ -62,6 +66,7 @@ public class Player : Unit
             }
         }
         playerStateMachine.Init(playerStateMachine.idleState);
+        playerInputManager.OnStart = true;
     }
 
     public void ChangeWeapon(WeaponChange weapon)

@@ -1086,6 +1086,7 @@ Transform:
   - {fileID: 4903975956938400446}
   - {fileID: 7759274979121734328}
   - {fileID: 8028280493863449398}
+  - {fileID: 4483846469970160400}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &3114593095947118893
@@ -1197,7 +1198,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   detectionRange: 15
   attackCooldown: 2
-  attackRange: 3
+  attackRange: 5
   lastAttackTime: 0
   health: 200
   AttackPower: 20
@@ -1720,6 +1721,37 @@ Transform:
   - {fileID: 8829933780379113238}
   - {fileID: 5939198363198506076}
   - {fileID: 3364648268585300663}
+  m_Father: {fileID: 336670227318231265}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3666076322927986340
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4483846469970160400}
+  m_Layer: 7
+  m_Name: FirePivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4483846469970160400
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3666076322927986340}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.106, z: 0.563}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
   m_Father: {fileID: 336670227318231265}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3798219866287128843
