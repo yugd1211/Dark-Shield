@@ -84,8 +84,10 @@ public class StageManager : MonoBehaviour
         }
         else
         {
-            for (int i = 0; i < currStage.portalPoints.Count; i++)
+            while (currStage.portalPoints.Count > Random.Range(0, 3))
+            {
                 currStage.CreateNextPortal();
+            }
         }
     }
 }
