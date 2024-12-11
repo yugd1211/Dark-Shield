@@ -25,7 +25,7 @@ public class HealthCharge : MonoBehaviour, IInteractable
 	private void HealthRecovery()
 	{
 		GameManager.Instance.player.playerHealth.AddHealth(
-			(100 / _recoveryAmount) * GameManager.Instance.player.playerHealth.maxHealth);
+			(_recoveryAmount / 100) * GameManager.Instance.player.playerHealth.maxHealth);
 		GameManager.Instance.gold.SubGold(_cost);
 		Destroy(gameObject);
 	}

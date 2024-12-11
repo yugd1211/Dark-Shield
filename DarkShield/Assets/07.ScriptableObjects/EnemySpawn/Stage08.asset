@@ -16,8 +16,24 @@ MonoBehaviour:
   - enemies:
     - enemyName: Melee
       enemyPrefab: {fileID: 4064885816787712655, guid: 14609cd2d42166c4294031ad0b01f4ed, type: 3}
-      count: 2
+      count: 5
     - enemyName: Range
       enemyPrefab: {fileID: 860655475421589709, guid: f0739ceb6a2111646a9c0e49ec263355, type: 3}
-      count: 1
+      count: 3
+    spawnFrequency: 2
+  - enemies:
+    - enemyName: Melee
+      enemyPrefab: {fileID: 4064885816787712655, guid: 14609cd2d42166c4294031ad0b01f4ed, type: 3}
+      count: 5
+    - enemyName: Range
+      enemyPrefab: {fileID: 860655475421589709, guid: f0739ceb6a2111646a9c0e49ec263355, type: 3}
+      count: 4
+    spawnFrequency: 2
+  - enemies:
+    - enemyName: Melee
+      enemyPrefab: {fileID: 4064885816787712655, guid: 14609cd2d42166c4294031ad0b01f4ed, type: 3}
+      count: 5
+    - enemyName: Range
+      enemyPrefab: {fileID: 860655475421589709, guid: f0739ceb6a2111646a9c0e49ec263355, type: 3}
+      count: 5
     spawnFrequency: 2
