@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -29,7 +30,7 @@ public class HealthCharge : MonoBehaviour, IInteractable
 		Destroy(gameObject);
 	}
 
-	private void Awake()
+	private void Update()
 	{
 		TextUpdate();
 	}
