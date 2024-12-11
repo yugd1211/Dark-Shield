@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,7 +12,6 @@ public class ObjectPool : MonoBehaviour
     {
         // 초기 풀 생성
         for (int i = 0; i < poolSize; i++)
-
         {
             GameObject obj = Instantiate(prefab);
             obj.SetActive(false);

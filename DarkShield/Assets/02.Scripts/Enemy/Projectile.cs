@@ -12,9 +12,9 @@ public class Projectile : MonoBehaviour
     private bool isLaunched = false;
     public float Speed = 10f;
 
-    private void Awake()
+    public void Init(ObjectPool objectPool)
     {
-        ProjectilePool = FindObjectOfType<ObjectPool>();
+        ProjectilePool = objectPool;
     }
 
     public void Launch(Vector3 targetPosition)
@@ -45,6 +45,6 @@ public class Projectile : MonoBehaviour
     private void Deactivate()
     {
         isLaunched = false; // 이동 중지
-        gameObject.SetActive(false); // 오브젝트 풀로 반환
+        ProjectilePool.ReturnObject(gameObject); // 오브젝트 풀로 반환
     }
 }

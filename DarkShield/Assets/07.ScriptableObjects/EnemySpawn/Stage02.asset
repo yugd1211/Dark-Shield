@@ -19,5 +19,5 @@ MonoBehaviour:
       count: 2
     - enemyName: Range
       enemyPrefab: {fileID: 860655475421589709, guid: f0739ceb6a2111646a9c0e49ec263355, type: 3}
-      count: 1
+      count: 2
     spawnFrequency: 2
