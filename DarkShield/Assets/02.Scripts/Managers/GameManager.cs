@@ -10,10 +10,8 @@ public partial class GameManager : MonoBehaviour
 	
 	public List<EnemySpawnData> enemySpawnDatas;
 	[SerializeField] private EnemySpawnData bossSpawnData;
-	public EnemySpawnData muSSangSpawnData;
 	public int bossStageIndex;
-	// StageManager는 임시로 생성이 아닌 참조로 할당
-	// Stage랜덤할당이 되면 StageManager도 GameManager가 생성하고, Stage도 구성하게끔 할 예정
+
 	public StageManager stageManager;
 	
 	public GameObject playerPrefab;
@@ -39,7 +37,7 @@ public partial class GameManager : MonoBehaviour
 		player.Init();
 		
 		stageManager.player = player;
-		stageManager.ChangeStage(stageManager.currStage);
+		stageManager.MoveStage(stageManager.stageList.Current.Value);
 		
 		DialogueManager newDialogueManager = new GameObject("DialogueManager").AddComponent<DialogueManager>();
 		newDialogueManager.transform.SetParent(transform);
@@ -52,7 +50,6 @@ public partial class GameManager : MonoBehaviour
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 }
-
 
 // Singleton
 public partial class GameManager
