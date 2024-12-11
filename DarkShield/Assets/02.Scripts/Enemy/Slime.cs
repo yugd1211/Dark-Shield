@@ -44,7 +44,10 @@ public class Slime : Enemy
 	public override void TakeDamage(float amount, bool isHit)
 	{
 		health -= amount;
-		_animator.SetBool("Damage", true);      
+		_animator.SetBool("Damage", true);
+		GameObject hitEffect = Instantiate(hitEffectPrefab, transform.position + (Vector3.up * 2), Quaternion.identity);
+		hitEffect.GetComponent<DamagePopup>().SetText(amount.ToString());
+		Destroy(hitEffect, 2);
 		if (health <= 0)
 		{
 			health = 0;
