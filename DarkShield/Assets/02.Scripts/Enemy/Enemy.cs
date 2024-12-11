@@ -24,6 +24,9 @@ public abstract class Enemy : Unit
     public GameObject coinPrefab;
 
     public ObjectPool coinpool;
+    
+    public GameObject hitEffectPrefab;
+    
 
     public float DestroyTime = 8;
 
@@ -74,6 +77,10 @@ public abstract class Enemy : Unit
         animotor.SetTrigger("Hit");
         health -= damage;
         health = Mathf.Clamp(health, 0, maxHP);
+        
+        GameObject hitEffect = Instantiate(hitEffectPrefab, transform.position + (Vector3.up * 2), Quaternion.identity);
+        hitEffect.GetComponent<DamagePopup>().SetText(damage.ToString());
+        Destroy(hitEffect, 2);
         //float hpPercent = health / maxHP;
         //hpBarForeground.localScale = new Vector3(hpPercent, 1, 1); // 너비만 조정
         if (health <= 0)

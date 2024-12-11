@@ -22,7 +22,7 @@ public class PlayerInputManager : MonoBehaviour
     public bool IsComboTrigger { get; set; }
     public bool firstComboAttack { get; set; }
     public Context ComboContext;
-    public bool OnStart { get; set; }
+    public bool CanInput { get; set; }
 
     private Player _player;
 
@@ -34,13 +34,13 @@ public class PlayerInputManager : MonoBehaviour
 
     public void OnMove(Context context)
     {
-        if (OnStart)
+        if (CanInput)
         { InputMoveDir = context.ReadValue<Vector2>(); }
     }
 
     public void OnDash(Context context)
     {
-        if (context.performed && !IsDash && _player.playerDash.CanDash() && !IsSkill && OnStart)
+        if (context.performed && !IsDash && _player.playerDash.CanDash() && !IsSkill && CanInput)
         {
             IsDash = true;
         }

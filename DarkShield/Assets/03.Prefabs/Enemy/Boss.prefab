@@ -11751,6 +11751,7 @@ MonoBehaviour:
   animotor: {fileID: 0}
   coinPrefab: {fileID: 1151114758848143735, guid: 877220dd96143ed48b9fd03a949f8781, type: 3}
   coinpool: {fileID: 8128104576699582198, guid: 97f6abeccc868ec41bcb3192152b3b83, type: 3}
+  hitEffectPrefab: {fileID: 1326990479886518742, guid: 4c5b683b715e8d4409360fb5c5884685, type: 3}
   DestroyTime: 8
   coin: 0
   rangedAttackRange: 10

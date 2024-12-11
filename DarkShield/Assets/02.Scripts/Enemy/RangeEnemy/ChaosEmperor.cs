@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class ChaosEmperor : Boss
@@ -16,15 +17,36 @@ public class ChaosEmperor : Boss
 
     [SerializeField] private GameObject _victoryUI;
 
+    public bool IsRoar { get; private set; }
+
     protected override void Start()
     {
         base.Start();
         _canvas = GameObject.Find("Canvas");
         _bossHpBar = Instantiate(_bossHpBarPrefab, _canvas.transform).GetComponentInChildren<Slider>();
+        StartCoroutine(OnFirstStart());
+    }
+    public IEnumerator OnFirstStart()
+    {
+        IsRoar = true;
+        while (true)
+        {
+            AnimatorStateInfo stateInfo = animotor.GetCurrentAnimatorStateInfo(0);
+            if (stateInfo.IsName("roar") && stateInfo.normalizedTime <= 1f)
+            {
+                yield return null;
+            }
+            else
+            {
+                break;
+            }
+        }
+        IsRoar = false;
     }
 
     protected override void Update()
     {
+        if (IsRoar) return;
         base.Update();
         _bossHpBar.value = HpAmount;
     }
