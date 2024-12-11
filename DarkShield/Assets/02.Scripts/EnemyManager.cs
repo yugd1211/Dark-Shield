@@ -26,5 +26,4 @@ public class EnemyManager : MonoBehaviour
 	{
 		_enemies.Remove(enemy);
 	}
-
 }
