@@ -128,15 +128,9 @@ public class StageManager : MonoBehaviour
                 break;
         }
         
-        if (currentStageDepth >= GameManager.Instance.bossStageIndex)
-        {
-            currStage.CreateNextPortal();   
-        }
-        else
-        {
-            while (currStage.portalPoints.Count > Random.Range(0, 3))
-                currStage.CreateNextPortal();
-        }
+        currStage.CreateNextPortal();
+        while (!(currentStageDepth >= GameManager.Instance.bossStageIndex) && currStage.portalPoints.Count > Random.Range(0, 3))
+            currStage.CreateNextPortal();
     }
     
     public void MoveStage(Stage stage)
