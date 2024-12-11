@@ -51,6 +51,7 @@ public class Player : Unit
 
     public IEnumerator OnFirstStart()
     {
+        playerInputManager.CanInput = false;
         while (true)
         {
             AnimatorStateInfo stateInfo = playerAnimator.GetCurrentAnimatorStateInfo(0);
@@ -64,7 +65,7 @@ public class Player : Unit
             }
         }
         playerStateMachine.Init(playerStateMachine.idleState);
-        playerInputManager.OnStart = true;
+        playerInputManager.CanInput = true;
     }
 
     public void ChangeWeapon(WeaponChange weapon)
