@@ -1808,7 +1808,7 @@ MonoBehaviour:
   mussangStagePrefab: {fileID: 5969469333472819696, guid: 9a350824acc06ce48bf5ffb289b2506c, type: 3}
   currStage: {fileID: 0}
   stageCount: 0
-  currentStageIndex: 0
+  currentStageDepth: 0
 --- !u!4 &4310716539429843542
 Transform:
   m_ObjectHideFlags: 0
