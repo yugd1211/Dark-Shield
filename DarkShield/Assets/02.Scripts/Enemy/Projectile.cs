@@ -38,7 +38,6 @@ public class Projectile : MonoBehaviour
             other.GetComponent<Unit>().TakeDamage(damage, true);// 투사체 제거
             Deactivate();
         }
-
     }
 
 

@@ -48,9 +48,9 @@ public class EnemySpawner : MonoBehaviour
 			for (int i = 0; i < enemyInfo.count; i++)
 			{
 				Enemy newEnemy = Instantiate(enemyInfo.enemyPrefab, _enemySpawnPoint[Random.Range(0, _enemySpawnPoint.Length)].position, Quaternion.identity);
-				newEnemy.AttackPower += (GameManager.Instance.stageManager.currentStageIndex / 10.0f) * newEnemy.AttackPower;
-				newEnemy.maxHP += (GameManager.Instance.stageManager.currentStageIndex / 10.0f) * newEnemy.maxHP;
-				newEnemy.health += (GameManager.Instance.stageManager.currentStageIndex / 10.0f) * newEnemy.health;
+				newEnemy.AttackPower += (GameManager.Instance.stageManager.currentStageDepth / 10.0f) * newEnemy.AttackPower;
+				newEnemy.maxHP += (GameManager.Instance.stageManager.currentStageDepth / 10.0f) * newEnemy.maxHP;
+				newEnemy.health += (GameManager.Instance.stageManager.currentStageDepth / 10.0f) * newEnemy.health;
 				_enemyManager.AddEnemy(newEnemy);
 				yield return new WaitForSeconds(wave.spawnFrequency);
 			}

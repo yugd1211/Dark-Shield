@@ -19,7 +19,7 @@ public class BattleStage : Stage
 	public void BattleStart()
 	{
 		EnemyManager enemyManager = GameManager.Instance.enemyManager;
-		enemySpawnData = GameManager.Instance.enemySpawnDatas[GameManager.Instance.stageManager.currentStageIndex];
+		enemySpawnData = GameManager.Instance.enemySpawnDatas[GameManager.Instance.stageManager.currentStageDepth];
 		enemyManager.Init(enemySpawnData);
 		enemyManager.enemySpawner.StartSpawning(enemySpawnPoint);
 		isStageCleared = false;
@@ -31,7 +31,7 @@ public class BattleStage : Stage
 		yield return new WaitUntil(() => GameManager.Instance.enemyManager.enemySpawner.isAllWavesCompleted);
 		GameObject go = Instantiate(upgradeObjectPrefab, upgradeObjectSpawnPoint.transform.position, Quaternion.identity);
 		yield return new WaitUntil(() => go == null);
-		if (!GameManager.Instance.isElemental && GameManager.Instance.stageManager.currentStageIndex > GameManager.Instance.bossStageIndex / 2)
+		if (!GameManager.Instance.isElemental && GameManager.Instance.stageManager.currentStageDepth > GameManager.Instance.bossStageIndex / 2)
 		{
 			GameObject element = Instantiate(GameManager.Instance.elementalPrefab, elementalSpawnPoint.position, Quaternion.identity);
 			GameManager.Instance.isElemental = true;
