@@ -32,13 +32,6 @@ public class SkillState : IState
 
 		AnimatorStateInfo stateInfo = _player.playerAnimator.GetCurrentAnimatorStateInfo(0);
 
-		//들어왔는데 애니메이션은 idle상태여서 고장날때 있음. 예외처리 해주자.
-		//if (stateInfo.IsName("Idle") && stateInfo.normalizedTime >= 1f)
-		//{
-		//	Debug.Log("예외처리 발생! : 강제 idleState로 전환");
-		//	EndSkill();
-		//} //되긴하는데 어색함.
-
 		if ((stateInfo.IsName("Skill1") || stateInfo.IsName("Combo2") || stateInfo.IsName("Combo3")) && stateInfo.normalizedTime >= 0.9f)
 		{
 			_player.playerAnimator.ResetTrigger("Skill1");
@@ -71,7 +64,6 @@ public class SkillState : IState
 
 	public void EndSkill()
 	{
-		//Debug.Log("EndSkill이 호출 됌.");
 		_player.playerStateMachine.TransitionTo(_player.playerStateMachine.idleState);
 	}
 }

@@ -5,7 +5,6 @@ public class Slime : Enemy
 {
 	[SerializeField] private float hp = 100f;
 	[SerializeField] private float moveSpeed = 2f;
-	[SerializeField] private float attackRange = 10f;
 	[SerializeField] private float attackDamage = 10f;
 	[SerializeField] private float attackInterval = 1f;
 	

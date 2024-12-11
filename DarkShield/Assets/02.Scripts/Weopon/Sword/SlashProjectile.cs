@@ -24,8 +24,6 @@ public class SlashProjectile : MonoBehaviour
 	{
 		if (other.TryGetComponent<IDamageable>(out IDamageable damageable))
 		{
-			print($"트리거 대상 : {other.name}");
-			print($"적에게 주는 피해량 : {_player.playerStat.GetFinalDamage(damage)}");
 			damageable.TakeDamage(_player.playerStat.GetFinalDamage(damage), false);
 		}
 	}

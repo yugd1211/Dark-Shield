@@ -51,7 +51,6 @@ public class EnemySpawner : MonoBehaviour
 				newEnemy.AttackPower += (GameManager.Instance.stageManager.currentStageIndex / 10.0f) * newEnemy.AttackPower;
 				newEnemy.maxHP += (GameManager.Instance.stageManager.currentStageIndex / 10.0f) * newEnemy.maxHP;
 				newEnemy.health += (GameManager.Instance.stageManager.currentStageIndex / 10.0f) * newEnemy.health;
-				print(newEnemy.maxHP);
 				_enemyManager.AddEnemy(newEnemy);
 				yield return new WaitForSeconds(wave.spawnFrequency);
 			}

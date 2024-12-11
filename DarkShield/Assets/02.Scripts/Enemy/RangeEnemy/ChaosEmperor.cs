@@ -65,7 +65,6 @@ public class ChaosEmperor : Boss
             transform.position += dashDirection * dashSpeed * Time.deltaTime;
             yield return null; // 한 프레임 대기
         }
-        print("원거리 대쉬 공격 실행");
         this.AttackPower = 40;
         player.GetComponent<PlayerHealth>().TakeDamage(AttackPower, true);
         isDashing = false;
