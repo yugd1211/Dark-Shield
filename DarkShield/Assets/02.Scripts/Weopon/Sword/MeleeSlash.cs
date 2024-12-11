@@ -95,7 +95,6 @@ public class MeleeSlash : Skill
     {
         if (_eventEffects.effects.Count == 0)
         {
-            //print("이펙트 세팅");
             _eventEffects.SetEffects(_effect);
             _eventEffects.SetEffects(_effect2);
             _eventEffects.SetEffects(_effect3);
