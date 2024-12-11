@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3069239371896760479}
   - component: {fileID: 6095430208343494297}
   - component: {fileID: 3029790001574077562}
+  - component: {fileID: 451559741757076309}
+  - component: {fileID: 2644793425028033050}
   m_Layer: 5
   m_Name: UpgradePanel
   m_TagString: Untagged
@@ -75,3 +77,47 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &451559741757076309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9140844008274997257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 107bec351f2f0ef47a9b8d45c1b6caf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonPrefabs:
+  - {fileID: -5779146813767967399, guid: 11556e952f2eed2419fb69dc77ca19ab, type: 3}
+  - {fileID: 3485354703747652172, guid: 212b0f87ac2c72e42badacf7a4239705, type: 3}
+  - {fileID: 3039080558256129533, guid: 44a256958e913744d98d714728dab87c, type: 3}
+  - {fileID: 8888244114655669274, guid: 2d8f30d966d43bb448351660089752cf, type: 3}
+  - {fileID: -4679173484943425246, guid: ed9115388c8b92843a712a45577154c5, type: 3}
+--- !u!114 &2644793425028033050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9140844008274997257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 300
+    m_Right: 0
+    m_Top: 100
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
