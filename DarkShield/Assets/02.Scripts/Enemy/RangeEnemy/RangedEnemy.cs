@@ -14,6 +14,7 @@ public class RangedEnemy : Enemy
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+        firePoint = GameObject.Find("FirePivot").transform;
     }
 
     public RectTransform hpBarForeground;
@@ -52,14 +53,14 @@ public class RangedEnemy : Enemy
 
             Projectile fire = projectile.GetComponent<Projectile>();
             fire.target = "Player";
-            fire.Launch(player.position);
+            //fire.Launch(player.position);
             fire.damage = this.AttackPower;
 
             lastAttackTime = Time.time;
 
             SetState(new EnemyIdleState(this));
 
-            StartCoroutine(ReturnProjectileToPool(projectile, 2f));
+            StartCoroutine(ReturnProjectileToPool(projectile, 3f));
 
         }
     }

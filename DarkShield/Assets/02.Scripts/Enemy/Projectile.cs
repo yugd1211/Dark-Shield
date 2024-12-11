@@ -19,23 +19,15 @@ public class Projectile : MonoBehaviour
 
     public void Launch(Vector3 targetPosition)
     {
-        direction = (targetPosition - transform.position).normalized; // 방향 계산
+        //direction = (targetPosition - transform.position).normalized; // 방향 계산
         isLaunched = true; // 발사 상태 활성화
 
     }
 
     private void Update()
     {
-        if (isLaunched)
-        {
-            transform.position += direction * Speed * Time.deltaTime;
-        }
-    }
 
-    private void OnEnable()
-    {
-        Invoke("Deactivate", 5f); // 일정 시간이 지나면 비활성화
-
+        transform.position += transform.forward * Speed * Time.deltaTime;
     }
 
     public string target;
@@ -49,7 +41,7 @@ public class Projectile : MonoBehaviour
 
     }
 
-  
+
     private void Deactivate()
     {
         isLaunched = false; // 이동 중지
