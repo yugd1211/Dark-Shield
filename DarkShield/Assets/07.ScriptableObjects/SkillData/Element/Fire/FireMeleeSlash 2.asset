@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c2ba72d66c82f7408b71a5e805e3e31, type: 3}
   m_Name: FireMeleeSlash 2
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 6
   damagePercent: 0
   skillEffect: {fileID: 1935082409722074, guid: 6d7dfdb5c6108ed45932315944eb460f, type: 3}
   destroyAfter: 3

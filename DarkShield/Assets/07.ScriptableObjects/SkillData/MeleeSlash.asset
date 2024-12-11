@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c2ba72d66c82f7408b71a5e805e3e31, type: 3}
   m_Name: MeleeSlash
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 12
   damagePercent: 1
   skillEffect: {fileID: 6888954314782828592, guid: d5439109e51cdf34eb446177b051eb57, type: 3}
   destroyAfter: 3
