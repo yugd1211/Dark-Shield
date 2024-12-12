@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c2ba72d66c82f7408b71a5e805e3e31, type: 3}
   m_Name: TeleportSlash
   m_EditorClassIdentifier: 
-  damage: 30
+  damage: 50
   damagePercent: 1
-  skillEffect: {fileID: 1934977346563538, guid: 8c2a99d5d9b4d4a4d973ce3412f51745, type: 3}
+  skillEffect: {fileID: 1934977346563538, guid: 164ea57ad591f004e9c1713085d64789, type: 3}
   destroyAfter: 3
   useLocalPosition: 0
   startPositionRotation: {fileID: 0}
+  boxSize: {x: 0, y: 0, z: 0}
+  boxOffset: {x: 0, y: 0, z: 0}
+  radius: 0
