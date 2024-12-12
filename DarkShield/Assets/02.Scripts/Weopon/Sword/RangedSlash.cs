@@ -18,11 +18,6 @@ public class RangedSlash : Skill
 
     private GameObject _slashFx;
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.T)) SpecialUpgrade();
-    }
-
     public override void UseSkill()
     {
         _eventEffects.SetEffects(_effect);
