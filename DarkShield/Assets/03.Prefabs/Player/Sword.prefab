@@ -201,6 +201,7 @@ MonoBehaviour:
   teleportSlash1: {fileID: 11400000, guid: 610b321dffb13e742bba6b3822daf030, type: 2}
   boxSize: {x: 1.5, y: 2, z: 9}
   boxOffset: {x: 0, y: 0, z: 4.75}
+  recoveryMoveSpeed: 3
 --- !u!1 &7724360638896828558
 GameObject:
   m_ObjectHideFlags: 0

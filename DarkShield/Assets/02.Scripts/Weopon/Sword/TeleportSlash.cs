@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class TeleportSlash : Skill
 {
@@ -43,22 +44,45 @@ public class TeleportSlash : Skill
     {
         _eventEffects.SetEffects(_effect);
     }
+    public float recoveryMoveSpeed;
 
-    private IEnumerator UseTeleportSlash()
+    private IEnumerator UseTeleportSlash(Collider[] colls, float damage)
     {
-        yield return new WaitForSeconds(0.1f);
+        float originSpeed = colls[0].GetComponent<NavMeshAgent>().speed;
+        //float originSpeed = 0f;
+        //originSpeed = colls[0].GetComponent<IMovable>().MoveSpeed;
+        //print($"적의 기존 이동속도 : {colls[0].GetComponent<IMovable>().MoveSpeed}");
+        //멈추게하기
+        foreach (Collider hitCollider in colls)
+        {
+            //hitCollider.GetComponent<IMovable>().MoveSpeed = 0f;
+            hitCollider.GetComponent<NavMeshAgent>().speed = 0f;
+        }
+        //print($"적의 바뀐 이동속도 : {colls[0].GetComponent<IMovable>().MoveSpeed}");
+        //print($"기다리기 : {recoveryMoveSpeed}초");
+        yield return new WaitForSeconds(recoveryMoveSpeed);
+        //데미지 주기 && 이동속도 복원
+        foreach (Collider hitCollider in colls)
+        {
+            hitCollider.GetComponent<IDamageable>().TakeDamage(_player.playerStat.GetFinalDamage(damage), false);
+            print($"입힌 데미지 : {_player.playerStat.GetFinalDamage(damage)}");
+            //hitCollider.GetComponent<NavMeshAgent>().isStopped = false;
+            hitCollider.GetComponent<NavMeshAgent>().speed = originSpeed;
+
+            //hitCollider.GetComponent<IMovable>().MoveSpeed = originSpeed;
+            //print($"스킬이 끝난 적의 이동속도 : {hitCollider.GetComponent<IMovable>().MoveSpeed}");
+        }
     }
 
     public void SkillBoxRange(float damage)
     {
         Collider[] hitColliders = Physics.OverlapBox(_boxCenter, boxSize / 2, _boxCenterPivot.rotation, targetLayer);
-
-        foreach (Collider hitCollider in hitColliders)
-        {
-            Debug.Log("감지된 이름 " + hitCollider.name);
-            print("가한 데미지 : " + damage);
-            hitCollider.GetComponent<IDamageable>().TakeDamage(_player.playerStat.GetFinalDamage(damage), false);
-        }
+        print($"궁극기에 닿은 적의 수 : {hitColliders.Length}");
+        if (hitColliders.Length > 0) StartCoroutine(UseTeleportSlash(hitColliders, damage));
+        //foreach (Collider hitCollider in hitColliders)
+        //{
+        //    hitCollider.GetComponent<IDamageable>().TakeDamage(_player.playerStat.GetFinalDamage(damage), false);
+        //}
     }
 
     public override void Init(Player player)

@@ -14,7 +14,7 @@ public class PlayerInputManager : MonoBehaviour
 
     public bool IsLeftMousePressed { get; set; }
     public bool IsRightMousePressed { get; set; }
-    public bool IsQPressed { get; set; }
+    public bool IsRPressed { get; set; }
 
     //ComboAttack 변수들
     public bool IsNonCombo { get; set; }
@@ -69,9 +69,9 @@ public class PlayerInputManager : MonoBehaviour
                 IsSkill = true;
                 IsNonCombo = true;
             }
-            else if (context.control.name == "q")
+            else if (context.control.name == "r")
             {
-                IsQPressed = true;
+                IsRPressed = true;
                 IsSkill = true;
                 IsNonCombo = true;
             }
