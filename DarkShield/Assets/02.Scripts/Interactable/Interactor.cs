@@ -21,31 +21,28 @@ public class Interactor : MonoBehaviour
 
 	private void Update()
 	{
+		UpdateIndicator();
+	}
+	
+	private void UpdateIndicator()
+	{
+		if (!_indicator) 
+			return;
 		Collider[] colliders = Physics.OverlapSphere(transform.position, detectionRadius);
 		IInteractable interactableObject = null;
 		Collider detectedInteractableCollider = colliders.ToList().Find(collider => collider.TryGetComponent(out interactableObject));
-		if (!detectedInteractableCollider)
-		{
-			_indicator.SetActive(false);
-			return;
-		}
-		if (!interactableObject.CanInteract())
-		{
-			_indicator.SetActive(false);
-			return;
-		}
-		// if (_canvas && !_indicator)
-		// 	_indicator = Instantiate(interactableIndicator, _canvas.transform);
 		
-		if (_indicator)
+		if (!detectedInteractableCollider || !interactableObject.CanInteract())
 		{
-			Vector3 worldPosition = detectedInteractableCollider.transform.position;
-			Vector3 screenPosition = Camera.main.WorldToScreenPoint(worldPosition);
-			RectTransformUtility.ScreenPointToLocalPointInRectangle(_canvas.transform as RectTransform, screenPosition, _canvas.worldCamera, out Vector2 localPoint);
-			((RectTransform)_indicator.transform).localPosition = localPoint + new Vector2(0, 100);
-			_indicator.SetActive(true);
-			
+			_indicator.SetActive(false);
+			return;
 		}
+		
+		Vector3 worldPosition = detectedInteractableCollider.transform.position;
+		Vector3 screenPosition = Camera.main.WorldToScreenPoint(worldPosition);
+		RectTransformUtility.ScreenPointToLocalPointInRectangle(_canvas.transform as RectTransform, screenPosition, _canvas.worldCamera, out Vector2 localPoint);
+		((RectTransform)_indicator.transform).localPosition = localPoint + new Vector2(0, 100);
+		_indicator.SetActive(true);
 	}
 
 	public void OnInteract(Context context)

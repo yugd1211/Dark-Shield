@@ -5,7 +5,6 @@ public class ShopPresenter : MonoBehaviour
     private ShopUI _shopUI;
     private DialogueTrigger _dialogueTrigger;
 
-
     private void Awake()
     {
         _dialogueTrigger = GetComponent<DialogueTrigger>();
@@ -22,7 +21,7 @@ public class ShopPresenter : MonoBehaviour
         _dialogueTrigger.dialogueEndAction = _shopUI.ShowShop;
         _dialogueTrigger.TriggerDialogue();
     }
- 
+    
     public void CloseShop()
     {
         _shopUI.HideShop();
