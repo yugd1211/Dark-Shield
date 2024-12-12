@@ -198,6 +198,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   _teleportSlashPivot: {fileID: 0}
+  teleportSlash1: {fileID: 11400000, guid: 610b321dffb13e742bba6b3822daf030, type: 2}
   boxSize: {x: 1.5, y: 2, z: 9}
   boxOffset: {x: 0, y: 0, z: 4.75}
 --- !u!1 &7724360638896828558

@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class TeleportSlash : Skill
 {
@@ -43,7 +42,6 @@ public class TeleportSlash : Skill
     public override void UseSkill()
     {
         _eventEffects.SetEffects(_effect);
-        //StartCoroutine(UseTeleportSlash());
     }
 
     private IEnumerator UseTeleportSlash()
