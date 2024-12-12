@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 
-public class Portal : AInteractableObeject
+public class Portal : MonoBehaviour, IInteractable
 {
 	public enum StageType
 	{
@@ -40,7 +40,7 @@ public class Portal : AInteractableObeject
 			GetComponent<MeshRenderer>().material.color = Color.red;
 	}
 
-	public override void Interact(Interactor player)
+	public void Interact(Interactor player)
 	{
 		if (CanInteract())
 		{
@@ -49,7 +49,7 @@ public class Portal : AInteractableObeject
 		}
 	}
 
-	public override bool CanInteract()
+	public bool CanInteract()
 	{
 		return OnCanInteract == null || OnCanInteract.Invoke();
 	}

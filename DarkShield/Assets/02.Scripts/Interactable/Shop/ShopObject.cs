@@ -1,4 +1,5 @@
-public class ShopObject : AInteractableObeject
+using UnityEngine;
+public class ShopObject : MonoBehaviour, IInteractable
 {
 	private ShopPresenter _shopPresenter;
 
@@ -7,9 +8,13 @@ public class ShopObject : AInteractableObeject
 		_shopPresenter = FindObjectOfType<ShopPresenter>();
 	}
 	
-	public override void Interact(Interactor player)
+	public void Interact(Interactor player)
 	{
 		_shopPresenter.OpenShop();
 	}
-	
+	public bool CanInteract()
+	{
+		return true;
+	}
+
 }
